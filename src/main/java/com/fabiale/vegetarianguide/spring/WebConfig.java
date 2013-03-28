@@ -46,8 +46,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		ResourceBundleMessageSource result = new ResourceBundleMessageSource();
 
 		String[] basenames = {
-		    "i18n.messages",
-		    "i18n.messages"
+		    "i18n.messages.messages",
+		    "i18n.countries.countries"
 		};
 
 		result.setBasenames(basenames);
