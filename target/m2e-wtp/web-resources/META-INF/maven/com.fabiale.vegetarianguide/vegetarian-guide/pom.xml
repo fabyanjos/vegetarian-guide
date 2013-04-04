@@ -8,7 +8,7 @@
   <name>vegetarian-guide Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <properties>
-		<spring.version>3.2.0.RELEASE</spring.version>
+		<spring.version>3.2.2.RELEASE</spring.version>
 		<jetty.version>8.1.7.v20120910</jetty.version>
 	</properties>
   <dependencies>

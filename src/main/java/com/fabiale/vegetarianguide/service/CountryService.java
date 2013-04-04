@@ -21,4 +21,8 @@ public class CountryService {
 	public Integer create(Country country) {
 		return this.repository.create(country);
 	}
+	
+	public Country findByName(String name) {
+		return this.repository.findByName(name);
+	}
 }

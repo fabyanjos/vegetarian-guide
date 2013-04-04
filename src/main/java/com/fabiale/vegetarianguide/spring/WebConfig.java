@@ -34,7 +34,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	public ViewResolver getViewResolver() {
 
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		resolver.setPrefix("WEB-INF/pages/");
+		resolver.setPrefix("/WEB-INF/pages/");
 		resolver.setSuffix(".jsp");
 
 		return resolver;
@@ -43,21 +43,23 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public MessageSource messageSource() {
 
-		ResourceBundleMessageSource result = new ResourceBundleMessageSource();
+		ResourceBundleMessageSource source = new ResourceBundleMessageSource();
 
 		String[] basenames = {
 		    "i18n.messages.messages",
-		    "i18n.countries.countries"
+		    "i18n.countries.countries",
+		    "i18n.labels.labels"
 		};
 
-		result.setBasenames(basenames);
+		source.setBasenames(basenames);
+		source.setUseCodeAsDefaultMessage(true);
+		source.setDefaultEncoding("UTF-8");
 
-		return result;
+		return source;
 	}
 
 	@Bean
 	public LocaleChangeInterceptor localeChangeInterceptor() {
-
 		LocaleChangeInterceptor result = new LocaleChangeInterceptor();
 		result.setParamName("lang");
 
@@ -66,7 +68,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Bean
 	public LocaleResolver localeResolver() {
-
 		SessionLocaleResolver result = new SessionLocaleResolver();
 		result.setDefaultLocale(Locale.ENGLISH);
 
