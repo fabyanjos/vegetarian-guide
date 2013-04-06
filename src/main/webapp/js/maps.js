@@ -1,8 +1,10 @@
 var map, places, iw;
 var markers = [];
 var autocomplete;
+var geocoder;
 
 function initialize() {
+	geocoder = new google.maps.Geocoder();
 	var myLatlng = new google.maps.LatLng(37.783259, -122.402708);
 	var myOptions = {
 		zoom : 12,
@@ -12,6 +14,26 @@ function initialize() {
 	map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
 
 	autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'));
+}
+
+function codeAddress() {
+	clearMarkers();
+    var address = document.getElementById("autocomplete").value;
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        markers[0] = new google.maps.Marker({
+        	map: map,
+            position: results[0].geometry.location
+    	});
+        iw = new google.maps.InfoWindow({
+    		content : getIWContent(results[0])
+    	});
+    	iw.open(map, markers[0]);
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
 }
 
 function searchPlaces() {
@@ -83,7 +105,7 @@ function getGeometry(geometry) {
 }
 
 $('#autocomplete').keypress(function (e) {
-	searchPlaces();
+	//searchPlaces();
 });
 
 google.maps.event.addDomListener(window, 'load', initialize);

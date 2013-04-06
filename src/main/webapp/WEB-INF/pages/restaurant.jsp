@@ -32,6 +32,8 @@
   #autocomplete {
     width: 500px;
     border: 1px solid #ccc;
+    height: 20px;
+  	font-size: 16px;
   }
   
   #place {
@@ -69,9 +71,12 @@
 </head>
 <body>
 	<div id="main">
-	<p>
-		<input id="autocomplete" type="text"/>
-	</p>
+		<form onsubmit="codeAddress(); return false;">
+			<p>
+				<input id="autocomplete" name="autocomplete" type="text"/>
+				<input type="submit" value="Encode">
+			</p>
+		</form>
 	<div id="map-canvas"></div>
 	
 	<form:form method="post" action="/restaurant/save" modelAttribute="restaurant">

@@ -3,6 +3,8 @@ package com.fabiale.vegetarianguide.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,6 +31,7 @@ public class Restaurant implements Serializable {
 	private Country country;
 	private String latitude;
 	private String longitude;
+	@Enumerated(EnumType.STRING)
 	private Type type;
 
 	public Integer getId() {
