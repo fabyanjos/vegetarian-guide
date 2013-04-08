@@ -11,32 +11,57 @@ function initialize() {
 		center : myLatlng,
 		mapTypeId : google.maps.MapTypeId.ROADMAP
 	};
-	map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
+	//map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
 
 	autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'));
 }
 
 function codeAddress() {
+	alert($('#autocomplete').val());
+	$("#map-canvas").gmap3({
+		  getlatlng:{
+		    address: $('#autocomplete').val(),
+		    callback: function(results){
+		    	alert(results);
+		      if ( !results ) alert('erro');
+		      $(this).gmap3({
+		        marker:{
+		          latLng:results[0].geometry.location
+		        }
+		      });
+		    }
+		  }
+		});
+	/*
 	clearMarkers();
     var address = document.getElementById("autocomplete").value;
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         map.setCenter(results[0].geometry.location);
-        map.setZoom(16);
         
+        var pyrmont = new google.maps.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng());
+        
+        var request = {
+		    location: pyrmont,
+		    radius: 500,
+		    query: 'all'
+		  };
+	
+		  service = new google.maps.places.PlacesService(map);
+		  service.textSearch(request, callback);
+       
         markers[0] = new google.maps.Marker({
         	map: map,
             position: results[0].geometry.location
     	});
         iw = new google.maps.InfoWindow({
-    		content : getIWContent(results[0]),
-    		maxWidth: 100
+    		content : getIWContent(results[0])
     	});
     	iw.open(map, markers[0]);
       } else {
         alert("Geocode was not successful for the following reason: " + status);
       }
-    });
+    });*/
 }
 
 function callback(results, status) {
@@ -50,6 +75,12 @@ function callback(results, status) {
 	    
 	  }
 	}
+
+function searchPlaces() {
+	google.maps.event.addListener(autocomplete, 'place_changed', function() {
+		showSelectedPlace();
+	});
+}
 
 function showSelectedPlace() {
 	clearMarkers();
@@ -75,10 +106,10 @@ function clearMarkers() {
 }
 
 function getIWContent(place) {
-	var content = '<table style="border:0;margin-top:10px;"><tr><td style="border:0;">';
+	var content = '<table style="border:0"><tr><td style="border:0;">';
 	content += '<img class="placeIcon" src="' + place.icon + '"></td>';
-	content += '<td style="border:0;"><b>'
-			+ place.formatted_address + '</b>';
+	content += '<td style="border:0;"><b><a href="' + place.url + '">'
+			+ place.formatted_address + '</a></b>';
 	content += '</td></tr></table>';
 	
 	getAddressComponents(place.address_components);
@@ -118,5 +149,3 @@ $('#autocomplete').keypress(function (e) {
 });
 
 google.maps.event.addDomListener(window, 'load', initialize);
-
-// Facebook
