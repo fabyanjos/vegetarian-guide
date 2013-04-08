@@ -1,5 +1,7 @@
 package com.fabiale.vegetarianguide.spring;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -18,31 +20,32 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class RepositoryConfig {
 
 	// ${jdbc.driverClassName}
-	@Value("${jdbc.driverClassName}") private String driverClassName;
-	@Value("${jdbc.url}") private String url;
-	@Value("${jdbc.username}") private String username;
-	@Value("${jdbc.password}") private String password;
+	@Value("${DATABASE_URL}") private String url;
 	@Value("${hibernate.dialect}") private String hibernateDialect; 
 	@Value("${hibernate.show_sql}") private String hibernateShowSql;
 	@Value("${hibernate.hbm2ddl.auto}") private String hibernateHbm2ddlAuto;
+	
+	@Bean
+	public URI dbUrl() throws URISyntaxException { 
+		return new URI(url);
+	}
 
 	@Bean()
-	public DataSource dataSource() {
+	public DataSource dataSource() throws URISyntaxException {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
-		ds.setDriverClassName(driverClassName);
-		ds.setUrl(url);
-		ds.setUsername(username);
-		ds.setPassword(password);
+		ds.setUrl("jdbc:postgresql://" + dbUrl().getHost() + ":" + dbUrl().getPort() + dbUrl().getPath() );
+		ds.setUsername(dbUrl().getUserInfo().split(":")[0]);
+		ds.setPassword(dbUrl().getUserInfo().split(":")[1]);
 		return ds;
 	}
 
 	@Bean
-	public PlatformTransactionManager transactionManager() {
+	public PlatformTransactionManager transactionManager() throws URISyntaxException {
 		return new HibernateTransactionManager(sessionFactory().getObject());
 	}
 
 	@Bean
-	public LocalSessionFactoryBean sessionFactory() {
+	public LocalSessionFactoryBean sessionFactory() throws URISyntaxException {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
 		sessionFactory.setHibernateProperties(hibernateProperties());
