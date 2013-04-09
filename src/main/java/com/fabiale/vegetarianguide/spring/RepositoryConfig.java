@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class RepositoryConfig {
 
 	// ${jdbc.driverClassName}
+	@Value("${jdbc.driverClassName}") private String hibernateDriver;
 	@Value("${hibernate.dialect}") private String hibernateDialect; 
 	@Value("${hibernate.show_sql}") private String hibernateShowSql;
 	@Value("${hibernate.hbm2ddl.auto}") private String hibernateHbm2ddlAuto;
@@ -35,6 +36,7 @@ public class RepositoryConfig {
 		ds.setUrl("jdbc:postgresql://" + dbUrl().getHost() + ":" + dbUrl().getPort() + dbUrl().getPath() );
 		ds.setUsername(dbUrl().getUserInfo().split(":")[0]);
 		ds.setPassword(dbUrl().getUserInfo().split(":")[1]);
+		ds.setDriverClassName(hibernateDriver);
 		return ds;
 	}
 
