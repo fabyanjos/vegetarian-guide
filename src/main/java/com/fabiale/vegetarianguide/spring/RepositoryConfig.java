@@ -20,14 +20,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class RepositoryConfig {
 
 	// ${jdbc.driverClassName}
-	@Value("${DATABASE_URL}") private String url;
 	@Value("${hibernate.dialect}") private String hibernateDialect; 
 	@Value("${hibernate.show_sql}") private String hibernateShowSql;
 	@Value("${hibernate.hbm2ddl.auto}") private String hibernateHbm2ddlAuto;
 	
 	@Bean
 	public URI dbUrl() throws URISyntaxException { 
-		return new URI(url);
+		return new URI(System.getenv("DATABASE_URL"));
 	}
 
 	@Bean()
