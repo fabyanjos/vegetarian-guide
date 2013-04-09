@@ -66,11 +66,6 @@
  		<version>2.2.2</version>
  	</dependency>
  	<dependency>
- 		<groupId>javax.servlet</groupId>
- 		<artifactId>jstl</artifactId>
- 		<version>1.2</version>
- 	</dependency>
- 	<dependency>
  		<groupId>javax.el</groupId>
  		<artifactId>javax.el-api</artifactId>
  		<version>2.2.4</version>
@@ -79,6 +74,16 @@
  		<groupId>postgresql</groupId>
  		<artifactId>postgresql</artifactId>
  		<version>9.1-901-1.jdbc4</version>
+ 	</dependency>
+ 	<dependency>
+ 		<groupId>taglibs</groupId>
+ 		<artifactId>standard</artifactId>
+ 		<version>1.1.2</version>
+ 	</dependency>
+ 	<dependency>
+ 		<groupId>javax.servlet</groupId>
+ 		<artifactId>jstl</artifactId>
+ 		<version>1.2</version>
  	</dependency>
   </dependencies>
   <build>
