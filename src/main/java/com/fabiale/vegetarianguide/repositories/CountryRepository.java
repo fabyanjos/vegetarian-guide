@@ -3,7 +3,9 @@ package com.fabiale.vegetarianguide.repositories;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,7 +26,10 @@ public class CountryRepository {
 
     @Transactional
 	public Integer create(Country country) {
-		this.factory.openSession().save(country);
+    	Session session = factory.openSession();
+    	Transaction tx = session.beginTransaction();
+    	session.save(country);
+    	tx.commit();
 		return country.getId();
 	}
     
