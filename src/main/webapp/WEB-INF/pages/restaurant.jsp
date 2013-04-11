@@ -1,110 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core" 				prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" 			prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" 		prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" 	prefix="form"%>
 <!doctype html>
 <html lang="en">
 <head>
 <title>Restaurant</title>
-
-<link rel="stylesheet" href="//www.google.com/cse/style/look/default.css" type="text/css" />
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-    <script id="jqueryui" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js" defer async></script>
-    <script src="//www.google.com/jsapi"></script>
-    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false&libraries=places&amp;language=${pageContext.response.locale}"></script>
-    
-<style type="text/css">
-
-  #map-canvas {
-    float: left;
-    width: 650px;
-    height: 500px;
-    border: solid red 0px;
-  }
-
-  .placeIcon {
-    width: 16px;
-    height: 16px;
-    margin: 2px;
-  }
-
-  #autocomplete {
-    width: 500px;
-    border: 1px solid #ccc;
-    height: 20px;
-  	font-size: 16px;
-  }
-  
-  #place {
-  	float: left;
-  	width: 250px;
-  	border: solid blue 0px;
-  	font-size: 13px;
-  }
-  
-  #place input {
-  	width: 180px;
-  	display: block;
-  }
-  
-  #place select {
-  	width: 180px;
-  	display: block;
-  }
-  
-  #place ul {
-  	list-style: none;
-    margin: -5px 0 0 10px;
-    padding: 0;
-  }
-  #place ul li {
-  	margin-top: 5px;
-  }
-  
-  #main {
-  	width: 910px;
-  	border: solid black 0px;
-  	margin: 0px auto;
-  }
-</style>
 </head>
 <body>
-
-<script>
-  // Additional JS functions here
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '426669610763003', // App ID
-      channelUrl : '//localhost:8080/channel.html', // Channel File
-      status     : true, // check login status
-      cookie     : true, // enable cookies to allow the server to access the session
-      xfbml      : true  // parse XFBML
-    });
-
-    // Additional init code here
-    
-    FB.getLoginStatus(function(response) {
-    	  if (response.status === 'connected') {
-    	    alert('connected');
-    	  } else if (response.status === 'not_authorized') {
-    		  alert('not_authorized');
-    	  } else {
-    		  alert('not_logged_in');
-    	  }
-    	 });
-
-  };
-
-  // Load the SDK Asynchronously
-  (function(d){
-     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = "//connect.facebook.net/en_US/all.js";
-     ref.parentNode.insertBefore(js, ref);
-   }(document));
-</script>
 	<div id="main">
 		<form onsubmit="codeAddress(); return false;">
 			<p>
@@ -143,13 +46,8 @@
 			</ul>
 		</div>
 	</form:form>
-	<p>
-		Choose: <a href="<c:url value='?lang=en'/>">English</a> | <a
-			href="<c:url value='?lang=pt_BR'/>">Portuguese</a>
-	</p>
 	
 	</div>
 	
-	<script type="text/javascript" src="/js/maps.js"></script>
 </body>
 </html>

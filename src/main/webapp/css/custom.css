@@ -1,0 +1,51 @@
+#map-canvas {
+	float: left;
+	width: 650px;
+	height: 500px;
+	border: solid red 0px;
+}
+
+.placeIcon {
+	width: 16px;
+	height: 16px;
+	margin: 2px;
+}
+
+#autocomplete {
+	width: 500px;
+	border: 1px solid #ccc;
+	height: 20px;
+	font-size: 16px;
+}
+
+#place {
+	width: 250px;
+	border: solid blue 0px;
+	font-size: 13px;
+}
+
+#place input {
+	width: 180px;
+	display: block;
+}
+
+#place select {
+	width: 180px;
+	display: block;
+}
+
+#place ul {
+	list-style: none;
+	margin: -5px 0 0 10px;
+	padding: 0;
+}
+
+#place ul li {
+	margin-top: 5px;
+}
+
+#main {
+	width: 910px;
+	border: solid black 0px;
+	margin: 0px auto;
+}
