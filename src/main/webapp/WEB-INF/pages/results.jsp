@@ -1,0 +1,36 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" 			prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" 		prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" 	prefix="form"%>
+<!doctype html>
+<html lang="en">
+<head>
+<title>Restaurant</title>
+</head>
+<body>
+	<div id="main">
+	<form:form method="post" action="/restaurant/search" modelAttribute="restaurant">
+		<div id="place">
+		<h3>Dados do local</h3>
+			<ul>
+				<li><label><spring:message code="address"/>: </label><input type="text" id="street" name="street"/></li>
+				<li><label><spring:message code="street_number"/>: </label><input type="text" id="number" name="number"/></li>
+				<li><label><spring:message code="postal_code"/>: </label><input type="text" id="postalCode" name="postalCode"/></li>
+				<li><label><spring:message code="city"/>: </label><input type="text" id="city" name="city"/></li>
+				<li><label><spring:message code="state"/>: </label><input type="text" id="state" name="state"/></li>
+				<li>
+					<label><spring:message code="country"/>: </label>
+					<input type="text" id="country" name="country.name" style="display: none;"/> 
+					<input type="text" id="country_long" name="country_long"/>
+				</li>
+				<li style="display: none;"><label><spring:message code="lat"/>: </label><input type="text" id="latitude" name="latitude"/></li>
+				<li style="display: none;"><label><spring:message code="lng"/>: </label><input type="text" id="longitude" name="longitude"/></li>
+				<li><input type="submit" value="<spring:message code="save"/>"/></li>
+			</ul>
+		</div>
+	</form:form>
+	
+	</div>
+	
+</body>
+</html>

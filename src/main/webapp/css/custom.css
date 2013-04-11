@@ -12,14 +12,14 @@
 }
 
 #autocomplete {
-	width: 500px;
+	width: 460px;
 	border: 1px solid #ccc;
 	height: 20px;
 	font-size: 16px;
 }
 
 #place {
-	width: 250px;
+	width: 613px;
 	border: solid blue 0px;
 	font-size: 13px;
 }

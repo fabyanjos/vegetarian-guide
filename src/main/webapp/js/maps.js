@@ -14,6 +14,12 @@ function initialize() {
 	map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
 
 	autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'));
+	
+	/*
+	var latLngA = new google.maps.LatLng(52.52983150000001, 13.340975800000024);
+    var latLngB = new google.maps.LatLng(52.52983150000001 - 0.1, 13.33756829999993 - 0.1);
+	alert(google.maps.geometry.spherical.computeDistanceBetween (latLngA, latLngB));
+	*/
 }
 
 function codeAddress() {
@@ -32,7 +38,8 @@ function codeAddress() {
     		content : getIWContent(results[0]),
     		maxWidth: 100
     	});
-    	iw.open(map, markers[0]);
+
+        iw.open(map, markers[0]);
       } else {
         alert("Geocode was not successful for the following reason: " + status);
       }

@@ -1,5 +1,7 @@
 package com.fabiale.vegetarianguide;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -21,6 +23,19 @@ public class RestaurantController {
 	@RequestMapping(value = "/restaurant", method = RequestMethod.GET)
 	public String home() {
 		return "/restaurant";
+	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String search() {
+		return "/search";
+	}
+	
+	@RequestMapping(value = "/restaurant/search", method = RequestMethod.POST)
+	public String result(@ModelAttribute("restaurant") Restaurant restaurant, BindingResult result) {
+		List<Restaurant> list = service.getNearBy(restaurant);
+		for(Restaurant r : list)
+			System.out.println(r.toString());
+		return "/results";
 	}
 	
 	@RequestMapping(value = "/restaurant/save", method = RequestMethod.POST)

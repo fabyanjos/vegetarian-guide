@@ -10,15 +10,14 @@
 <body>
 	<div id="main">
 		<form onsubmit="codeAddress(); return false;">
-			<p>
+			<div class="button black">
 				<input id="autocomplete" name="autocomplete" type="text"/>
-				<input type="submit" value="Encode">
-			</p>
+				&nbsp;<a href="javascript:codeAddress(); return false;"><spring:message code="search"/></a></div>
 		</form>
 	<div id="map-canvas"></div>
-	
 	<form:form method="post" action="/restaurant/save" modelAttribute="restaurant">
 		<div id="place">
+		<h3>Dados do local</h3>
 			<ul>
 				<li>
 					<label><spring:message code="type"/>: </label>
