@@ -1,11 +1,10 @@
-package com.fabiale.vegetarianguide;
+package com.fabiale.vegetarianguide.web;
 
 import org.geotools.geometry.GeneralDirectPosition;
 import org.geotools.referencing.GeodeticCalculator;
 import org.opengis.referencing.operation.TransformException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -17,8 +16,7 @@ public class MyController {
 	@Autowired CountryService countryService;
 
 	@RequestMapping(value = "/",method = RequestMethod.GET)
-	public String home(ModelMap model) {
-		model.addAttribute("countries", countryService.getAll());
+	public String home() {
 		return "index";
 	}
 	

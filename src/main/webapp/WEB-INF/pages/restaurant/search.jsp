@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core" 			prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" 			prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" 		prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" 	prefix="form"%>
 <!doctype html>
@@ -9,6 +9,12 @@
 </head>
 <body>
 	<div id="main">
+		<form onsubmit="codeAddress(); return false;">
+			<div class="button black">
+				<input id="autocomplete" name="autocomplete" type="text"/>
+				&nbsp;<a href="javascript:codeAddress(); return false;"><spring:message code="search"/></a></div>
+		</form>
+	<div id="map-canvas"></div>
 	<form:form method="post" action="/restaurant/search" modelAttribute="restaurant">
 		<div id="place">
 		<h3>Dados do local</h3>

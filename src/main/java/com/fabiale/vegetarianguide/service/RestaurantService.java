@@ -24,10 +24,12 @@ public class RestaurantService {
 	
 	public List<Restaurant> getNearBy(Restaurant restaurant) {
 		
-		Double latMin = restaurant.getLatitude() - 0.01;
-		Double lngMin = restaurant.getLongitude() - 0.01;
-		Double latMax = restaurant.getLatitude() + 0.01;
-		Double lngMax = restaurant.getLongitude() + 0.01;
+		Double dist = 0.05;
+		
+		Double latMin = restaurant.getLatitude() - dist;
+		Double lngMin = restaurant.getLongitude() - dist;
+		Double latMax = restaurant.getLatitude() + dist;
+		Double lngMax = restaurant.getLongitude() + dist;
 		
 		return this.repository.getNearBy(latMin, lngMin, latMax, lngMax);
 	}

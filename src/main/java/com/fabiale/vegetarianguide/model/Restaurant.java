@@ -121,6 +121,10 @@ public class Restaurant implements Serializable {
 	public void setType(Type type) {
 		this.type = type;
 	}
+	
+	public String getLatLng() {
+		return this.latitude + ", " + this.longitude;
+	}
 
 	@Override
 	public String toString() {
