@@ -10,18 +10,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.URL;
 
 @Entity(name = "restaurants")
-@XmlRootElement
-public class Restaurant implements Serializable {
+@SequenceGenerator(name="SEQ_RESTAURANT", sequenceName="SEQ_RESTAURANT")
+public class Restaurant implements Serializable, Comparable<Restaurant> {
 
 	private static final long serialVersionUID = 6594634391946827288L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_RESTAURANT")
 	private Integer id;
+	@NotEmpty
 	private String name;
+	@NotEmpty
 	private String street;
+	@NotNull @Range(min = 1)
 	private Integer number;
 	private String postalCode;
 	private String city;
@@ -32,7 +41,12 @@ public class Restaurant implements Serializable {
 	private Double latitude;
 	private Double longitude;
 	@Enumerated(EnumType.STRING)
+	@NotNull
 	private Type type;
+	@URL
+	private String website;
+	@Transient
+	private Double distance;
 
 	public Integer getId() {
 		return id;
@@ -123,15 +137,60 @@ public class Restaurant implements Serializable {
 	}
 	
 	public String getLatLng() {
-		return this.latitude + ", " + this.longitude;
+		return this.latitude + "," + this.longitude;
+	}
+	
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+	
+	public Double getDistance() {
+		return distance;
+	}
+
+	public void setDistance(Double distance) {
+		this.distance = distance;
 	}
 
 	@Override
 	public String toString() {
-		return "Restaurant [id=" + id + ", name=" + name + ", street=" + street
-				+ ", number=" + number + ", postalCode=" + postalCode
-				+ ", city=" + city + ", state=" + state + ", country="
-				+ country + ", latitude=" + latitude + ", longitude="
-				+ longitude + ", type=" + type + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Restaurant [id=");
+		builder.append(id);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", street=");
+		builder.append(street);
+		builder.append(", number=");
+		builder.append(number);
+		builder.append(", postalCode=");
+		builder.append(postalCode);
+		builder.append(", city=");
+		builder.append(city);
+		builder.append(", state=");
+		builder.append(state);
+		builder.append(", country=");
+		builder.append(country);
+		builder.append(", latitude=");
+		builder.append(latitude);
+		builder.append(", longitude=");
+		builder.append(longitude);
+		builder.append(", type=");
+		builder.append(type);
+		builder.append(", website=");
+		builder.append(website);
+		builder.append(", distance=");
+		builder.append(distance);
+		builder.append("]");
+		return builder.toString();
+	}
+
+	@Override
+	public int compareTo(Restaurant o) {
+		return this.distance.compareTo(o.getDistance());
 	}
 }

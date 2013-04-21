@@ -2,6 +2,8 @@ package com.fabiale.vegetarianguide.web;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,6 +35,7 @@ public class RestaurantController {
 	
 	@RequestMapping(value = "/restaurant/search", method = RequestMethod.POST)
 	public String result(@ModelAttribute("restaurant") Restaurant restaurant, ModelMap modelMap) {
+		
 		List<Restaurant> list = service.getNearBy(restaurant);
 		for(Restaurant r : list)
 			System.out.println(r.toString());
@@ -42,20 +45,26 @@ public class RestaurantController {
 		return "/restaurant/results";
 	}
 	
-	@RequestMapping(value = "/restaurant/save", method = RequestMethod.POST)
-	public String save(@ModelAttribute("restaurant") Restaurant restaurant, BindingResult result) {
+	@RequestMapping(value = "/restaurant/save", method = {RequestMethod.POST, RequestMethod.GET})
+	public String save(@ModelAttribute("restaurant") @Valid Restaurant restaurant, BindingResult result, ModelMap modelMap) {
 		
-		Country country = countryService.findByName(restaurant.getCountry().getName());
-		if(country == null || country.getId() == null)
-			countryService.create(restaurant.getCountry());
-		else
-			restaurant.setCountry(country);
+		if (result.hasErrors()) {
+			modelMap.addAttribute("error", "error");
+			return "/restaurant/restaurant"; 
+		} else {
 		
-		System.out.println(restaurant.toString());
-		
-		service.create(restaurant);
-		
-		return "/restaurant";
+			Country country = countryService.findByName(restaurant.getCountry().getName());
+			if(country == null || country.getId() == null)
+				countryService.create(restaurant.getCountry());
+			else
+				restaurant.setCountry(country);
+			
+			System.out.println(restaurant.toString());
+			
+			service.create(restaurant);
+			
+			return "/restaurant/restaurant";
+		}
 	}
 	
 	@ModelAttribute("restaurant")

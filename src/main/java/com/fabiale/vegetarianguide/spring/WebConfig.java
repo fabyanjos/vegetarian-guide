@@ -1,12 +1,14 @@
 package com.fabiale.vegetarianguide.spring;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -17,9 +19,10 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.fabiale.vegetarianguide.gson.GSONHttpMessageConverter;
+
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.fabiale.vegetarianguide")
 public class WebConfig extends WebMvcConfigurerAdapter {
 	
 	@Override
@@ -28,13 +31,26 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/images/**").addResourceLocations("/images/**");
 		registry.addResourceHandler("/css/**").addResourceLocations("/css/**");
 		registry.addResourceHandler("/channel.html").addResourceLocations("/channel.html");
-		registry.addResourceHandler("/index.html").addResourceLocations("/index.html");
 		super.addResourceHandlers(registry);
+	}
+	
+	@Bean public GSONHttpMessageConverter jsonConverter() {
+		return new GSONHttpMessageConverter();
+	}
+	
+	@Bean public Jaxb2RootElementHttpMessageConverter xmlConverter() {
+		return new Jaxb2RootElementHttpMessageConverter();
+	}
+	
+	@Override
+	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+		converters.add(jsonConverter());
+		converters.add(xmlConverter());
+		super.configureMessageConverters(converters);
 	}
 	
 	@Bean
 	public ViewResolver getViewResolver() {
-
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setPrefix("/WEB-INF/pages/");
 		resolver.setSuffix(".jsp");
@@ -50,7 +66,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		String[] basenames = {
 		    "i18n.messages.messages",
 		    "i18n.countries.countries",
-		    "i18n.labels.labels"
+		    "i18n.labels.labels",
+		    "i18n.validation.validation",
 		};
 
 		source.setBasenames(basenames);

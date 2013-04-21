@@ -30,16 +30,13 @@
     </repositories>
   <properties>
 		<spring.version>3.2.2.RELEASE</spring.version>
-		<jetty.version>8.1.7.v20120910</jetty.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <geotools.version>10-SNAPSHOT</geotools.version>
 	</properties>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
+      <version>4.11</version>
     </dependency>
     <dependency>
     	<groupId>javax.servlet</groupId>
@@ -74,14 +71,9 @@
    		<scope>test</scope>
  	</dependency>
  	<dependency>
- 		<groupId>org.hibernate.java-persistence</groupId>
- 		<artifactId>jpa-api</artifactId>
- 		<version>2.0-cr-1</version>
- 	</dependency>
- 	<dependency>
  		<groupId>org.hibernate</groupId>
  		<artifactId>hibernate-entitymanager</artifactId>
- 		<version>4.1.8.Final</version>
+ 		<version>4.2.0.Final</version>
  	</dependency>
  	<dependency>
  		<groupId>cglib</groupId>
@@ -89,89 +81,70 @@
  		<version>2.2.2</version>
  	</dependency>
  	<dependency>
- 		<groupId>javax.el</groupId>
- 		<artifactId>javax.el-api</artifactId>
- 		<version>2.2.4</version>
- 	</dependency>
- 	<dependency>
  		<groupId>postgresql</groupId>
  		<artifactId>postgresql</artifactId>
  		<version>9.1-901-1.jdbc4</version>
- 	</dependency>
- 	<dependency>
- 		<groupId>taglibs</groupId>
- 		<artifactId>standard</artifactId>
- 		<version>1.1.2</version>
- 	</dependency>
- 	<dependency>
- 		<groupId>javax.servlet</groupId>
- 		<artifactId>jstl</artifactId>
- 		<version>1.2</version>
  	</dependency>
  	<dependency>
  		<groupId>opensymphony</groupId>
  		<artifactId>sitemesh</artifactId>
  		<version>2.4.2</version>
  	</dependency>
- 	<dependency>
-         <groupId>org.geotools</groupId>
-         <artifactId>gt-shapefile</artifactId>
-         <version>${geotools.version}</version>
+     <dependency>
+     	<groupId>org.hibernate</groupId>
+     	<artifactId>hibernate-validator</artifactId>
+     	<version>5.0.0.Final</version>
      </dependency>
      <dependency>
-         <groupId>org.geotools</groupId>
-         <artifactId>gt-swing</artifactId>
-         <version>${geotools.version}</version>
+     	<groupId>com.google.code.gson</groupId>
+     	<artifactId>gson</artifactId>
+     	<version>2.2.3</version>
+     </dependency>
+     <dependency>
+     	<groupId>org.slf4j</groupId>
+     	<artifactId>slf4j-simple</artifactId>
+     	<version>1.7.5</version>
+     </dependency>
+     <dependency>
+     	<groupId>org.slf4j</groupId>
+     	<artifactId>slf4j-api</artifactId>
+     	<version>1.7.5</version>
+     </dependency>
+     <dependency>
+     	<groupId>javax.el</groupId>
+     	<artifactId>javax.el-api</artifactId>
+     	<version>3.0-b08</version>
+     </dependency>
+     <dependency>
+     	<groupId>javax.servlet</groupId>
+     	<artifactId>jstl</artifactId>
+     	<version>1.2</version>
      </dependency>
   </dependencies>
   <build>
-    <finalName>vegetarian-guide</finalName>
+    <finalName>embeddedTomcatSample</finalName>
     <plugins>
-	      <plugin>
-	        <groupId>org.mortbay.jetty</groupId>
-			<artifactId>jetty-maven-plugin</artifactId>
-			<version>${jetty.version}</version>
-			<configuration>
-			  <webApp>
-			    <contextPath>/</contextPath>
-			  </webApp>
-			</configuration>
-			<dependencies>
-				  <dependency>
-				    <groupId>org.eclipse.jetty</groupId>
-				    <artifactId>jetty-servlets</artifactId>
-				    <version>${jetty.version}</version>
-				  </dependency>
-			</dependencies>
-	      </plugin>
-	      <plugin>
-	        <artifactId>maven-war-plugin</artifactId>
-			<version>2.3</version>
-			<configuration>
-			  <failOnMissingWebXml>false</failOnMissingWebXml>
-			</configuration>
-	      </plugin>
-	      <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-dependency-plugin</artifactId>
-    <version>2.3</version>
-    <executions>
-        <execution>
-            <phase>package</phase>
-            <goals><goal>copy</goal></goals>
-            <configuration>
-                <artifactItems>
-                    <artifactItem>
-                        <groupId>org.mortbay.jetty</groupId>
-                        <artifactId>jetty-runner</artifactId>
-                        <version>${jetty.version}</version>
-                        <destFileName>jetty-runner.jar</destFileName>
-                    </artifactItem>
-                </artifactItems>
-            </configuration>
-        </execution>
-    </executions>
-</plugin>
-	    </plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>2.3</version>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals><goal>copy</goal></goals>
+                    <configuration>
+                        <artifactItems>
+                            <artifactItem>
+                                <groupId>com.github.jsimone</groupId>
+                                <artifactId>webapp-runner</artifactId>
+                                <version>7.0.34.0</version>
+                                <destFileName>webapp-runner.jar</destFileName>
+                            </artifactItem>
+                        </artifactItems>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
   </build>
 </project>

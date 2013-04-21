@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
 <!doctype html>
 <html lang="en">
@@ -32,12 +32,12 @@
 
    <!--start menu-->
    <nav>
-   <ul>
+   <ul id="menu">
    <li><a href="#" class="current">Home</a></li>
-   <li><a href="#">About us</a></li>
-   <li><a href="#">Services</a></li>
-   <li><a href="#">Portfolio</a></li>
+   <li><a href="/search">Search</a></li>
    <li><a href="#">News</a></li>
+   <li><a href="#">About us</a></li>
+   <li><a href="#">Portfolio</a></li>
    <li><a href="#">Contact</a></li>
    </ul>
    </nav>
@@ -77,8 +77,21 @@
 		<a href="<c:url value='?lang=en'/>"><img src="/images/english-icon.png"/></a> 
 		<a href="<c:url value='?lang=pt_BR'/>"><img src="/images/portuguese-icon.png"/></a>
 	</p>
+	<c:choose>
+		<c:when test="${!empty user}">
+			<div id="userBox">
+				<img src="https://graph.facebook.com/<c:out value="${user.login}"/>/picture?type=small"/>
+				<div>
+					<p><c:out value="${user.name}"/></p>
+					<a href="/rest/user/logout">Logout</a>
+				</div>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<p style="margin-top: 20px; cursor: pointer;" onclick="login();"><img src="/images/facebook.png" height="45" alt="Facebook"/></p>
+		</c:otherwise>
+	</c:choose>
 	
-	<p style="margin-top: 20px;"><img src="/images/facebook.png" height="45" alt="Facebook"/></p>
    
    <h3>Latest news</h3>
 

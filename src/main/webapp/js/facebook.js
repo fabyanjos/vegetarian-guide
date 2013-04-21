@@ -5,23 +5,82 @@ window.fbAsyncInit = function() {
 		channelUrl : '//localhost:8080/channel.html', // Channel File
 		status : true, // check login status
 		cookie : true, // enable cookies to allow the server to access the
-						// session
+		// session
 		xfbml : true
 	// parse XFBML
 	});
-
-	// Additional init code here
-
-	FB.getLoginStatus(function(response) {
-		if (response.status === 'connected') {
-			//alert('connected');
-		} else if (response.status === 'not_authorized') {
-			//alert('not_authorized');
-		} else {
-			//alert('not_logged_in');
-		}
-	});
 };
+
+function login() {
+	FB.login(function(response) {
+		if (response.authResponse) {
+			// alert("connected");
+			// connected
+			testAPI();
+		} else {
+			// cancelled
+			alert("cancelled");
+		}
+	}, {
+		scope : 'email,user_location'
+	});
+}
+
+function testAPI() {
+	var user;
+	console.log('Welcome!  Fetching your information.... ');
+	FB.api('/me', function(response) {
+		console.log('Good to see you, ' + response.name + '.');
+		console.log('Your email, ' + response.email + '.');
+		console.log('Your username, ' + response.username + '.');
+		user = {
+				"name": response.name,
+				"email": response.email,
+				"login": response.username
+			};
+		alert(response.location.name);
+		$.ajax({
+			type : "PUT",
+			async : false,
+			url : "/rest/user",
+			contentType : "application/json; charset=utf-8",
+			dataType : "json",
+			data: JSON.stringify(user),
+			processData : true, 
+			success : function(result) {
+				AjaxSucceeded(result);
+			},
+			eror : AjaxFailed
+		});
+	});
+	FB.api("/me/picture?width=180&height=180", function(response) {
+		console.log(response.data.url);
+	});
+//	var user = {
+//		"name": name,
+//		"email": email,
+//		"login": login
+//	};
+	/*$.ajax({
+		type : "PUT",
+		async : false,
+		url : "/rest/user",
+		contentType : "application/json; charset=utf-8",
+		dataType : "json",
+		data: JSON.stringify(user),
+		processData : true, 
+		success : function(result) {
+			AjaxSucceeded(result);
+		},
+		eror : AjaxFailed
+	});*/
+	function AjaxSucceeded(result) {
+		window.location.reload();
+	}
+	function AjaxFailed(result) {
+		alert(result);
+	}
+}
 
 // Load the SDK Asynchronously
 (function(d) {
@@ -35,3 +94,24 @@ window.fbAsyncInit = function() {
 	js.src = "//connect.facebook.net/en_US/all.js";
 	ref.parentNode.insertBefore(js, ref);
 }(document));
+
+/*
+ * Supported scopes: ads_management create_event create_note email export_stream
+ * friends_about_me friends_activities friends_birthday friends_checkins
+ * friends_education_history friends_events friends_games_activity
+ * friends_groups friends_hometown friends_interests friends_likes
+ * friends_location friends_notes friends_online_presence
+ * friends_photo_video_tags friends_photos friends_questions
+ * friends_relationship_details friends_relationships friends_religion_politics
+ * friends_status friends_subscriptions friends_videos friends_website
+ * friends_work_history manage_friendlists manage_notifications manage_pages
+ * offline_access photo_upload publish_actions publish_checkins publish_stream
+ * read_friendlists read_insights read_mailbox read_page_mailboxes read_requests
+ * read_stream rsvp_event share_item sms status_update user_about_me
+ * user_activities user_birthday user_checkins user_education_history
+ * user_events user_games_activity user_groups user_hometown user_interests
+ * user_likes user_location user_notes user_online_presence
+ * user_photo_video_tags user_photos user_questions user_relationship_details
+ * user_relationships user_religion_politics user_status user_subscriptions
+ * user_videos user_website user_work_history video_upload xmpp_login
+ */

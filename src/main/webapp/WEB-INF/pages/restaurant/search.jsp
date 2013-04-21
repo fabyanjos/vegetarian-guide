@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" 			prefix="c"%>
+<%@ page isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jstl/core"				prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" 		prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" 	prefix="form"%>
 <!doctype html>
@@ -26,11 +27,11 @@
 				<li><label><spring:message code="state"/>: </label><input type="text" id="state" name="state"/></li>
 				<li>
 					<label><spring:message code="country"/>: </label>
-					<input type="text" id="country" name="country.name" style="display: none;"/> 
+					<input type="text" id="country.name" name="country.name" style="display: none;"/> 
 					<input type="text" id="country_long" name="country_long"/>
 				</li>
-				<li style="display: none;"><label><spring:message code="lat"/>: </label><input type="text" id="latitude" name="latitude"/></li>
-				<li style="display: none;"><label><spring:message code="lng"/>: </label><input type="text" id="longitude" name="longitude"/></li>
+				<li style="display: ;"><label><spring:message code="lat"/>: </label><input type="text" id="latitude" name="latitude"/></li>
+				<li style="display: ;"><label><spring:message code="lng"/>: </label><input type="text" id="longitude" name="longitude"/></li>
 				<li><input type="submit" value="<spring:message code="save"/>"/></li>
 			</ul>
 		</div>

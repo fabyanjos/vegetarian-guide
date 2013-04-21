@@ -14,12 +14,6 @@ function initialize() {
 	map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
 
 	autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'));
-	
-	/*
-	var latLngA = new google.maps.LatLng(52.52983150000001, 13.340975800000024);
-    var latLngB = new google.maps.LatLng(52.52983150000001 - 0.1, 13.33756829999993 - 0.1);
-	alert(google.maps.geometry.spherical.computeDistanceBetween (latLngA, latLngB));
-	*/
 }
 
 function codeAddress() {
@@ -45,18 +39,6 @@ function codeAddress() {
       }
     });
 }
-
-function callback(results, status) {
-	  if (status == google.maps.places.PlacesServiceStatus.OK) {
-		  for (var i = 0; i < results.length; i++) {
-		  markers[i] = new google.maps.Marker({
-	        	map: map,
-	            position: results[i].geometry.location
-		  });
-		  }
-	    
-	  }
-	}
 
 function showSelectedPlace() {
 	clearMarkers();
@@ -108,7 +90,7 @@ function getAddressComponents(components) {
 			if(components[i].types[j] == 'administrative_area_level_1')
 				document.getElementById('state').value = components[i].long_name;
 			if(components[i].types[j] == 'country') {
-				document.getElementById('country').value = components[i].short_name;
+				document.getElementById('country.name').value = components[i].short_name;
 				document.getElementById('country_long').value = components[i].long_name;
 			}
 		}

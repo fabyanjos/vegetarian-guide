@@ -1,1 +1,1 @@
-web: java -classpath target/vegetarian-guide/WEB-INF/lib -jar target/dependency/jetty-runner.jar --port $PORT target/*.war
+web: java -jar target/dependency/webapp-runner.jar target/*.war
