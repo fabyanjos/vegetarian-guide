@@ -3,6 +3,7 @@ package com.fabiale.vegetarianguide.repositories;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -32,7 +33,9 @@ public class RestaurantRepository {
 	}
     
     public Restaurant getById(Integer id) {
-    	return (Restaurant) this.factory.getCurrentSession().get(Restaurant.class, id);
+    	Restaurant restaurant = (Restaurant) this.factory.getCurrentSession().get(Restaurant.class, id);
+    	Hibernate.initialize(restaurant.getReviews());
+		return restaurant;
     }
     
     @SuppressWarnings("unchecked")

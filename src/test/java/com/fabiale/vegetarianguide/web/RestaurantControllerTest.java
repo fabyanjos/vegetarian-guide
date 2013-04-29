@@ -17,9 +17,9 @@ import com.fabiale.vegetarianguide.spring.RestTemplateConfig;
 import com.fabiale.vegetarianguide.spring.WebConfig;
 import com.fabiale.vegetarianguide.spring.context.SpringConfig;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {WebConfig.class, SpringConfig.class, RestTemplateConfig.class})
-@WebAppConfiguration
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(classes = {WebConfig.class, SpringConfig.class, RestTemplateConfig.class})
+//@WebAppConfiguration
 public class RestaurantControllerTest {
 	
 	@Autowired
@@ -33,7 +33,7 @@ public class RestaurantControllerTest {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
     
-    @Test
+//    @Test
     public void postSomething() throws Exception {
     	Restaurant r = new Restaurant();
     	r.setLatitude(52.52983150000001);

@@ -57,7 +57,8 @@ html, body{
 
 p {
 	margin-bottom:7px;
-	}
+	text-align: justify;
+}
 	
 a, p a {
 	text-decoration:none;
@@ -473,8 +474,12 @@ nav ul li a.current{
    	float:left;
    	top:10px;
 	left:0px;
-	width:250px;
-	height:160px;
+	
+	z-index: 999;
+}
+
+#logo img {
+	height:100px;
 }
 
 .clearing{

@@ -31,6 +31,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/images/**").addResourceLocations("/images/**");
 		registry.addResourceHandler("/css/**").addResourceLocations("/css/**");
 		registry.addResourceHandler("/channel.html").addResourceLocations("/channel.html");
+		registry.addResourceHandler("/robots.txt").addResourceLocations("/robots.txt");
 		super.addResourceHandlers(registry);
 	}
 	
@@ -88,7 +89,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public LocaleResolver localeResolver() {
 		SessionLocaleResolver result = new SessionLocaleResolver();
-		result.setDefaultLocale(Locale.ENGLISH);
+		result.setDefaultLocale(new Locale("pt","BR"));
 
 		return result;
 	}

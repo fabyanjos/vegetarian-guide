@@ -1,11 +1,17 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
 <!doctype html>
 <html lang="en">
-<head>
+<head> 
 	<meta charset="UTF-8">
-	<title><decorator:title default="Fresh Ideas"/></title>
+	<meta http-equiv=”content-language” content="en">
+	<meta name="robots" content="noindex, nofollow" />
+	<meta name="description" content="Veggie Out">
+	<meta name="keywords" content="Food, Restaurants, Vegggie, Vegetarian, Vegan, Search">
+	<meta name="author" content="Fabiana Anjos">
+	<title><decorator:title default="Veggie Out"/></title>
 	<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon"/> 
 	<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/custom.css"/>
@@ -22,20 +28,19 @@
 	<script src="/js/facebook.js"></script>
    <!--start container-->
    <div id="container">
-
    <!--start header-->
    <header>
 
    <!--start logo-->
-   <a href="/" id="logo"><img src="/images/logo.png" width="221" height="84" alt="logo"/></a>    
+   <a href="/" id="logo"><img src="/images/logo.png" alt="logo"/></a>    
    <!--end logo-->
 
    <!--start menu-->
    <nav>
    <ul id="menu">
    <li><a href="#" class="current">Home</a></li>
-   <li><a href="/search">Search</a></li>
-   <li><a href="#">News</a></li>
+   <li><a href="/restaurant/search">Search</a></li>
+   <li><a href="/restaurant/new">New</a></li>
    <li><a href="#">About us</a></li>
    <li><a href="#">Portfolio</a></li>
    <li><a href="#">Contact</a></li>
@@ -46,20 +51,7 @@
    <!--end header-->
    </header>
 
-   <!--start intro-->
-
-   <div id="intro">
-   <img src="/images/banner1.png"  alt="baner">
-   </div>
-   <!--end intro-->
-
-   <header class="group_bannner_left">
-   <hgroup>
-   <h1>We serve fresh ideas</h1>
-   <h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. 
-   </h2>
-   </hgroup>
-   </header>
+   <decorator:head/>
 
    <!--start holder-->
 
@@ -101,6 +93,15 @@
    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu.<span class="readmore">
    <a href="#">Read more..</a></span></p>
    </article>
+   
+   <article class="holder_news">
+   <h4>Try @Home</h4>
+   <ul>
+   	<li>teste 01</li>
+   	<li>teste 02</li>
+   	<li>teste 03</li>
+   </ul>
+   </article>
 
    <a class="photo_hover2" href="#"><img src="/images/picture3.jpg" width="257" height="295" alt="picture"/></a>   </aside>
 
@@ -120,6 +121,18 @@
    <!--end footer-->
    <!-- Free template distributed by http://freehtml5templates.com -->
    <!-- Flag's icons by http://www.icons-land.com from http://www.iconarchive.com/ -->
-   <script type="text/javascript" src="/js/maps.js"></script>   
+   <script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-40354748-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	
+	</script>
    </body>
 </html>

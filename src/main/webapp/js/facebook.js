@@ -27,18 +27,13 @@ function login() {
 }
 
 function testAPI() {
-	var user;
-	console.log('Welcome!  Fetching your information.... ');
 	FB.api('/me', function(response) {
-		console.log('Good to see you, ' + response.name + '.');
-		console.log('Your email, ' + response.email + '.');
-		console.log('Your username, ' + response.username + '.');
-		user = {
-				"name": response.name,
-				"email": response.email,
-				"login": response.username
-			};
-		alert(response.location.name);
+		var user = {
+			"name": response.name,
+			"email": response.email,
+			"login": response.username
+		};
+//		alert(response.location.name);
 		$.ajax({
 			type : "PUT",
 			async : false,
@@ -53,29 +48,8 @@ function testAPI() {
 			eror : AjaxFailed
 		});
 	});
-	FB.api("/me/picture?width=180&height=180", function(response) {
-		console.log(response.data.url);
-	});
-//	var user = {
-//		"name": name,
-//		"email": email,
-//		"login": login
-//	};
-	/*$.ajax({
-		type : "PUT",
-		async : false,
-		url : "/rest/user",
-		contentType : "application/json; charset=utf-8",
-		dataType : "json",
-		data: JSON.stringify(user),
-		processData : true, 
-		success : function(result) {
-			AjaxSucceeded(result);
-		},
-		eror : AjaxFailed
-	});*/
 	function AjaxSucceeded(result) {
-		window.location.reload();
+		window.location.href = '/';
 	}
 	function AjaxFailed(result) {
 		alert(result);

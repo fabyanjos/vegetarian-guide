@@ -25,6 +25,10 @@ public class RestaurantService {
 		return this.repository.create(restaurant);
 	}
 	
+	public Restaurant getById(Integer id) {
+		return this.repository.getById(id);
+	}
+	
 	public List<Restaurant> getNearBy(Restaurant restaurant) {
 		
 		Double dist = 0.05;

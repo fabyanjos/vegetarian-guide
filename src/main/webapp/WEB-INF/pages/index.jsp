@@ -7,6 +7,24 @@
 <head>
 
 </head>
+
+	<head>
+	<!--start intro-->
+
+   <div id="intro">
+   <img src="/images/banner1.png"  alt="baner">
+   </div>
+   <!--end intro-->
+
+   <header class="group_bannner_left">
+   <hgroup>
+   <h1>We serve fresh ideas</h1>
+   <h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. 
+   </h2>
+   </hgroup>
+   </header>
+   </head>
+
 <body>
 	<h3>Services</h3>
    	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. 

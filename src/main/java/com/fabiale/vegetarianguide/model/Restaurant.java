@@ -1,15 +1,21 @@
 package com.fabiale.vegetarianguide.model;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.util.List;
+import java.util.Locale;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -17,6 +23,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 @Entity(name = "restaurants")
 @SequenceGenerator(name="SEQ_RESTAURANT", sequenceName="SEQ_RESTAURANT")
@@ -36,7 +43,7 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	private String city;
 	private String state;
 	@ManyToOne
-    @JoinColumn(name="country_id", nullable=false)
+    @JoinColumn(name="country_id", nullable = false)
 	private Country country;
 	private Double latitude;
 	private Double longitude;
@@ -47,6 +54,14 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	private String website;
 	@Transient
 	private Double distance;
+	private String phone;
+	private String description;
+	@OneToOne
+	@JoinColumn(name="created_by")
+	private User createdBy;
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "restaurant_id", nullable = false)
+	private List<Review> reviews;
 
 	public Integer getId() {
 		return id;
@@ -155,6 +170,49 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	public void setDistance(Double distance) {
 		this.distance = distance;
 	}
+	
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public String getDistanceString() {
+		Locale locale = LocaleContextHolder.getLocale();
+		NumberFormat fmt = NumberFormat.getInstance(locale);
+		fmt.setMaximumFractionDigits(2);
+		fmt.setMinimumFractionDigits(2);
+		if(distance < 1000)
+			return fmt.format(distance) + " m";
+		else
+			return fmt.format(distance/1000) + " km";
+	}
+	
+	public User getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(User createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
 
 	@Override
 	public String toString() {
@@ -185,6 +243,12 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 		builder.append(website);
 		builder.append(", distance=");
 		builder.append(distance);
+		builder.append(", phone=");
+		builder.append(phone);
+		builder.append(", description=");
+		builder.append(description);
+		builder.append(", createdBy=");
+		builder.append(createdBy);
 		builder.append("]");
 		return builder.toString();
 	}

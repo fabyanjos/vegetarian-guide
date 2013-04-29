@@ -15,7 +15,7 @@
 				&nbsp;<a href="javascript:codeAddress(); return false;"><spring:message code="search"/></a></div>
 		</form>
 	<div id="map-canvas"></div>
-	<form:form method="post" action="/restaurant/save" modelAttribute="restaurant">
+	<form:form method="post" action="/restaurant/add" modelAttribute="restaurant">
 		<fieldset id="place">
 			<h3>Dados do local</h3>
 			<ul>
@@ -73,6 +73,6 @@
 	</form:form>
 	
 	</div>
-	
+<script type="text/javascript" src="/js/maps.js"></script>  
 </body>
 </html>
