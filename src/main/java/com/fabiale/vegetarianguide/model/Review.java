@@ -3,6 +3,7 @@ package com.fabiale.vegetarianguide.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,9 +11,22 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity(name = "reviews")
-@SequenceGenerator(name = "SEQ_REVIEW", sequenceName = "SEQ_REVIEW")
+@SequenceGenerator(name = "SEQ_REVIEW", sequenceName = "SEQ_REVIEW", initialValue = 1, allocationSize = 1)
+@XmlRootElement
+@XmlType
+@XmlAccessorType(value = XmlAccessType.FIELD)
 public class Review implements Serializable {
 
 	private static final long serialVersionUID = 6608637231530466279L;
@@ -22,12 +36,28 @@ public class Review implements Serializable {
 	@ManyToOne
     @JoinColumn(name="user_id", nullable = false)
 	private User user;
+	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
+	@Min(1) @Max(5)
 	private int rating;
+	@NotEmpty
 	private String title;
+	@NotEmpty
 	private String description;
 	private String pros;
 	private String cons;
+	@ManyToOne
+	@JoinColumn(name = "restaurant_id", nullable = false)
+	private Restaurant restaurant;
+	
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
+	}
 
 	public Integer getId() {
 		return id;

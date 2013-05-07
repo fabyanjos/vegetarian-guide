@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @Entity(name = "users")
-@SequenceGenerator(name = "SEQ_USER", sequenceName = "SEQ_USER")
+@SequenceGenerator(name = "SEQ_USER", sequenceName = "SEQ_USER", initialValue = 1, allocationSize = 1)
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = { "email" }, name = "UQ_USER_NAME"))
 @XmlRootElement
 @XmlType

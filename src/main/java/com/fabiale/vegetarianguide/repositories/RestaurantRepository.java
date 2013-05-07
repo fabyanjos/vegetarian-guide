@@ -3,9 +3,9 @@ package com.fabiale.vegetarianguide.repositories;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,7 +34,6 @@ public class RestaurantRepository {
     
     public Restaurant getById(Integer id) {
     	Restaurant restaurant = (Restaurant) this.factory.getCurrentSession().get(Restaurant.class, id);
-    	Hibernate.initialize(restaurant.getReviews());
 		return restaurant;
     }
     
@@ -44,6 +43,14 @@ public class RestaurantRepository {
     	criteria.add(Restrictions.between("latitude", latMin, latMax));
     	criteria.add(Restrictions.between("longitude", lngMin, lngMax));
     	
+    	return criteria.list();
+    }
+    
+    @SuppressWarnings("unchecked")
+    public List<Restaurant> getLastUptades(int quantity) {
+    	Criteria criteria = this.factory.getCurrentSession().createCriteria(Restaurant.class);
+    	criteria.setMaxResults(quantity);
+    	criteria.addOrder(Order.desc("createdAt"));
     	return criteria.list();
     }
 }

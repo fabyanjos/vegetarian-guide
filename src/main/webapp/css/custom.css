@@ -1,9 +1,9 @@
 #map-canvas {
 	float: left;
 	width: 550px;
-	height: 400px;
+	height: 300px;
 	border: solid red 0px;
-	margin: 0 0 20px 40px;
+	margin: 10px 0 20px 25px
 }
 
 .placeIcon {
@@ -27,13 +27,18 @@
 }
 
 #place input {
-	width: 160px;
+	width: 200px;
 	border: solid 1px #c5c5c5;
-	display: inline-block;
+}
+
+#place textarea {
+	width: 200px;
+	height: 100px;
+	border: solid 1px #c5c5c5;
 }
 
 #place select {
-	width: 165px;
+	width: 205px;
 	border: solid 1px #c5c5c5;
 }
 
@@ -42,30 +47,29 @@
 	display: inline-block;
 	font-weight: bold;
 	width: 160px;
+	float:left;
 }
 
 #place ul {
-	list-style: none;
 	margin: -5px 0 0 10px;
-	padding: 10;
 }
 
 #place ul li {
-	margin-top: 10px;
+	padding: 8px;
 }
 
 #main {
-	width: 650px;
+	width: 640px;
 	border: solid black 0px;
 	margin: 0px auto;
 }
 .error {
 	color: red;
-	display: inline-block;
 	background-image: url("/images/errorIcon.png");
 	padding: 0 0 0 25px;
 	background-repeat: no-repeat;
 	background-position: 5px center;
+	float:right;
 	
 }
 .inputError {
@@ -122,6 +126,12 @@
 	float: left;
 }
 
+.resultLeftSearch {
+	float: left;
+	width: 420px;
+}
+
+
 .resultRight {
 	float: right;
 }
@@ -130,3 +140,24 @@
 	text-decoration: none;
 }
 
+.mandatory {
+	color: red;
+	font-weight: bolder;
+}
+
+#ratingDiv {
+	float: right;
+	margin-right: 10px;
+	width: 400px;
+}
+
+#ratingDiv span {
+	position:relative;
+	float: left;
+}
+
+#ratingDiv ul {
+	position:relative;
+	float: right;
+	display: inline;
+}

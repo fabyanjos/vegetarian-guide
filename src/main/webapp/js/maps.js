@@ -2,18 +2,18 @@ var map, places, iw;
 var markers = [];
 var autocomplete;
 var geocoder;
-var myLatlng = new google.maps.LatLng(37.783259, -122.402708);
+var myLatlng = new google.maps.LatLng(0, 0);
 var myOptions = {
-	zoom : 12,
+	zoom : 1,
 	center : myLatlng,
 	mapTypeId : google.maps.MapTypeId.ROADMAP
 };
 function initialize() {
 	geocoder = new google.maps.Geocoder();
 	
-	//map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
+	map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
 
-//	autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'));
+	autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'));
 }
 
 function codeAddress(callback) {
@@ -68,6 +68,7 @@ function createMark(index, lat, lng, name) {
 }
 
 function setOrigin(lat, lng) {
+	geocoder = new google.maps.Geocoder();
 	map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
 	var location = new google.maps.LatLng(lat, lng);
 	map.setCenter(location);
@@ -150,11 +151,3 @@ function getGeometry(geometry) {
 	document.getElementById('latitude').value = geometry.location.lat();
 	document.getElementById('longitude').value = geometry.location.lng();
 }
-
-$('#autocomplete').keypress(function (e) {
-	//searchPlaces();
-});
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
-// Facebook

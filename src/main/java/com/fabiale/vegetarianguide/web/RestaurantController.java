@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -15,20 +16,23 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.fabiale.vegetarianguide.model.Country;
 import com.fabiale.vegetarianguide.model.Restaurant;
+import com.fabiale.vegetarianguide.model.Review;
 import com.fabiale.vegetarianguide.model.User;
 import com.fabiale.vegetarianguide.service.CountryService;
 import com.fabiale.vegetarianguide.service.RestaurantService;
+import com.fabiale.vegetarianguide.service.ReviewService;
 
 @Controller
 public class RestaurantController {
 	
 	@Autowired RestaurantService service;
 	@Autowired CountryService countryService;
+	@Autowired ReviewService reviewService;
 
 	@RequestMapping(value = "/restaurant/new", method = RequestMethod.GET)
 	public String home() {
@@ -41,12 +45,6 @@ public class RestaurantController {
 		if (result.hasErrors()) {
 			modelMap.addAttribute("error", "error");
 		} else {
-			Country country = countryService.findByName(restaurant.getCountry().getName());
-			if(country == null || country.getId() == null)
-				countryService.create(restaurant.getCountry());
-			else
-				restaurant.setCountry(country);
-			
 			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 	        HttpSession session = attr.getRequest().getSession();
 			User user = (User) session.getAttribute("user");
@@ -76,9 +74,17 @@ public class RestaurantController {
     @RequestMapping(value = "/restaurant/details/{id}", method = {RequestMethod.POST, RequestMethod.GET})
     public String getDetails(@PathVariable("id") Integer id, ModelMap modelMap) throws NotFoundException {
 		Restaurant restaurant = service.getById(id);
+		List<Review> reviews = reviewService.getByRestaurant(restaurant);
 		modelMap.addAttribute("restaurant", restaurant);
+		modelMap.addAttribute("reviews", reviews);
         return "/restaurant/details";
     }
+    
+    @RequestMapping(value = "/restaurant/list/{qtd}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@ResponseBody
+	public List<Restaurant> getLastUpdates(@PathVariable("qtd") int qtd) {
+		return service.getLastUptades(qtd);
+	}
 	
 	@ModelAttribute("restaurant")
     public Restaurant createForm() {

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.fabiale.vegetarianguide.model.AddressResult;
 import com.fabiale.vegetarianguide.model.MapsResult;
 import com.fabiale.vegetarianguide.model.Restaurant;
 
@@ -15,8 +16,16 @@ public class CoordinateUtil {
 	public void distance(Restaurant origin, Restaurant destination) {
 		String url ="http://maps.googleapis.com/maps/api/distancematrix/json?origins={origin}&destinations={destination}&sensor=false";
 		
-		MapsResult r = restTemplate.getForObject(url, MapsResult.class, origin.getLatLng(), destination.getLatLng());
+		MapsResult result = restTemplate.getForObject(url, MapsResult.class, origin.getLatLng(), destination.getLatLng());
 		
-		destination.setDistance(r.getDistance());
+		destination.setDistance(result.getDistance());
+	}
+	
+	public AddressResult addressDetails(String address) {
+		String url ="http://maps.googleapis.com/maps/api/geocode/json?address={address}&sensor=false";
+		
+		AddressResult result = restTemplate.getForObject(url, AddressResult.class, address);
+		
+		return result;
 	}
 }

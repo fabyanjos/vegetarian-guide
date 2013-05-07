@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ page isELIgnored="false" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core"				prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"			prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" 		prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" 	prefix="form"%>
 <!doctype html>
@@ -8,19 +8,14 @@
 <head>
 </head>
 <body>
+	<c:set var="add"/>
 	<div id="main">
-		<form onsubmit="codeAddress(); return false;">
-			<div class="button black">
-				<input id="autocomplete" name="autocomplete" type="text"/>
-				&nbsp;<a href="javascript:codeAddress(); return false;"><spring:message code="search"/></a></div>
-		</form>
-	<div id="map-canvas"></div>
 	<form:form method="post" action="/restaurant/add" modelAttribute="restaurant">
 		<fieldset id="place">
 			<h3>Dados do local</h3>
 			<ul>
 				<li>
-					<label><spring:message code="type"/>: </label>
+					<label><spring:message code="type"/>: <span class="mandatory">*</span> </label>
 					<form:select path="type">
 						<form:option value=""></form:option>
 						<form:option value="VEGETARIAN"><spring:message code="vegetarian"/></form:option>
@@ -29,50 +24,57 @@
 					<form:errors cssClass="error" path="type"/>
 				</li>
 				<li>
-					<label><spring:message code="name"/>: </label>
+					<label><spring:message code="name"/>: <span class="mandatory">*</span> </label>
 					<form:input path="name"/>
 					<form:errors cssClass="error" path="name"/>
 				</li>
 				<li>
-					<label><spring:message code="address"/>: </label>
+					<label><spring:message code="address"/> <span class="mandatory">*</span> </label>
 					<form:input path="street"/>
 					<form:errors cssClass="error" path="street"/>
 				</li>
 				<li>
-					<label><spring:message code="street_number"/>: </label>
+					<label><spring:message code="street_number"/>: <span class="mandatory">*</span> </label>
 					<form:input path="number"/>
 					<form:errors cssClass="error" path="number"/>
+				</li>
+				<li>
+					<label><spring:message code="postal_code"/>: </label>
+					<form:input path="postalCode"/>
+				</li>
+				<li>
+					<label><spring:message code="city"/>: <span class="mandatory">*</span> </label>
+					<form:input path="city"/>
+					<form:errors cssClass="error" path="city"/>
+				</li>
+				<li>
+					<label><spring:message code="state"/>: <span class="mandatory">*</span> </label>
+					<form:input path="state"/>
+					<form:errors cssClass="error" path="state"/>
+				</li>
+				<li>
+					<label><spring:message code="country"/>: <span class="mandatory">*</span> </label>
+					<form:input path="country.name"/> 
+					<form:errors cssClass="error" path="country.name"/>
 				</li>
 				<li>
 					<label><spring:message code="website"/>: </label>
 					<form:input path="website"/>
 					<form:errors cssClass="error" path="website"/>
 				</li>
-				<li style="display: none;">
-					<label><spring:message code="postal_code"/>: </label>
-					<form:input path="postalCode"/>
+				<li>
+					<label><spring:message code="phone"/>: </label>
+					<form:input path="phone"/> 
 				</li>
-				<li style="display: none;">
-					<label><spring:message code="city"/>: </label>
-					<form:input path="city"/>
+				<li>
+					<label><spring:message code="description"/>: </label>
+					<form:textarea path="description"/> 
 				</li>
-				<li style="display: none;">
-					<label><spring:message code="state"/>: </label>
-					<form:input path="state"/>
-				</li>
-				<li style="display: none;">
-					<label><spring:message code="country"/>: </label>
-					<form:input path="country.name"/> 
-					<input type="text" id="country_long" name="country_long"/>
-				</li>
-				<li style="display: none;"><label><spring:message code="lat"/>: </label><form:input path="latitude"/></li>
-				<li style="display: none;"><label><spring:message code="lng"/>: </label><form:input path="longitude"/></li>
-				<li><input type="submit" value="<spring:message code="save"/>"/></li>
+				<li><input type="submit" value="<spring:message code="save"/>" class="button"/></li>
 			</ul>
 		</fieldset>
 	</form:form>
 	
 	</div>
-<script type="text/javascript" src="/js/maps.js"></script>  
 </body>
 </html>

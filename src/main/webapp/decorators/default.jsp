@@ -1,6 +1,8 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" 				prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" 				prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/tags" 			prefix="spring"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
 <!doctype html>
 <html lang="en">
@@ -17,6 +19,8 @@
 	<link rel="stylesheet" type="text/css" href="/css/custom.css"/>
 	<link rel="stylesheet" href="//www.google.com/cse/style/look/default.css" type="text/css" />
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+    
+    <script src="/js/date.js"></script>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
     <script id="jqueryui" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js" defer async></script>
@@ -38,11 +42,10 @@
    <!--start menu-->
    <nav>
    <ul id="menu">
-   <li><a href="#" class="current">Home</a></li>
-   <li><a href="/restaurant/search">Search</a></li>
-   <li><a href="/restaurant/new">New</a></li>
-   <li><a href="#">About us</a></li>
-   <li><a href="#">Portfolio</a></li>
+   <li><a href="/"><spring:message code="home"/></a></li>
+   <li><a href="/restaurant/search" <c:if test="${!empty add}">class="current"</c:if>><spring:message code="search"/></a></li>
+   <li><a href="/restaurant/new"><spring:message code="add"/></a></li>
+   <li><a href="#">About us ${add}</a></li>
    <li><a href="#">Contact</a></li>
    </ul>
    </nav>
@@ -66,8 +69,8 @@
    <aside class="group2">
    
    <p style="text-align: center;">
-		<a href="<c:url value='?lang=en'/>"><img src="/images/english-icon.png"/></a> 
-		<a href="<c:url value='?lang=pt_BR'/>"><img src="/images/portuguese-icon.png"/></a>
+		<a href="<c:url value='?lang=en'/>" title="<spring:message code="english"/>"><img src="/images/english-icon.png"/></a> 
+		<a href="<c:url value='?lang=pt_BR'/>" title="<spring:message code="portuguese"/>"><img src="/images/portuguese-icon.png"/></a>
 	</p>
 	<c:choose>
 		<c:when test="${!empty user}">
@@ -85,14 +88,10 @@
 	</c:choose>
 	
    
-   <h3>Latest news</h3>
-
-   <article class="holder_news">
-   <h4>Lorem ipsum
-   <span>10.09.2011</span></h4>
-   <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu.<span class="readmore">
-   <a href="#">Read more..</a></span></p>
-   </article>
+   <h3>Latest reviews</h3>
+	
+   <div id="lastReviews">
+   </div>
    
    <article class="holder_news">
    <h4>Try @Home</h4>
@@ -121,8 +120,8 @@
    <!--end footer-->
    <!-- Free template distributed by http://freehtml5templates.com -->
    <!-- Flag's icons by http://www.icons-land.com from http://www.iconarchive.com/ -->
+   <script type="text/javascript" src="/js/reviews.js"></script>
    <script type="text/javascript">
-
 	  var _gaq = _gaq || [];
 	  _gaq.push(['_setAccount', 'UA-40354748-1']);
 	  _gaq.push(['_trackPageview']);
@@ -132,7 +131,6 @@
 	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	  })();
-	
 	</script>
    </body>
 </html>

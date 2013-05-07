@@ -2,23 +2,26 @@ package com.fabiale.vegetarianguide.model;
 
 import java.io.Serializable;
 import java.text.NumberFormat;
-import java.util.List;
+import java.util.Date;
 import java.util.Locale;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
@@ -26,7 +29,9 @@ import org.hibernate.validator.constraints.URL;
 import org.springframework.context.i18n.LocaleContextHolder;
 
 @Entity(name = "restaurants")
-@SequenceGenerator(name="SEQ_RESTAURANT", sequenceName="SEQ_RESTAURANT")
+@SequenceGenerator(name="SEQ_RESTAURANT", sequenceName="SEQ_RESTAURANT", initialValue = 1, allocationSize = 1)
+@XmlRootElement
+@XmlType
 public class Restaurant implements Serializable, Comparable<Restaurant> {
 
 	private static final long serialVersionUID = 6594634391946827288L;
@@ -40,10 +45,13 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	@NotNull @Range(min = 1)
 	private Integer number;
 	private String postalCode;
+	@NotEmpty 
 	private String city;
+	@NotEmpty 
 	private String state;
 	@ManyToOne
     @JoinColumn(name="country_id", nullable = false)
+	@NotNull
 	private Country country;
 	private Double latitude;
 	private Double longitude;
@@ -59,9 +67,17 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	@OneToOne
 	@JoinColumn(name="created_by")
 	private User createdBy;
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "restaurant_id", nullable = false)
-	private List<Review> reviews;
+	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createdAt;
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
 
 	public Integer getId() {
 		return id;
@@ -206,12 +222,15 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 		this.createdBy = createdBy;
 	}
 
-	public List<Review> getReviews() {
-		return reviews;
-	}
+	public String getAddress() {
+		StringBuffer sb = new StringBuffer();
+		sb.append(street != null ? street : "").append(",")
+				.append(number != null ? number : "").append(",")
+				.append(city != null ? city : "").append(",")
+				.append(state != null ? state : "").append(",")
+				.append(country != null ? country.getName() : "").append(",");
 
-	public void setReviews(List<Review> reviews) {
-		this.reviews = reviews;
+		return sb.toString();
 	}
 
 	@Override

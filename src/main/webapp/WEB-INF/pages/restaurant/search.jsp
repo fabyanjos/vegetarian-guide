@@ -16,15 +16,15 @@
 				<input id="autocomplete" name="autocomplete" type="text"/>
 				&nbsp;<a href="javascript:codeAddress(search); return false;"><spring:message code="search"/></a></div>
 		</form>
+		<div id="map-canvas"></div>
 		<c:choose>
 		<c:when test="${!empty restaurants}">
-		<div id="map-canvas"></div>
 		<div id="place">
 			<br/>
 			<ul id="listResult">
 				<c:forEach items="${restaurants}" var="r" varStatus="i">
 					<li>
-						<div class="resultLeft">
+						<div class="resultLeftSearch">
 							<p><em><a href="/restaurant/details/${r.id}" title="details">${r.name}</a></em> <spring:message code="${r.type}"/></p>
 							<p>${r.street} ${r.number} - ${r.postalCode}, ${r.city}, <spring:message code="${r.country.name}"/></p>
 							
@@ -77,8 +77,9 @@
 	</div>
 <script type="text/javascript" src="/js/maps.js"></script>  
 <script type="text/javascript">
+google.maps.event.addDomListener(window, 'load', initialize);
 $(window).load(function () {
-	navigator.geolocation.getCurrentPosition(showPosition);
+	//navigator.geolocation.getCurrentPosition(showPosition);
 	function showPosition(position) {
 	   /*  alert(position.coords);
 	    alert(position.coords.longitude);     */

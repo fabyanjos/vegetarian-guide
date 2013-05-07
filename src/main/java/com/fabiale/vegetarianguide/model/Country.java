@@ -7,9 +7,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 @Entity(name = "countries")
-@SequenceGenerator(name="SEQ_COUNTRY", sequenceName="SEQ_COUNTRY")
+@SequenceGenerator(name="SEQ_COUNTRY", sequenceName="SEQ_COUNTRY", initialValue = 1, allocationSize = 1)
+@XmlRootElement
+@XmlType
+@XmlAccessorType(value = XmlAccessType.FIELD)
 public class Country implements Serializable {
 
 	private static final long serialVersionUID = 6594634391946827288L;
