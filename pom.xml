@@ -16,6 +16,7 @@
     </repositories>
   <properties>
 		<spring.version>3.2.2.RELEASE</spring.version>
+		<spring.security.version>3.1.4.RELEASE</spring.security.version>
 		<jetty.version>8.1.7.v20120910</jetty.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -39,11 +40,6 @@
  	<dependency>
    		<groupId>org.springframework</groupId>
    		<artifactId>spring-orm</artifactId>
-   		<version>${spring.version}</version>
- 	</dependency>
- 	<dependency>
-   		<groupId>org.springframework</groupId>
-   		<artifactId>spring-web</artifactId>
    		<version>${spring.version}</version>
  	</dependency>
  	<dependency>
@@ -91,6 +87,165 @@
      	<groupId>javax.servlet</groupId>
      	<artifactId>jstl</artifactId>
      	<version>1.2</version>
+     </dependency>
+     <dependency>
+     	<groupId>org.springframework.security</groupId>
+     	<artifactId>spring-security-core</artifactId>
+     	<version>${spring.security.version}</version>
+     	<exclusions>
+     		<exclusion>
+     			<artifactId>spring-aop</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-core</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-context</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-beans</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-expression</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     	</exclusions>
+     </dependency>
+     <dependency>
+     	<groupId>org.springframework.security</groupId>
+     	<artifactId>spring-security-web</artifactId>
+     	<version>${spring.security.version}</version>
+     	<exclusions>
+     		<exclusion>
+     			<artifactId>spring-aop</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-core</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-context</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-beans</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-expression</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-jdbc</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-web</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-tx</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     	</exclusions>
+     </dependency>
+     <dependency>
+     	<groupId>org.springframework.security</groupId>
+     	<artifactId>spring-security-config</artifactId>
+     	<version>${spring.security.version}</version>
+     	<exclusions>
+     		<exclusion>
+     			<artifactId>spring-aop</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-core</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-context</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-beans</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     	</exclusions>
+     </dependency>
+     <dependency>
+     	<groupId>org.springframework.security</groupId>
+     	<artifactId>spring-security-taglibs</artifactId>
+     	<version>${spring.security.version}</version>
+     	<exclusions>
+     		<exclusion>
+     			<artifactId>spring-aop</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-core</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-context</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-beans</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-expression</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-jdbc</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-web</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-tx</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     	</exclusions>
+     </dependency>
+     <dependency>
+     	<groupId>org.springframework.social</groupId>
+     	<artifactId>spring-social-core</artifactId>
+     	<version>1.0.2.RELEASE</version>
+     	<exclusions>
+     		<exclusion>
+     			<artifactId>spring-web</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     	</exclusions>
+     </dependency>
+     <dependency>
+     	<groupId>org.springframework.social</groupId>
+     	<artifactId>spring-social-web</artifactId>
+     	<version>1.0.2.RELEASE</version>
+     	<exclusions>
+     		<exclusion>
+     			<artifactId>spring-web</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     		<exclusion>
+     			<artifactId>spring-webmvc</artifactId>
+     			<groupId>org.springframework</groupId>
+     		</exclusion>
+     	</exclusions>
+     </dependency>
+     <dependency>
+     	<groupId>org.springframework.social</groupId>
+     	<artifactId>spring-social-facebook</artifactId>
+     	<version>1.0.2.RELEASE</version>
      </dependency>
   </dependencies>
   <build>

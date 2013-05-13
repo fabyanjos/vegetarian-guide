@@ -9,11 +9,12 @@ import org.springframework.core.io.ClassPathResource;
 
 import com.fabiale.vegetarianguide.spring.RepositoryConfig;
 import com.fabiale.vegetarianguide.spring.RestTemplateConfig;
+import com.fabiale.vegetarianguide.spring.SpringSecurityConfig;
 import com.fabiale.vegetarianguide.spring.WebConfig;
 
 @Configuration
 @ComponentScan(value = "com.fabiale.vegetarianguide", excludeFilters = @ComponentScan.Filter(Configuration.class))
-@Import({ RepositoryConfig.class, WebConfig.class, RestTemplateConfig.class })
+@Import({ RepositoryConfig.class, WebConfig.class, RestTemplateConfig.class, SpringSecurityConfig.class })
 public class SpringConfig {
 
 	@Bean

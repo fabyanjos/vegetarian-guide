@@ -34,6 +34,8 @@
 					<li>
 						<div class="resultLeft">
 							<p>${r.title}</p>
+							<ul class="rating twostar">
+							</ul>
 							<p>${r.description}</p>
 						</div>
 					</li>

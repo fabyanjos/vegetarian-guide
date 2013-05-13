@@ -44,4 +44,9 @@ public class UserController {
         
         return "redirect:/";
 	}
+	
+	@RequestMapping(value = "/signin")
+	public String login() {
+		return "login";
+	}
 }

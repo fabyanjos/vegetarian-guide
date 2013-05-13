@@ -10,6 +10,7 @@ import javax.servlet.ServletRegistration;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import com.opensymphony.sitemesh.webapp.SiteMeshFilter;
@@ -24,6 +25,11 @@ public class WebAppInitializer implements WebApplicationInitializer {
 		
 		FilterRegistration.Dynamic sitemeshFilter = context.addFilter("sitemesh", new SiteMeshFilter());
 		sitemeshFilter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class),false,"/*");
+		
+		DelegatingFilterProxy deFilterProxy = new DelegatingFilterProxy("springSecurityFilterChain", appContext);
+		
+		FilterRegistration.Dynamic securityFilter = context.addFilter("springSecurityFilterChain", deFilterProxy);
+		securityFilter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, "/*");
 		
 		ServletRegistration.Dynamic dispatcher = context.addServlet("dispatcher", new DispatcherServlet(appContext));
 		dispatcher.setLoadOnStartup(1);

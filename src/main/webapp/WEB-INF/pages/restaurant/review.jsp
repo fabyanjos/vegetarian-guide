@@ -6,7 +6,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" type="text/css" href="/css/rating.css"/>
+	
 </head>
 <body>
 	<c:set var="add"/>
@@ -69,17 +69,6 @@
 		$("#rating").val(rating);
 	}
 	
-	function numberText(number) {
-		var text;
-		switch(number) {
-			case 1: text = "one"; break;
-			case 2: text = "two"; break;
-			case 3: text = "three"; break;
-			case 4: text = "four"; break;
-			case 5: text = "five"; break;
-		}
-		return text;
-	}
 </script>
 </body>
 </html>

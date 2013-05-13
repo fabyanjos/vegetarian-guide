@@ -39,7 +39,7 @@ public class User implements Serializable {
 	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
-
+	
 	public Integer getId() {
 		return id;
 	}

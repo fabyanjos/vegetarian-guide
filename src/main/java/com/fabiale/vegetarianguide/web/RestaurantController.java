@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -34,11 +35,13 @@ public class RestaurantController {
 	@Autowired CountryService countryService;
 	@Autowired ReviewService reviewService;
 
+	@Secured("ROLE_USER")
 	@RequestMapping(value = "/restaurant/new", method = RequestMethod.GET)
 	public String home() {
 		return "/restaurant/add";
 	}
 	
+	@Secured("ROLE_USER")
 	@RequestMapping(value = "/restaurant/add", method = {RequestMethod.POST, RequestMethod.GET})
 	public String save(@ModelAttribute("restaurant") @Valid Restaurant restaurant, BindingResult result, ModelMap modelMap) {
 		
@@ -61,11 +64,11 @@ public class RestaurantController {
 	
 	@RequestMapping(value = "/restaurant/results", method = {RequestMethod.POST, RequestMethod.GET})
 	public String result(@ModelAttribute("restaurant") Restaurant restaurant, ModelMap modelMap) {
-		
+
 		List<Restaurant> list = service.getNearBy(restaurant);
 		for(Restaurant r : list)
 			System.out.println(r.toString());
-		
+
 		modelMap.addAttribute("restaurants", list);
 		modelMap.addAttribute("origin", restaurant);
 		return "/restaurant/search";
