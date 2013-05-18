@@ -14,18 +14,26 @@ public class CoordinateUtil {
 	@Autowired RestTemplate restTemplate;
 	
 	public void distance(Restaurant origin, Restaurant destination) {
-		String url ="http://maps.googleapis.com/maps/api/distancematrix/json?origins={origin}&destinations={destination}&sensor=false";
-		
-		MapsResult result = restTemplate.getForObject(url, MapsResult.class, origin.getLatLng(), destination.getLatLng());
-		
-		destination.setDistance(result.getDistance());
+		try {
+			String url ="http://maps.googleapis.com/maps/api/distancematrix/json?origins={origin}&destinations={destination}&sensor=false";
+			
+			MapsResult result = restTemplate.getForObject(url, MapsResult.class, origin.getLatLng(), destination.getLatLng());
+			
+			destination.setDistance(result.getDistance());
+		} catch(Exception e) {
+			
+		}
 	}
 	
 	public AddressResult addressDetails(String address) {
-		String url ="http://maps.googleapis.com/maps/api/geocode/json?address={address}&sensor=false";
-		
-		AddressResult result = restTemplate.getForObject(url, AddressResult.class, address);
-		
-		return result;
+		try {
+			String url ="http://maps.googleapis.com/maps/api/geocode/json?address={address}&sensor=false";
+			
+			AddressResult result = restTemplate.getForObject(url, AddressResult.class, address);
+			
+			return result;
+		} catch(Exception e) {
+			
+		}
 	}
 }

@@ -75,11 +75,11 @@
 		<a href="<c:url value='?lang=pt_BR'/>" title="<spring:message code="portuguese"/>"><img src="/images/portuguese-icon.png"/></a>
 	</p>
 	<c:choose>
-		<c:when test="${!empty user}">
+		<c:when test="${!empty SPRING_SECURITY_CONTEXT.authentication.principal}">
 			<div id="userBox">
-				<img src="https://graph.facebook.com/<c:out value="${user.login}"/>/picture?type=small"/>
+				<img src="https://graph.facebook.com/<c:out value="${SPRING_SECURITY_CONTEXT.authentication.principal.login}"/>/picture?type=small"/>
 				<div>
-					<p><c:out value="${user.name}"/></p>
+					<p><c:out value="${SPRING_SECURITY_CONTEXT.authentication.principal.name}"/></p>
 					<a href="/rest/user/logout">Logout</a>
 				</div>
 			</div>
@@ -88,10 +88,10 @@
 			<p style="margin-top: 20px; cursor: pointer;" onclick="login();"><img src="/images/facebook.png" height="45" alt="Facebook"/></p>
 		</c:otherwise>
 	</c:choose>
-	
+
    
    <h3>Latest reviews</h3>
-	
+
    <div id="lastReviews">
    </div>
    
@@ -127,7 +127,7 @@
 	  var _gaq = _gaq || [];
 	  _gaq.push(['_setAccount', 'UA-40354748-1']);
 	  _gaq.push(['_trackPageview']);
-	
+
 	  (function() {
 	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';

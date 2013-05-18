@@ -4,12 +4,12 @@ import java.util.List;
 
 import javassist.NotFoundException;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.fabiale.vegetarianguide.model.Restaurant;
 import com.fabiale.vegetarianguide.model.Review;
@@ -48,9 +46,7 @@ public class RestaurantController {
 		if (result.hasErrors()) {
 			modelMap.addAttribute("error", "error");
 		} else {
-			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-	        HttpSession session = attr.getRequest().getSession();
-			User user = (User) session.getAttribute("user");
+			User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			restaurant.setCreatedBy(user);
 			service.create(restaurant);
 		}

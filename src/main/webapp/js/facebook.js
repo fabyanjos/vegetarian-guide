@@ -7,7 +7,6 @@ window.fbAsyncInit = function() {
 		cookie : true, // enable cookies to allow the server to access the
 		// session
 		xfbml : true
-	// parse XFBML
 	});
 };
 
@@ -26,12 +25,27 @@ function login() {
 	});
 }
 
+function logout() {
+	FB.logout(function(response) {
+		if (response.authResponse) {
+			// alert("connected");
+			// connected
+			testAPI();
+		} else {
+			// cancelled
+			alert("cancelled");
+		}
+	}, {
+		scope : 'email,user_location'
+	});
+}
+
 function testAPI() {
-	FB.api('/me', function(response) {
-		var user = {
-			"name": response.name,
-			"email": response.email,
-			"login": response.username
+	FB.api('/me', function(user) {
+		var userDetail = {
+			"name": user.name,
+			"email": user.email,
+			"login": user.username
 		};
 //		alert(response.location.name);
 		$.ajax({
@@ -40,7 +54,7 @@ function testAPI() {
 			url : "/rest/user",
 			contentType : "application/json; charset=utf-8",
 			dataType : "json",
-			data: JSON.stringify(user),
+			data: JSON.stringify(userDetail),
 			processData : true, 
 			success : function(result) {
 				AjaxSucceeded(result);
@@ -48,8 +62,13 @@ function testAPI() {
 			eror : AjaxFailed
 		});
 	});
-	function AjaxSucceeded(result) {
-		window.location.href = '/';
+	function AjaxSucceeded(user) {
+		$('#j_username').val(user.login);
+		$('#_spring_security_remember_me').prop('checked', true);
+		//$('#j_password').val(user.pass);
+		$('#loginForm').submit();
+		//window.location.href = '/';
+		
 	}
 	function AjaxFailed(result) {
 		alert(result);

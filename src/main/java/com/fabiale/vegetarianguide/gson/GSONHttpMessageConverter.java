@@ -7,6 +7,8 @@ import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.lang.reflect.Type;
 import java.nio.charset.Charset;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpInputMessage;
@@ -17,7 +19,6 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.stereotype.Component;
 
-import com.fabiale.vegetarianguide.model.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
@@ -27,11 +28,10 @@ import com.google.gson.reflect.TypeToken;
 public class GSONHttpMessageConverter extends AbstractHttpMessageConverter<Object> {
 
     public static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
+    private Logger logger = Logger.getLogger(GSONHttpMessageConverter.class.getName());
 
     private GsonBuilder gsonBuilder = new GsonBuilder()
-            //.excludeFieldsWithoutExposeAnnotation()
             .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-         //   .registerTypeAdapter(Timestamp.class, new GSONTimestampConverter());
 
     public GSONHttpMessageConverter() {
         super(new MediaType("application", "json", DEFAULT_CHARSET));
@@ -63,7 +63,7 @@ public class GSONHttpMessageConverter extends AbstractHttpMessageConverter<Objec
             Gson gson = gsonBuilder.create();
             return gson.fromJson(json, clazz);
         } catch (JsonParseException e) {
-        	e.printStackTrace();
+        	logger.log(Level.SEVERE, "Could not read JSON: " + e.getMessage(), e);
             throw new HttpMessageNotReadableException("Could not read JSON: " + e.getMessage(), e);
         }
     }
@@ -77,6 +77,9 @@ public class GSONHttpMessageConverter extends AbstractHttpMessageConverter<Objec
             // See http://code.google.com/p/google-gson/issues/detail?id=199 for details on SQLTimestamp conversion
             Gson gson = gsonBuilder.create();
             writer.append(gson.toJson(o, genericType));
+        } catch(Exception e) {
+        	logger.log(Level.SEVERE, "Could write JSON: " + e.getMessage(), e);
+        	throw new HttpMessageNotWritableException("Could write JSON: " + e.getMessage(), e);
         } finally {
             writer.flush();
             writer.close();
@@ -87,17 +90,6 @@ public class GSONHttpMessageConverter extends AbstractHttpMessageConverter<Objec
         if (headers != null && headers.getContentType() != null && headers.getContentType().getCharSet() != null) {
             return headers.getContentType().getCharSet();
         }
-
         return DEFAULT_CHARSET;
     }
-    
-    public static void main(String[] args) {
-    	GsonBuilder gsonBuilder = new GsonBuilder()
-        //.excludeFieldsWithoutExposeAnnotation()
-        .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-    	Gson gson = gsonBuilder.create();
-    	String obj = "{\"name\"=Teste+da+silva,\"email\"=\"teste@teste.com\",\"login\"=\"teste\"}";
-        User user = gson.fromJson(obj, User.class);
-        System.out.println(user);
-	}
 }

@@ -93,7 +93,10 @@
 
 #userBox img {
 	float: left;
-	margin: 0 10px 0 10px;
+	margin: 5px 10px 0 10px;
+	width: 45px;
+	height: 45px;
+	border: solid red 1px;
 }
 
 #userBox p {

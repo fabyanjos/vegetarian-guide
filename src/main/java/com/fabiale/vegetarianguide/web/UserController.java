@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,17 +24,23 @@ public class UserController {
 	@RequestMapping(value="/rest/user", produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE, method=RequestMethod.PUT)
 	@ResponseBody
 	public User user(@RequestBody User user) {
-		ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-        HttpSession session = attr.getRequest().getSession();
         User result = service.findByLogin(user.getLogin());
         if(result != null) {
-        	session.setAttribute("user", result);
-        	return result;
+        	user = result;
         } else {
         	service.create(user);
-        	session.setAttribute("user", user);
-        	return user;
         }
+    	return user;
+	}
+	
+	@RequestMapping(value="/user/login", method = RequestMethod.POST)
+	public String login() {
+		return "redirect:/j_spring_security_check";
+	}
+	
+	@RequestMapping(value="/auth/login")
+	public String loginForm() {
+		return "/auth/login";
 	}
 	
 	@RequestMapping(value="/rest/user/logout", method = RequestMethod.GET)
@@ -45,8 +52,13 @@ public class UserController {
         return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/signin")
-	public String login() {
-		return "login";
+	@RequestMapping(value="/auth/denied")
+	public String denied() {
+	 return "/auth/denied";	
 	}
+	
+	@ModelAttribute("user")
+    public User createForm() {
+        return new User();
+    }
 }

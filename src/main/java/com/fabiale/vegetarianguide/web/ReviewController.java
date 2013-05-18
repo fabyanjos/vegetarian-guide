@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -30,12 +31,14 @@ public class ReviewController {
 	@Autowired ReviewService reviewService;
 	@Autowired RestaurantService restaurantService;
 	
+	@Secured("ROLE_USER")
 	@RequestMapping(value = "/restaurant/review/{id}", method = RequestMethod.GET)
 	public String review(@PathVariable("id") Integer id, ModelMap modelMap) {
 		modelMap.addAttribute("restaurantId", id);
 		return "/restaurant/review";
 	}
 	
+	@Secured("ROLE_USER")
 	@RequestMapping(value = "/restaurant/review/save/{id}", method = {RequestMethod.POST, RequestMethod.GET})
 	public String save(@PathVariable("id") Integer id, @ModelAttribute("review") @Valid Review review, BindingResult result, ModelMap modelMap) {
 		

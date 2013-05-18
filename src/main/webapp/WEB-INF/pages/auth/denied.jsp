@@ -5,12 +5,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-
+<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
 </head>
 
 <body>
-	<form action="<c:url value="/signin/facebook" />" method="POST">
-	    <button type="submit">Sign in with Facebook</button>
-	</form>
+    <h1>Acesso negado</h1>
 </body>
 </html>
