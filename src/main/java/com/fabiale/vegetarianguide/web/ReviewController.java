@@ -2,12 +2,12 @@ package com.fabiale.vegetarianguide.web;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fabiale.vegetarianguide.model.Restaurant;
 import com.fabiale.vegetarianguide.model.Review;
@@ -40,19 +39,18 @@ public class ReviewController {
 	
 	@Secured("ROLE_USER")
 	@RequestMapping(value = "/restaurant/review/save/{id}", method = {RequestMethod.POST, RequestMethod.GET})
-	public String save(@PathVariable("id") Integer id, @ModelAttribute("review") @Valid Review review, BindingResult result, ModelMap modelMap) {
+	public String save(@PathVariable("id") Integer id, @ModelAttribute("review") @Valid Review review, BindingResult result, ModelMap modelMap, RedirectAttributes redirectAttributes) {
 		
 		if (result.hasErrors()) {
 			modelMap.addAttribute("restaurantId", id);
-			modelMap.addAttribute("error", "error");
+			modelMap.addAttribute("error", "error.add.validation.restaurant");
 		} else {
 			Restaurant restaurant = restaurantService.getById(id);
 			review.setRestaurant(restaurant);
-			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-	        HttpSession session = attr.getRequest().getSession();
-			User user = (User) session.getAttribute("user");
+			User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			review.setUser(user);
 			reviewService.create(review);
+			redirectAttributes.addFlashAttribute("success", "success.save.restaurant");
 			return "redirect:/restaurant/details/" + id;
 		}
 		return "/restaurant/review";

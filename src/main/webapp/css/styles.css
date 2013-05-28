@@ -71,7 +71,6 @@ a:hover {
 h1, h2, h3, h4, h5, h6 {
 	font-family:Georgia, "Times New Roman", Times, serif;
     font-weight: normal;
-	position:relative;
 }
 	
 h1{
@@ -149,6 +148,7 @@ h4 span{
 	-webkit-border-radius: .5em; 
 	-moz-border-radius: .5em;
 	border-radius: .5em;
+	float: right;
 }
 
 /***************************************************
@@ -509,7 +509,11 @@ nav ul li a.current{
 	border-bottom:1px dotted black;
 	margin-bottom:10px;
 	padding-bottom:12px;
-}		
+}
+
+.holder_news h4 {
+	width:274px;
+}
 
 .button {
 	display: inline-block;

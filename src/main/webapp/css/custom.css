@@ -1,9 +1,10 @@
 #map-canvas {
 	float: left;
-	width: 550px;
-	height: 300px;
+	width: 600px;
+	height: 350px;
 	border: solid red 0px;
-	margin: 10px 0 20px 25px
+	margin: 10px 0 20px 25px;
+	display: inline;
 }
 
 .placeIcon {
@@ -13,32 +14,33 @@
 }
 
 #autocomplete {
-	width: 450px;
+	width: 480px;
 	border: 1px solid #ccc;
 	height: 20px;
 	font-size: 16px;
 }
 
 #place {
-	width: 550px;
+	width: 600px;
 	border: solid blue 0px;
 	font-size: 14px;
-	margin-left: 40px;
+	margin-left: 25px;
+	float: left;
 }
 
 #place input {
-	width: 200px;
+	width: 230px;
 	border: solid 1px #c5c5c5;
 }
 
 #place textarea {
-	width: 200px;
+	width: 230px;
 	height: 100px;
 	border: solid 1px #c5c5c5;
 }
 
 #place select {
-	width: 205px;
+	width: 235px;
 	border: solid 1px #c5c5c5;
 }
 
@@ -46,7 +48,7 @@
 	color: #343434;
 	display: inline-block;
 	font-weight: bold;
-	width: 160px;
+	width: 140px;
 	float:left;
 }
 
@@ -69,11 +71,21 @@
 	padding: 0 0 0 25px;
 	background-repeat: no-repeat;
 	background-position: 5px center;
-	float:right;
-	
+	display: inline;
+}
+
+.success {
+	color: green;
+	background-image: url("/images/successIcon.png");
+	padding: 0 0 0 25px;
+	background-repeat: no-repeat;
+	background-position: 5px center;
+	font-size: 18px;
+	background-size: 20px;
+	margin-left: 30%;
 }
 .inputError {
-	border-color: red;
+	border: solid 1px #f00!important;
 }
 
 #userBox {
@@ -103,19 +115,26 @@
 	margin-top: 5px;
 }
 
-#listResult { width:500px; font-size:14px; }
-#listResult li { border-bottom: 1px dotted black; padding: 10px; float: left;width:500px;}
+#listResult { width:580px; font-size:14px; }
+#listResult li { border-bottom: 1px dotted black; padding: 10px; float: left; width: 580px;}
 #listResult li p {  }
-#listResult li p em { font-size: 20px; font-weight: bolder;}
-#listResult li p .websiteLink { 
+#listResult li em { font-size: 16px; font-weight: bolder;}
+
+p .websiteLink { 
 	display: inline-block;
 	background-image: url("/images/home.png");
 	padding: 0 0 0 35px;
 	background-repeat: no-repeat;
 }
-#listResult li p .phone { 
+p .phone { 
 	display: inline-block;
 	background-image: url("/images/phone.png");
+	padding: 0 0 0 35px;
+	background-repeat: no-repeat;
+}
+p .address { 
+	display: inline-block;
+	background-image: url("/images/map-marker-grey.png");
 	padding: 0 0 0 35px;
 	background-repeat: no-repeat;
 }
@@ -131,9 +150,20 @@
 
 .resultLeftSearch {
 	float: left;
-	width: 420px;
+	width: 480px;
+	margin: 10px 0 10px 0;
 }
 
+.reviewLeft {
+	float: left;
+	text-align: center;
+}
+
+.reviewRight {
+	float: right;
+	margin: 0 0 10px 0;
+	width: 510px;
+}
 
 .resultRight {
 	float: right;
@@ -148,19 +178,58 @@
 	font-weight: bolder;
 }
 
-#ratingDiv {
-	float: right;
-	margin-right: 10px;
-	width: 400px;
+.errorMsg, .successMsg, .validationMsg, .infoMsg {
+	border: 1px solid;
+	margin: 10px 0px;
+	padding:15px 10px 15px 50px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	font-weight: bolder;
+}
+.errorMsg {
+	color: #D8000C;
+	background-color: #FFBABA;
+	background-image: url('/images/error.png');
 }
 
-#ratingDiv span {
-	position:relative;
-	float: left;
+.successMsg {
+	color: #4F8A10;
+	background-color: #DFF2BF;
+	background-image:url('/images/success.png');
 }
 
-#ratingDiv ul {
-	position:relative;
+.validationMsg {
+	color: #D63301;
+	background-color: #FFCCBA;
+	background-image: url('/images/validation.png');
+}
+
+.infoMsg {
+	color: #00529B;
+	background-color: #BDE5F8;
+	background-image: url('/images/info.png');
+}
+
+#ratingLink {
+	display: inline-block; 
 	float: right;
-	display: inline;
+	background-image: linear-gradient(bottom, rgb(69,99,82) 15%, rgb(155,199,163) 71%);
+	background-image: -o-linear-gradient(bottom, rgb(69,99,82) 15%, rgb(155,199,163) 71%);
+	background-image: -moz-linear-gradient(bottom, rgb(69,99,82) 15%, rgb(155,199,163) 71%);
+	background-image: -webkit-linear-gradient(bottom, rgb(69,99,82) 15%, rgb(155,199,163) 71%);
+	background-image: -ms-linear-gradient(bottom, rgb(69,99,82) 15%, rgb(155,199,163) 71%);
+	-webkit-border-radius: .5em;
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	width: 150px;
+	text-align: center;
+}
+
+#ratingLink a {
+	font-weight: bold;
+	font-size: 14px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #FFFFFF;
+	padding: 10px;
+	margin-right: 5px;
 }

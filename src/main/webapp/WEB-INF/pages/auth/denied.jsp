@@ -5,7 +5,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
 </head>
 
 <body>

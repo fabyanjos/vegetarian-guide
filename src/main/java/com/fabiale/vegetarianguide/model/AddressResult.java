@@ -33,9 +33,9 @@ public class AddressResult {
 		return builder.toString();
 	}
 	
-	public Restaurant populate(AddressResult address, Restaurant restaurant) {
-		if(address.getStatus().equals("OK")){
-			List<Address> results = address.getResults();
+	public void populate(Restaurant restaurant) {
+		if(this.getStatus().equals("OK")){
+			List<Address> results = this.getResults();
 			if(results != null & !results.isEmpty()) {
 				Address address2 = results.get(0);
 				for(Component c : address2.getAddress_components()) {
@@ -69,7 +69,6 @@ public class AddressResult {
 				}
 			}
 		}
-		return restaurant;
 	}
 }
 

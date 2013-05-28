@@ -1,7 +1,11 @@
 package com.fabiale.vegetarianguide.util;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.fabiale.vegetarianguide.model.AddressResult;
@@ -13,6 +17,8 @@ public class CoordinateUtil {
 	
 	@Autowired RestTemplate restTemplate;
 	
+	private Logger logger = Logger.getLogger(CoordinateUtil.class.getName());
+	
 	public void distance(Restaurant origin, Restaurant destination) {
 		try {
 			String url ="http://maps.googleapis.com/maps/api/distancematrix/json?origins={origin}&destinations={destination}&sensor=false";
@@ -21,7 +27,8 @@ public class CoordinateUtil {
 			
 			destination.setDistance(result.getDistance());
 		} catch(Exception e) {
-			
+			logger.log(Level.SEVERE, "Distance error api: " + e.getMessage(), e);
+			throw new RestClientException("Distance error api: " + e.getMessage(), e);
 		}
 	}
 	
@@ -33,7 +40,8 @@ public class CoordinateUtil {
 			
 			return result;
 		} catch(Exception e) {
-			
+			logger.log(Level.SEVERE, "Details error api: " + e.getMessage(), e);
+			throw new RestClientException("Details error api: " + e.getMessage(), e);
 		}
 	}
 }

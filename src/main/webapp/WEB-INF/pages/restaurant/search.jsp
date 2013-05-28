@@ -11,21 +11,27 @@
 </head>
 <body>
 	<div id="main">
-		<form onsubmit="codeAddress(search); return false;">
-			<div class="button black">
+		<form onsubmit="search(); return false;">
+			<div class="button black" style="width:580px;">
 				<input id="autocomplete" name="autocomplete" type="text"/>
 				&nbsp;<a href="javascript:codeAddress(search); return false;"><spring:message code="search"/></a></div>
 		</form>
 		<div id="map-canvas"></div>
+		
+		<div id="place">
 		<c:choose>
 		<c:when test="${!empty restaurants}">
-		<div id="place">
-			<br/>
 			<ul id="listResult">
 				<c:forEach items="${restaurants}" var="r" varStatus="i">
 					<li>
 						<div class="resultLeftSearch">
-							<p><em><a href="/restaurant/details/${r.id}" title="details">${r.name}</a></em> <spring:message code="${r.type}"/></p>
+							<p>
+								<em>
+									<a href="/restaurant/details/${r.id}" title="<spring:message code="details"/>">${r.name}</a>
+								</em> 
+								<spring:message code="${r.type}"/>
+								<span class="ratingDiv rating " id="rating${i.index}"></span>
+							</p>
 							<p>${r.street} ${r.number} - ${r.postalCode}, ${r.city}, <spring:message code="${r.country.name}"/></p>
 							
 							<p>${r.description}</p>
@@ -48,28 +54,24 @@
 					</li>
 				</c:forEach>
 			</ul>
-		</div>
 		</c:when>
 		<c:otherwise>
-			<div>
-				Nenhum resultado
-			</div>
+			<c:if test="${!empty origin}">
+				<div class="infoMsg">
+					<spring:message code="noresults"/>
+				</div>
+			</c:if>
 		</c:otherwise>
 		</c:choose>
+		</div>
+		<div id="infoWindowYour" style="display: none;">
+			<span class="infoWindowTitle"><spring:message code="your.location"/></span>
+			<p>${origin.street}, ${origin.number} ${origin.postalCode}, ${origin.city}, <spring:message code="${origin.country.name}"/></p>
+		</div>
+
 		<form:form method="post" action="/restaurant/results" modelAttribute="restaurant" id="search">
 			<ul style="display: none;">
 				<li><label><spring:message code="address"/>: </label><input type="text" id="street" name="street"/></li>
-				<li><label><spring:message code="street_number"/>: </label><input type="text" id="number" name="number"/></li>
-				<li><label><spring:message code="postal_code"/>: </label><input type="text" id="postalCode" name="postalCode"/></li>
-				<li><label><spring:message code="city"/>: </label><input type="text" id="city" name="city"/></li>
-				<li><label><spring:message code="state"/>: </label><input type="text" id="state" name="state"/></li>
-				<li>
-					<label><spring:message code="country"/>: </label>
-					<input type="text" id="country.name" name="country.name" style="display: none;"/> 
-					<input type="text" id="country_long" name="country_long"/>
-				</li>
-				<li style="display: ;"><label><spring:message code="lat"/>: </label><input type="text" id="latitude" name="latitude"/></li>
-				<li style="display: ;"><label><spring:message code="lng"/>: </label><input type="text" id="longitude" name="longitude"/></li>
 				<li><input type="submit" value="<spring:message code="save"/>"/></li>
 			</ul>
 		</form:form>
@@ -86,10 +88,15 @@ $(window).load(function () {
 	}
 
 	<c:if test="${!empty origin}">
-	setOrigin('${origin.latitude}', '${origin.longitude}');
+		setOrigin('${origin.latitude}', '${origin.longitude}', 'infoWindowYour');
 	</c:if>
 	<c:forEach items="${restaurants}" var="r" varStatus="i">
 		createMark('${i.index+1}', '${r.latitude}', '${r.longitude}', '${r.name}');
+		
+		var style = $('#rating${i.index}').attr("class");
+		style += numberText(${r.rating});
+		style += "star";
+		$('#rating${i.index}').attr("class", style); 
 	</c:forEach>
 });
 </script>	

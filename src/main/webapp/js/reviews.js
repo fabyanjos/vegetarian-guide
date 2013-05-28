@@ -15,13 +15,13 @@ $(window).load(function () {
     					$('<article>').attr('class', 'holder_news').append(
     						$('<h4>').text(review.restaurant.name).append(
     							$('<span>').text(date))).append(
-    	    				$('<p>').text(review.description)));
+    	    				$('<p>').text(review.description.substring(0,130))));
 				}
     		} else {
     			alert("vazio");
     		}
 		},
-		eror : function() {
+		error : function() {
 			$("#lastReviews").append(
 					$('<article>').attr('class', 'holder_news').append(
 						$('<h4>').append(

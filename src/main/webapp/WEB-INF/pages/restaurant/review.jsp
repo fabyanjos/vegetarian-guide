@@ -9,41 +9,46 @@
 	
 </head>
 <body>
-	<c:set var="add"/>
 	<div id="main">
 	<form:form method="post" action="/restaurant/review/save/${restaurantId}" modelAttribute="review">
-		<h3>Review</h3>
+		<h3><spring:message code="review"/></h3>
+		<c:if test="${!empty error}">
+			<p class="validationMsg"><spring:message code="${error}"/></p>
+		</c:if>
 		<span style="display: none;"><form:input path="rating"/></span>
-		<div id="ratingDiv">
-			<form:errors cssClass="error" path="rating"/>
-			<ul class="rating nostar" id="ratingList">
-				<li class="one"><a href="javascript:rating(1);" title="1 Star">1</a></li>
-				<li class="two"><a href="javascript:rating(2);" title="2 Stars">2</a></li>
-				<li class="three"><a href="javascript:rating(3);" title="3 Stars">3</a></li>
-				<li class="four"><a href="javascript:rating(4);" title="4 Stars">4</a></li>
-				<li class="five"><a href="javascript:rating(5);" title="5 Stars">5</a></li>
-			</ul>
-		</div>
 		<fieldset id="place">
 			<ul>
 				<li>
-					<label><spring:message code="title"/>: <span class="mandatory">*</span> </label>
-					<form:input path="title"/>
+					<label><spring:message code="rate"/>: <span class="mandatory">*</span> </label>
+					<div id="ratingDiv">
+					<ul class="rating nostar" id="ratingList">
+						<li class="one"><a href="javascript:rating(1);" title="1 Star">1</a></li>
+						<li class="two"><a href="javascript:rating(2);" title="2 Stars">2</a></li>
+						<li class="three"><a href="javascript:rating(3);" title="3 Stars">3</a></li>
+						<li class="four"><a href="javascript:rating(4);" title="4 Stars">4</a></li>
+						<li class="five"><a href="javascript:rating(5);" title="5 Stars">5</a></li>
+					</ul>
+				</div>
+					<form:errors cssClass="error" path="rating"/>
+				</li>
+				<li>
+					<label><spring:message code="review"/>: <span class="mandatory">*</span> </label>
+					<form:input path="title" cssErrorClass="inputError"/>
 					<form:errors cssClass="error" path="title"/>
 				</li>
 				<li>
 					<label><spring:message code="description"/>: <span class="mandatory">*</span> </label>
-					<form:textarea path="description"/>
+					<form:textarea path="description" cssErrorClass="inputError"/>
 					<form:errors cssClass="error" path="description"/>
 				</li>
 				<li>
 					<label><spring:message code="pros"/>: </label>
-					<form:input path="pros"/>
+					<form:input path="pros" cssErrorClass="inputError"/>
 					<form:errors cssClass="error" path="pros"/>
 				</li>
 				<li>
 					<label><spring:message code="cons"/>: </label>
-					<form:input path="cons"/>
+					<form:input path="cons" cssErrorClass="inputError"/>
 					<form:errors cssClass="error" path="cons"/>
 				</li>
 				

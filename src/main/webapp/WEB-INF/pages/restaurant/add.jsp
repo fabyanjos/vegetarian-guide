@@ -8,15 +8,17 @@
 <head>
 </head>
 <body>
-	<c:set var="add"/>
 	<div id="main">
 	<form:form method="post" action="/restaurant/add" modelAttribute="restaurant">
 		<fieldset id="place">
-			<h3>Dados do local</h3>
+			<h3><spring:message code="add.new.restaurant"/></h3>
+			<c:if test="${!empty error}">
+				<p class="validationMsg"><spring:message code="${error}"/></p>
+			</c:if>
 			<ul>
 				<li>
 					<label><spring:message code="type"/>: <span class="mandatory">*</span> </label>
-					<form:select path="type">
+					<form:select path="type" cssErrorClass="inputError">
 						<form:option value=""></form:option>
 						<form:option value="VEGETARIAN"><spring:message code="vegetarian"/></form:option>
 						<form:option value="VEGAN"><spring:message code="vegan"/></form:option>
@@ -25,17 +27,17 @@
 				</li>
 				<li>
 					<label><spring:message code="name"/>: <span class="mandatory">*</span> </label>
-					<form:input path="name"/>
+					<form:input path="name" cssErrorClass="inputError"/>
 					<form:errors cssClass="error" path="name"/>
 				</li>
 				<li>
 					<label><spring:message code="address"/> <span class="mandatory">*</span> </label>
-					<form:input path="street"/>
+					<form:input path="street" cssErrorClass="inputError"/>
 					<form:errors cssClass="error" path="street"/>
 				</li>
 				<li>
 					<label><spring:message code="street_number"/>: <span class="mandatory">*</span> </label>
-					<form:input path="number"/>
+					<form:input path="number" cssErrorClass="inputError"/>
 					<form:errors cssClass="error" path="number"/>
 				</li>
 				<li>
@@ -44,22 +46,22 @@
 				</li>
 				<li>
 					<label><spring:message code="city"/>: <span class="mandatory">*</span> </label>
-					<form:input path="city"/>
+					<form:input path="city" cssErrorClass="inputError"/>
 					<form:errors cssClass="error" path="city"/>
 				</li>
 				<li>
 					<label><spring:message code="state"/>: <span class="mandatory">*</span> </label>
-					<form:input path="state"/>
+					<form:input path="state" cssErrorClass="inputError"/>
 					<form:errors cssClass="error" path="state"/>
 				</li>
 				<li>
 					<label><spring:message code="country"/>: <span class="mandatory">*</span> </label>
-					<form:input path="country.name"/> 
+					<form:input path="country.name" cssErrorClass="inputError"/> 
 					<form:errors cssClass="error" path="country.name"/>
 				</li>
 				<li>
 					<label><spring:message code="website"/>: </label>
-					<form:input path="website"/>
+					<form:input path="website" cssErrorClass="inputError"/>
 					<form:errors cssClass="error" path="website"/>
 				</li>
 				<li>
@@ -67,8 +69,9 @@
 					<form:input path="phone"/> 
 				</li>
 				<li>
-					<label><spring:message code="description"/>: </label>
-					<form:textarea path="description"/> 
+					<label><spring:message code="description"/>: <span class="mandatory">*</span></label>
+					<form:textarea path="description" cssErrorClass="inputError"/> 
+					<form:errors cssClass="error" path="description"/>
 				</li>
 				<li><input type="submit" value="<spring:message code="save"/>" class="button"/></li>
 			</ul>

@@ -77,7 +77,7 @@
 	<c:choose>
 		<c:when test="${!empty SPRING_SECURITY_CONTEXT.authentication.principal}">
 			<div id="userBox">
-				<img src="https://graph.facebook.com/<c:out value="${SPRING_SECURITY_CONTEXT.authentication.principal.login}"/>/picture?type=small"/>
+				<img src="https://graph.facebook.com/<c:out value="${SPRING_SECURITY_CONTEXT.authentication.principal.login}"/>/picture?type=square"/>
 				<div>
 					<p><c:out value="${SPRING_SECURITY_CONTEXT.authentication.principal.name}"/></p>
 					<a href="/rest/user/logout">Logout</a>
@@ -115,8 +115,8 @@
    <!--start footer-->
    <footer>
    <div class="container">
-   <div id="FooterTwo"> © 2011 Fresh ideas </div>
-   <div id="FooterTree"> Valid html5, css3, design and code by <a href="http://www.marijazaric.com">marija zaric</a></div> 
+   <div id="FooterTwo"> © 2013 Veggie Out </div>
+   <div id="FooterTree"> Design and code by <a href="http://www.marijazaric.com">marija zaric</a>, customized by fabyanjos</div> 
    </div>
    </footer>
    <!--end footer-->

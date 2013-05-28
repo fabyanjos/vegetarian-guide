@@ -20,6 +20,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import org.hibernate.annotations.ForeignKey;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity(name = "reviews")
@@ -35,20 +37,25 @@ public class Review implements Serializable {
 	private Integer id;
 	@ManyToOne
     @JoinColumn(name="user_id", nullable = false)
+	@ForeignKey(name = "FK_REVIEW_USER")
 	private User user;
 	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	@Min(1) @Max(5)
 	private int rating;
-	@NotEmpty
+	@NotEmpty @Length(max = 40) 
 	private String title;
-	@NotEmpty
+	@Column(length = 1000)
+	@NotEmpty @Length(max = 1000)
 	private String description;
+	@Length(max = 255) 
 	private String pros;
+	@Length(max = 255) 
 	private String cons;
 	@ManyToOne
 	@JoinColumn(name = "restaurant_id", nullable = false)
+	@ForeignKey(name = "FK_REVIEW_RESTAURANT")
 	private Restaurant restaurant;
 	
 	public Restaurant getRestaurant() {

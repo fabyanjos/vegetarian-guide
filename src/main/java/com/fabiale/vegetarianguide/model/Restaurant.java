@@ -23,34 +23,44 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import org.hibernate.annotations.ForeignKey;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.context.i18n.LocaleContextHolder;
 
 @Entity(name = "restaurants")
-@SequenceGenerator(name="SEQ_RESTAURANT", sequenceName="SEQ_RESTAURANT", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "SEQ_RESTAURANT", sequenceName = "SEQ_RESTAURANT", initialValue = 1, allocationSize = 1)
 @XmlRootElement
 @XmlType
 public class Restaurant implements Serializable, Comparable<Restaurant> {
 
-	private static final long serialVersionUID = 6594634391946827288L;
+	private static final long serialVersionUID = 1245311504149783008L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_RESTAURANT")
 	private Integer id;
 	@NotEmpty
+	@Length(max = 255)
 	private String name;
 	@NotEmpty
+	@Length(max = 255)
 	private String street;
-	@NotNull @Range(min = 1)
+	@NotNull
+	@Range(min = 1)
 	private Integer number;
+	@Length(max = 255)
 	private String postalCode;
-	@NotEmpty 
+	@NotEmpty
+	@Length(max = 255)
 	private String city;
-	@NotEmpty 
+	@NotEmpty
+	@Length(max = 255)
 	private String state;
 	@ManyToOne
-    @JoinColumn(name="country_id", nullable = false)
+	@JoinColumn(name = "country_id", nullable = false)
+	@ForeignKey(name = "FK_RESTAURANT_COUNTRY")
 	@NotNull
 	private Country country;
 	private Double latitude;
@@ -62,14 +72,28 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	private String website;
 	@Transient
 	private Double distance;
+	@Transient
+	private Integer rating;
 	private String phone;
+	@Column(length = 1000)
+	@NotEmpty
+	@Length(max = 1000)
 	private String description;
 	@OneToOne
-	@JoinColumn(name="created_by")
+	@JoinColumn(name = "created_by")
+	@ForeignKey(name = "FK_RESTAURANT_USER")
 	private User createdBy;
 	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
+
+	public Integer getRating() {
+		return rating;
+	}
+
+	public void setRating(Integer rating) {
+		this.rating = rating;
+	}
 
 	public Date getCreatedAt() {
 		return createdAt;
@@ -166,11 +190,11 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	public void setType(Type type) {
 		this.type = type;
 	}
-	
+
 	public String getLatLng() {
 		return this.latitude + "," + this.longitude;
 	}
-	
+
 	public String getWebsite() {
 		return website;
 	}
@@ -178,7 +202,7 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	public void setWebsite(String website) {
 		this.website = website;
 	}
-	
+
 	public Double getDistance() {
 		return distance;
 	}
@@ -186,7 +210,7 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	public void setDistance(Double distance) {
 		this.distance = distance;
 	}
-	
+
 	public String getPhone() {
 		return phone;
 	}
@@ -202,18 +226,18 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	public String getDistanceString() {
 		Locale locale = LocaleContextHolder.getLocale();
 		NumberFormat fmt = NumberFormat.getInstance(locale);
 		fmt.setMaximumFractionDigits(2);
 		fmt.setMinimumFractionDigits(2);
-		if(distance < 1000)
+		if (distance < 1000)
 			return fmt.format(distance) + " m";
 		else
-			return fmt.format(distance/1000) + " km";
+			return fmt.format(distance / 1000) + " km";
 	}
-	
+
 	public User getCreatedBy() {
 		return createdBy;
 	}

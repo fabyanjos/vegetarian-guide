@@ -44,13 +44,15 @@ public class RestaurantController {
 	public String save(@ModelAttribute("restaurant") @Valid Restaurant restaurant, BindingResult result, ModelMap modelMap) {
 		
 		if (result.hasErrors()) {
-			modelMap.addAttribute("error", "error");
+			modelMap.addAttribute("error", "error.add.validation.restaurant");
+			return "/restaurant/add";
 		} else {
 			User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			restaurant.setCreatedBy(user);
 			service.create(restaurant);
+			modelMap.addAttribute("success", "success.save.restaurant");
+			return "/success";
 		}
-		return "/restaurant/add";
 	}
 	
 	@RequestMapping(value = "/restaurant/search", method = RequestMethod.GET)
@@ -62,8 +64,6 @@ public class RestaurantController {
 	public String result(@ModelAttribute("restaurant") Restaurant restaurant, ModelMap modelMap) {
 
 		List<Restaurant> list = service.getNearBy(restaurant);
-		for(Restaurant r : list)
-			System.out.println(r.toString());
 
 		modelMap.addAttribute("restaurants", list);
 		modelMap.addAttribute("origin", restaurant);

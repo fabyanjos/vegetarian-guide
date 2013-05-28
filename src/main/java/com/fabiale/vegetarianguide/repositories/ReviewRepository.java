@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -44,5 +45,13 @@ public class ReviewRepository {
     	Criteria criteria = this.factory.getCurrentSession().createCriteria(Review.class);
     	criteria.add(Restrictions.eq("restaurant", restaurant));
     	return criteria.list();
+    }
+    
+    public Integer getRestaurantRating(Restaurant restaurant) {
+    	Criteria criteria = this.factory.getCurrentSession().createCriteria(Review.class);
+    	criteria.add(Restrictions.eq("restaurant", restaurant));
+    	criteria.setProjection(Projections.avg("rating"));
+    	Double result = (Double) criteria.uniqueResult();
+    	return result.intValue() ;
     }
 }

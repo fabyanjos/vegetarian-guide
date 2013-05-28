@@ -43,7 +43,7 @@ public class RestaurantControllerTest {
 //    	r.setLongitude(13.340975800000024);
 //    	service.getNearBy(r);
     	AddressResult r = coordinate.addressDetails("Wiclefstra§e 69, Berlim, Repœblica Federal da Alemanha");
-    	r.populate(r, new Restaurant());
+    	r.populate(new Restaurant());
     }
 
 }
