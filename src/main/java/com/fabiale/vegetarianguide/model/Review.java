@@ -49,9 +49,9 @@ public class Review implements Serializable {
 	@Column(length = 1000)
 	@NotEmpty @Length(max = 1000)
 	private String description;
-	@Length(max = 255) 
+	@Length(max = 100) 
 	private String pros;
-	@Length(max = 255) 
+	@Length(max = 100) 
 	private String cons;
 	@ManyToOne
 	@JoinColumn(name = "restaurant_id", nullable = false)

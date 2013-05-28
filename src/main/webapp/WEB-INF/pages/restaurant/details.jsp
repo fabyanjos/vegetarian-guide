@@ -29,8 +29,8 @@
 				</p>
 				
 				<p>${restaurant.description}</p>
-				<p><span class="address">${restaurant.street}, ${restaurant.number} ${restaurant.postalCode}, ${restaurant.city}, <spring:message code="${restaurant.country.name}"/></span></p>
-				<c:if test="${!empty restaurant.phone}"><p><span class="phone">${restaurant.phone}</span></p></c:if>
+				<p class="address">${restaurant.street}, ${restaurant.number} ${restaurant.postalCode}, ${restaurant.city}, <spring:message code="${restaurant.country.name}"/></p>
+				<c:if test="${!empty restaurant.phone}"><p class="phone">${restaurant.phone}</p></c:if>
 				<c:if test="${!empty restaurant.website}"><p><a href="${restaurant.website}" target="_blank" class="websiteLink"><spring:message code="website"/></a></p></c:if>
 			</div>
 			
@@ -39,8 +39,8 @@
 				<p>${restaurant.street}, ${restaurant.number} ${restaurant.postalCode}, ${restaurant.city}, <spring:message code="${restaurant.country.name}"/></p>
 			</div>
 			
+			<h3><spring:message code="reviews"/></h3>
 			<ul id="listResult">
-				<li><h4><spring:message code="reviews"/></h4></li>
 				<c:forEach items="${reviews}" var="r" varStatus="i">
 					<li>
 						<div class="reviewLeft">
@@ -53,6 +53,8 @@
 							</div>
 							<p><fmt:formatDate value="${r.date}" pattern="dd/MM/yyyy HH:mm"/></p>
 							<p>${r.description}</p>
+							<p class="pros">${r.pros}</p>
+							<p class="cons">${r.cons}</p>
 						</div>
 					</li>
 				</c:forEach>

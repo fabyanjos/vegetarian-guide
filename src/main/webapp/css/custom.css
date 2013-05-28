@@ -120,25 +120,27 @@
 #listResult li p {  }
 #listResult li em { font-size: 16px; font-weight: bolder;}
 
-p .websiteLink { 
-	display: inline-block;
-	background-image: url("/images/home.png");
-	padding: 0 0 0 35px;
-	background-repeat: no-repeat;
-}
-p .phone { 
-	display: inline-block;
-	background-image: url("/images/phone.png");
-	padding: 0 0 0 35px;
-	background-repeat: no-repeat;
-}
-p .address { 
-	display: inline-block;
-	background-image: url("/images/map-marker-grey.png");
-	padding: 0 0 0 35px;
-	background-repeat: no-repeat;
-}
 
+.websiteLink, .phone, .address, .pros, .cons {
+	padding: 0 0 0 35px;
+	background-repeat: no-repeat;
+}
+.websiteLink { 
+	background-image: url("/images/home.png");
+}
+.phone { 
+	background-image: url("/images/phone.png");
+}
+.address { 
+	background-image: url("/images/map-marker-grey.png");
+}
+.pros { 
+	background-image: url("/images/pros.png");
+	
+}
+.cons { 
+	background-image: url("/images/cons.png");
+}
 .infoWindowTitle {
 	font-weight: bolder;
 	font-size: 16px;

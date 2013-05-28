@@ -32,8 +32,8 @@
 					<form:errors cssClass="error" path="rating"/>
 				</li>
 				<li>
-					<label><spring:message code="review"/>: <span class="mandatory">*</span> </label>
-					<form:input path="title" cssErrorClass="inputError"/>
+					<label><spring:message code="summary"/>: <span class="mandatory">*</span> </label>
+					<form:input path="title" cssErrorClass="inputError" maxlength="40"/>
 					<form:errors cssClass="error" path="title"/>
 				</li>
 				<li>
@@ -43,12 +43,12 @@
 				</li>
 				<li>
 					<label><spring:message code="pros"/>: </label>
-					<form:input path="pros" cssErrorClass="inputError"/>
+					<form:input path="pros" cssErrorClass="inputError" maxlength="100"/>
 					<form:errors cssClass="error" path="pros"/>
 				</li>
 				<li>
 					<label><spring:message code="cons"/>: </label>
-					<form:input path="cons" cssErrorClass="inputError"/>
+					<form:input path="cons" cssErrorClass="inputError" maxlength="100"/>
 					<form:errors cssClass="error" path="cons"/>
 				</li>
 				
