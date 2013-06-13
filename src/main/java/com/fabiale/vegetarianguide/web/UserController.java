@@ -1,10 +1,15 @@
 package com.fabiale.vegetarianguide.web;
 
+import java.security.NoSuchAlgorithmException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +26,7 @@ public class UserController {
 	
 	@Autowired UserService service;
 	
-	@RequestMapping(value="/rest/user", produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE, method=RequestMethod.PUT)
+	@RequestMapping(value="/rest/user", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.PUT)
 	@ResponseBody
 	public User user(@RequestBody User user) {
         User result = service.findByLogin(user.getLogin());
@@ -31,6 +36,15 @@ public class UserController {
         	service.create(user);
         }
     	return user;
+	}
+	
+	@RequestMapping(value="/user/login/facebook", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE, method = {RequestMethod.PUT, RequestMethod.POST})
+	@ResponseBody
+	public User register(@RequestBody User user, HttpServletRequest request, HttpServletResponse response, ModelMap model) throws NoSuchAlgorithmException {
+        user.setFacebook(true);
+		service.authentication(user);
+        
+        return user;
 	}
 	
 	@RequestMapping(value="/user/login", method = RequestMethod.POST)

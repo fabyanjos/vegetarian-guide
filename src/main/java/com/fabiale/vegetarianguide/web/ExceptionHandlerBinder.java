@@ -1,7 +1,10 @@
 package com.fabiale.vegetarianguide.web;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javassist.NotFoundException;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -10,6 +13,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dropbox.client2.exception.DropboxException;
+
 @ControllerAdvice
 public class ExceptionHandlerBinder {
 
@@ -17,6 +22,24 @@ public class ExceptionHandlerBinder {
 
 	@ExceptionHandler({ RestClientException.class })
 	public ModelAndView handleException(final RestClientException exception) {
+		logger.log(Level.SEVERE, "Exception found: " + exception, exception);
+		return errorModelAndView(exception, "");
+	}
+	
+	@ExceptionHandler({ DropboxException.class })
+	public ModelAndView handleException(final DropboxException exception) {
+		logger.log(Level.SEVERE, "Exception found: " + exception, exception);
+		return errorModelAndView(exception, "");
+	}
+	
+	@ExceptionHandler({ NotFoundException.class })
+	public ModelAndView handleException(final NotFoundException exception) {
+		logger.log(Level.SEVERE, "Exception found: " + exception, exception);
+		return errorModelAndView(exception, "");
+	}
+	
+	@ExceptionHandler({ IOException.class })
+	public ModelAndView handleException(final IOException exception) {
 		logger.log(Level.SEVERE, "Exception found: " + exception, exception);
 		return errorModelAndView(exception, "");
 	}

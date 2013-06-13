@@ -49,7 +49,6 @@ public class User implements UserDetails, Serializable {
 	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
-	private GrantedAuthority granted;
 	@Column(nullable = false)
 	private String pass;
 	@org.hibernate.annotations.Type(type="yes_no")
@@ -63,26 +62,12 @@ public class User implements UserDetails, Serializable {
 		this.facebook = facebook;
 	}
 
-	public GrantedAuthority getGranted() {
-		if(granted == null)
-			granted = new SimpleGrantedAuthority("ROLE_USER");
-		return granted;
-	}
-
-	public void setGranted(GrantedAuthority granted) {
-		this.granted = granted;
-	}
-
 	public String getPass() {
 		return pass;
 	}
 
 	public void setPass(String pass) {
 		this.pass = pass;
-	}
-
-	public User() {
-		this.granted = new SimpleGrantedAuthority("ROLE_USER");
 	}
 
 	public Integer getId() {
@@ -143,7 +128,7 @@ public class User implements UserDetails, Serializable {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
-		list.add(this.getGranted());
+		list.add(new SimpleGrantedAuthority("ROLE_USER"));
 		return list;
 	}
 

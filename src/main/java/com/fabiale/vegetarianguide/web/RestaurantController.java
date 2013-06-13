@@ -19,10 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dropbox.client2.exception.DropboxException;
+import com.fabiale.vegetarianguide.model.Image;
 import com.fabiale.vegetarianguide.model.Restaurant;
 import com.fabiale.vegetarianguide.model.Review;
 import com.fabiale.vegetarianguide.model.User;
 import com.fabiale.vegetarianguide.service.CountryService;
+import com.fabiale.vegetarianguide.service.ImageService;
 import com.fabiale.vegetarianguide.service.RestaurantService;
 import com.fabiale.vegetarianguide.service.ReviewService;
 
@@ -32,6 +35,7 @@ public class RestaurantController {
 	@Autowired RestaurantService service;
 	@Autowired CountryService countryService;
 	@Autowired ReviewService reviewService;
+	@Autowired ImageService imageService;
 
 	@Secured("ROLE_USER")
 	@RequestMapping(value = "/restaurant/new", method = RequestMethod.GET)
@@ -71,11 +75,13 @@ public class RestaurantController {
 	}
 	
     @RequestMapping(value = "/restaurant/details/{id}", method = {RequestMethod.POST, RequestMethod.GET})
-    public String getDetails(@PathVariable("id") Integer id, ModelMap modelMap) throws NotFoundException {
+    public String getDetails(@PathVariable("id") Integer id, ModelMap modelMap) throws NotFoundException, DropboxException {
 		Restaurant restaurant = service.getById(id);
 		List<Review> reviews = reviewService.getByRestaurant(restaurant);
+		List<Image> images = imageService.getByRestaurant(restaurant);
 		modelMap.addAttribute("restaurant", restaurant);
 		modelMap.addAttribute("reviews", reviews);
+		modelMap.addAttribute("images", images);
         return "/restaurant/details";
     }
     

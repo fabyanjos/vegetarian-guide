@@ -52,6 +52,6 @@ public class ReviewRepository {
     	criteria.add(Restrictions.eq("restaurant", restaurant));
     	criteria.setProjection(Projections.avg("rating"));
     	Double result = (Double) criteria.uniqueResult();
-    	return result.intValue() ;
+    	return result != null ? result.intValue() : null;
     }
 }

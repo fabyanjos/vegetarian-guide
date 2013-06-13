@@ -14,7 +14,7 @@
 	<div id="main">
 		<h3>
 			${restaurant.name}
-			<span id="ratingLink"><a href="/restaurant/review/${restaurant.id}"><spring:message code="rating"/></a></span>
+			<span class="ratingDiv rating " id="rating"></span>
 		</h3>
 		<c:if test="${!empty success}">
 		 <p class="successMsg"><spring:message code="${success}"/></p>
@@ -22,10 +22,10 @@
 		<div id="map-canvas"></div>
 		<div id="place">
 			<div id="detailsDiv">
+				<p><a href="/restaurant/image/${restaurant.id}"><spring:message code="addimage"/></a></p>
 				<p>
 					<em><spring:message code="type"/></em>: 
 					<spring:message code="${restaurant.type}"/>
-					<span class="ratingDiv rating " id="rating"></span>
 				</p>
 				
 				<p>${restaurant.description}</p>
@@ -39,7 +39,28 @@
 				<p>${restaurant.street}, ${restaurant.number} ${restaurant.postalCode}, ${restaurant.city}, <spring:message code="${restaurant.country.name}"/></p>
 			</div>
 			
-			<h3><spring:message code="reviews"/></h3>
+			<div id="carousel" class="list_carousel">
+				<ul>
+				<c:forEach items="${images}" var="image" varStatus="i">
+					<li>
+						<a href="${image.filePath}">
+							<img src="${image.filePath}" alt="${image.name}"/>
+						</a>
+					</li>
+				</c:forEach>
+				</ul>
+				<div class="clearfix"></div>
+			    <!-- prev and next button -->
+			    <a id="prev" class="prev" href="#"><</a>
+			    <a id="next" class="next" href="#">></a>
+			    <!-- pagination -->
+			    <div id="pager" class="pager"></div>
+			</div>
+			
+			<h3>
+				<spring:message code="reviews"/>
+				<span id="ratingLink"><a href="/restaurant/review/${restaurant.id}"><spring:message code="rating"/></a></span>
+			</h3>
 			<ul id="listResult">
 				<c:forEach items="${reviews}" var="r" varStatus="i">
 					<li>
@@ -64,7 +85,7 @@
 
 <script type="text/javascript" src="/js/maps.js"></script>  
 <script type="text/javascript">
-$(window).load(function () {
+$(document).ready(function () {
 	<c:if test="${!empty restaurant}">
 		setOrigin('${restaurant.latitude}', '${restaurant.longitude}', 'infoWindow');
 		var style = $('#rating').attr("class");
@@ -80,5 +101,6 @@ $(window).load(function () {
 	</c:forEach>
 });
 </script>	
+
 </body>
 </html>

@@ -39,5 +39,17 @@
 		</fieldset>
 		<p style="margin-top: 20px; cursor: pointer;" onclick="login();"><img src="/images/facebook.png" height="45" alt="Facebook"/></p>
 	</form>
+	<fb:facepile href="http://localhost:8080" 
+action="og_recipebox:planning_to_make" width="300" max_rows="1"></fb:facepile>
+	<fb:registration redirect-uri="http://localhost:8080/user/login/facebook"
+	  fields='[
+   			{"name":"name"},
+   			{"name":"birthday"},
+   			{"name":"location"},
+   			{"name":"email"}
+   			]' 
+	  
+	  width="600">
+	</fb:registration>
 </body>
 </html>

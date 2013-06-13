@@ -15,22 +15,30 @@
 	<meta name="author" content="Fabiana Anjos">
 	<title><decorator:title default="Veggie Out"/></title>
 	<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon"/> 
+	
 	<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/custom.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/rating.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/photobox.css"/>
 	<link rel="stylesheet" href="//www.google.com/cse/style/look/default.css" type="text/css" />
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
     
-    <script src="/js/date.js"></script>
-    <script src="/js/custom.js"></script>
-    
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script id="jqueryui" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js" defer async></script>
     <script src="//www.google.com/jsapi"></script>
     <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry,places&amp;language=${pageContext.response.locale}"></script>
+    
+    <script src="http://connect.facebook.net/${pageContext.response.locale}/all.js"></script>
+    
+    <script src="/js/photobox.js"></script>
+    <script src="/js/jquery.carouFredSel-6.2.1.js"></script>
+    <script src="/js/date.js"></script>
+    <script src="/js/custom.js"></script>
+
 </head>
 
 <body>
+	<div id="fb-root"></div>
 	<script src="/js/facebook.js"></script>
    <!--start container-->
    <div id="container">
@@ -70,7 +78,7 @@
 
    <aside class="group2">
    
-   <p style="text-align: center;">
+   <p id="languageBtn">
 		<a href="<c:url value='?lang=en'/>" title="<spring:message code="english"/>"><img src="/images/english-icon.png"/></a> 
 		<a href="<c:url value='?lang=pt_BR'/>" title="<spring:message code="portuguese"/>"><img src="/images/portuguese-icon.png"/></a>
 	</p>
@@ -85,11 +93,11 @@
 			</div>
 		</c:when>
 		<c:otherwise>
-			<p style="margin-top: 20px; cursor: pointer;" onclick="login();"><img src="/images/facebook.png" height="45" alt="Facebook"/></p>
+			<p style="margin-top: 20px; cursor: pointer; display: none;" onclick="login();" id="loginBtn"><img src="/images/facebook.png" height="45" alt="Facebook"/></p>
 		</c:otherwise>
 	</c:choose>
-
-   
+	<br/>
+	<div class="fb-like" data-href="http://veggie-out.herokuapp.com" data-send="false" data-width="250"  data-show-faces="true"></div>   
    <h3>Latest reviews</h3>
 
    <div id="lastReviews">

@@ -1,23 +1,18 @@
-// Additional JS functions here
 window.fbAsyncInit = function() {
 	FB.init({
 		appId : '426669610763003', // App ID
-		channelUrl : '//localhost:8080/channel.html', // Channel File
 		status : true, // check login status
 		cookie : true, // enable cookies to allow the server to access the
-		// session
-		xfbml : true
+		xfbml : true // check plugins in page
 	});
+	$('#loginBtn').attr('style', 'display:');
 };
 
 function login() {
 	FB.login(function(response) {
 		if (response.authResponse) {
-			// alert("connected");
-			// connected
-			testAPI();
+			appLogin(response.authResponse.userID);
 		} else {
-			// cancelled
 			alert("cancelled");
 		}
 	}, {
@@ -25,68 +20,33 @@ function login() {
 	});
 }
 
-function logout() {
-	FB.logout(function(response) {
-		if (response.authResponse) {
-			// alert("connected");
-			// connected
-			testAPI();
-		} else {
-			// cancelled
-			alert("cancelled");
-		}
-	}, {
-		scope : 'email,user_location'
-	});
-}
-
-function testAPI() {
+function appLogin(userID) {
 	FB.api('/me', function(user) {
 		var userDetail = {
-			"name": user.name,
-			"email": user.email,
-			"login": user.username
+			"name" : user.name,
+			"email" : user.email,
+			"login" : user.username,
+			"pass": userID
 		};
-//		alert(response.location.name);
 		$.ajax({
-			type : "PUT",
+			type : "POST",
 			async : false,
-			url : "/rest/user",
+			url : "/user/login/facebook",
 			contentType : "application/json; charset=utf-8",
 			dataType : "json",
-			data: JSON.stringify(userDetail),
-			processData : true, 
-			success : function(result) {
-				AjaxSucceeded(result);
-			},
-			eror : AjaxFailed
+			data : JSON.stringify(userDetail),
+			processData : true,
+			success : AjaxSucceeded,
+			error : AjaxFailed
 		});
 	});
-	function AjaxSucceeded(user) {
-		$('#j_username').val(user.login);
-		$('#_spring_security_remember_me').prop('checked', true);
-		//$('#j_password').val(user.pass);
-		$('#loginForm').submit();
-		//window.location.href = '/';
-		
+	function AjaxSucceeded(result) {
+		window.location.href = '/';
+
 	}
 	function AjaxFailed(result) {
-		alert(result);
 	}
 }
-
-// Load the SDK Asynchronously
-(function(d) {
-	var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-	if (d.getElementById(id)) {
-		return;
-	}
-	js = d.createElement('script');
-	js.id = id;
-	js.async = true;
-	js.src = "//connect.facebook.net/en_US/all.js";
-	ref.parentNode.insertBefore(js, ref);
-}(document));
 
 /*
  * Supported scopes: ads_management create_event create_note email export_stream

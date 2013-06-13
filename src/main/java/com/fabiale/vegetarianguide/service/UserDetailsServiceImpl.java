@@ -30,7 +30,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	}
 	
 	public static void main(String[] args)  throws Exception {
-		String password = "";
+		String password = "1535892125";
 		 
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(password.getBytes());

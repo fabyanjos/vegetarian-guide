@@ -10,17 +10,17 @@
 	<security:global-method-security
 		secured-annotations="enabled" />
 
-		<!-- This is where we configure Spring-Security -->
-		<security:http 
-			auto-config="true" 
-			use-expressions="true"
-			access-denied-page="/auth/denied">
+	<!-- This is where we configure Spring-Security -->
+	<security:http 
+		auto-config="true" 
+		use-expressions="true"
+		access-denied-page="/auth/denied">
 
 		<security:form-login 
 			login-processing-url="/j_spring_security_check"
 			login-page="/auth/login" 
 			authentication-failure-url="/auth/login" />
-			
+
 		<security:logout 
 			invalidate-session="true"
 			logout-success-url="/" 
