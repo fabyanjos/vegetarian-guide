@@ -16,7 +16,7 @@ $(window).load(function () {
 	    						$('<a>').attr('href', link).attr('class', 'photo_hover2').append(
 	    							$('<image>').attr('src', '/images/picture2.jpg'))).append(
 	    					$('<a>').attr('href', link).append($('<h2>').text(r.name.substring(0,50)))).append(
-	    					$('<p>').text(r.description.substring(0,300))));
+	    					$('<p>').text(r.description.substring(0,275))));
 //	    					.append(
 //	    					$('<span>').attr('class', 'readmore').append(
 //	    						$('<a>').attr('href', link).text('details'))));

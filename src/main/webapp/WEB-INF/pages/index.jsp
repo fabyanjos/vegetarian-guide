@@ -26,11 +26,7 @@
    </head>
 
 <body>
-	<h3>Últimos restaurantes adicionados</h3>
-	<p>
-		Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. 
-		Vestibulum condimentum  facilisis nulla. In hac habitasse platea dictumst. Nulla nonummy. Cras quis libero.
-	</p>
+	<h3><spring:message code="latest.restaurants"/></h3>
 
 	<div id="restaurantsListHome">
 	</div>

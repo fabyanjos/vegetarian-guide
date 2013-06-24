@@ -97,7 +97,7 @@
 	</c:choose>
 	<br/>
 	<div class="fb-like" data-href="http://veggie-out.herokuapp.com" data-send="false" data-width="250"  data-show-faces="true"></div>   
-   <h3>Latest reviews</h3>
+   <h3><spring:message code="latest.reviews"/></h3>
 
    <div id="lastReviews">
    </div>
