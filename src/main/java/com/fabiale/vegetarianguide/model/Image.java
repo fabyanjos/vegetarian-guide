@@ -36,7 +36,6 @@ public class Image {
 	private String description;
 	private String filename;
 	private String filePath;
-	private String thumbnail;
 	@ImageExtension(extension = {"PNG", "JPG", "GIF"}) @Transient
 	private MultipartFile file;
 	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
@@ -59,14 +58,6 @@ public class Image {
 
 	public void setFile(MultipartFile file) {
 		this.file = file;
-	}
-
-	public String getThumbnail() {
-		return thumbnail;
-	}
-
-	public void setThumbnail(String thumbnail) {
-		this.thumbnail = thumbnail;
 	}
 
 	public Integer getId() {
