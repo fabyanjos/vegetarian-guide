@@ -28,7 +28,6 @@
     <script src="//www.google.com/jsapi"></script>
     <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry,places&amp;language=${pageContext.response.locale}"></script>
     
-    <script src="http://connect.facebook.net/${pageContext.response.locale}/all.js"></script>
     
     <script src="/js/photobox.js"></script>
     <script src="/js/jquery.carouFredSel-6.2.1.js"></script>
@@ -38,7 +37,6 @@
 </head>
 
 <body>
-	<div id="fb-root"></div>
 	<script src="/js/facebook.js"></script>
    <!--start container-->
    <div id="container">

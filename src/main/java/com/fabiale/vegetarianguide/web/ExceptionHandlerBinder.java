@@ -67,6 +67,13 @@ public class ExceptionHandlerBinder {
 		logger.log(Level.SEVERE, "handleIOException - Catching: " + ex.getClass().getSimpleName(), ex);
 		return errorModelAndView(ex, constraint.getConstraintName() + ".error");
 	}
+	
+	@ExceptionHandler(NumberFormatException.class)
+	public ModelAndView handleIOException(NumberFormatException ex) {
+		ConstraintViolationException constraint = (ConstraintViolationException) ex.getCause();
+		logger.log(Level.SEVERE, "handleIOException - Catching: " + ex.getClass().getSimpleName(), ex);
+		return errorModelAndView(ex, constraint.getConstraintName() + ".error");
+	}
 
 	/**
 	 * Get the users details for the 'personal' page
