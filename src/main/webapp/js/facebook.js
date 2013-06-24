@@ -9,7 +9,7 @@ window.fbAsyncInit = function() {
 	$('#loginBtn').attr('style', 'display:');
 };
 
-(function(d){
+(function(d) {
     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
     js = d.createElement('script'); js.id = id; js.async = true;
     js.src = "//connect.facebook.net/en_US/all.js";

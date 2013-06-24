@@ -33,11 +33,12 @@
     <script src="/js/jquery.carouFredSel-6.2.1.js"></script>
     <script src="/js/date.js"></script>
     <script src="/js/custom.js"></script>
+    <script src="/js/facebook.js"></script>
 
 </head>
 
 <body>
-	<script src="/js/facebook.js"></script>
+	<div id="fb-root"></div>
    <!--start container-->
    <div id="container">
    <!--start header-->

@@ -41,14 +41,11 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_RESTAURANT")
 	private Integer id;
-	@NotEmpty
-	@Length(max = 255)
+	@NotEmpty @Length(max = 255)
 	private String name;
-	@NotEmpty
-	@Length(max = 255)
+	@NotEmpty @Length(max = 255)
 	private String street;
-	@NotNull
-	@Range(min = 1)
+	@NotNull @Range(min = 1)
 	private Integer number;
 	@Length(max = 255)
 	private String postalCode;

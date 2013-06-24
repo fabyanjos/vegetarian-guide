@@ -38,4 +38,10 @@ $(document).ready(function () {
 		    pauseOnHover: true
 		});
 	}
+	if($('#number').length > 0) {
+		$('#number').keypress(function (e) {
+			if (String.fromCharCode(e.keyCode).match(/[^0-9]/g)) return false;
+		});
+	}
 });
+
