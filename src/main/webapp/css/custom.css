@@ -53,11 +53,11 @@
 }
 
 #place ul {
-	margin: -5px 0 0 10px;
+	margin: -5px 0 0 5px;
 }
 
 #place ul li {
-	padding: 8px;
+	padding: 10px;
 }
 
 #main {
@@ -118,7 +118,7 @@
 #listResult li { border-bottom: 1px dotted black; padding: 10px; float: left; width: 580px;}
 #listResult li p {  }
 #listResult li em { font-size: 16px; font-weight: bolder;}
-
+#listResult li em a:hover {text-decoration: none;} 
 
 .websiteLink, .phone, .address, .pros, .cons {
 	padding: 0 0 0 35px;
@@ -157,13 +157,23 @@
 
 .reviewLeft {
 	float: left;
+	background-color: #EFFBEF;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	width: 90px;
+	text-align: center;
+	padding: 8px;
+}
+
+.reviewLeft p {
 	text-align: center;
 }
 
 .reviewRight {
 	float: right;
 	margin: 0 0 10px 0;
-	width: 510px;
+	width: 465px;
 }
 
 .resultRight {
@@ -338,3 +348,12 @@ h3 .ratingDiv {
 	text-decoration: underline;
 	background: transparent url('/images/carousel_control.png') no-repeat -12px -32px;				
 }
+
+.divBox {
+	width: 600px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	background-color: #EFFBEF;
+}
+

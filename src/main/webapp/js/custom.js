@@ -11,29 +11,31 @@ function numberText(number) {
 }
 
 $(document).ready(function () {
-	$('#carousel').photobox('a',{ time:0 });
-	
-	// using a callback and a fancier selector
-	//----------------------------------------------
-	$('#carousel').photobox('li > a.family',{ time:0 }, callback);
-	function callback() {
-	   console.log('image has been loaded');
+	if($('#carousel').length > 0) {
+		$('#carousel').photobox('a',{ time:0 });
+		
+		// using a callback and a fancier selector
+		//----------------------------------------------
+		$('#carousel').photobox('li > a.family',{ time:0 }, callback);
+		function callback() {
+		   console.log('image has been loaded');
+		}
+		
+		// destroy the plugin on a certain gallery:
+		//-----------------------------------------------
+	//	$('#gallery').data('_photobox').destroy();
+		
+		// re-initialize the photbox DOM (does what Document ready does)
+		//-----------------------------------------------
+		$('#carousel').photobox('prepareDOM');
+		
+		$('#carousel ul').carouFredSel({
+		    prev: '#prev',
+		    next: '#next',
+		    pagination: "#pager",
+		    auto: false,
+		    scroll: 1000,
+		    pauseOnHover: true
+		});
 	}
-	
-	// destroy the plugin on a certain gallery:
-	//-----------------------------------------------
-//	$('#gallery').data('_photobox').destroy();
-	
-	// re-initialize the photbox DOM (does what Document ready does)
-	//-----------------------------------------------
-	$('#carousel').photobox('prepareDOM');
-	
-	$('#carousel ul').carouFredSel({
-	    prev: '#prev',
-	    next: '#next',
-	    pagination: "#pager",
-	    auto: false,
-	    scroll: 1000,
-	    pauseOnHover: true
-	});
 });

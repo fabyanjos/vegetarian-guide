@@ -22,7 +22,6 @@
 		<div id="map-canvas"></div>
 		<div id="place">
 			<div id="detailsDiv">
-				<p><a href="/restaurant/image/${restaurant.id}"><spring:message code="addimage"/></a></p>
 				<p>
 					<em><spring:message code="type"/></em>: 
 					<spring:message code="${restaurant.type}"/>
@@ -38,8 +37,14 @@
 				<span class="infoWindowTitle">${restaurant.name}</span>
 				<p>${restaurant.street}, ${restaurant.number} ${restaurant.postalCode}, ${restaurant.city}, <spring:message code="${restaurant.country.name}"/></p>
 			</div>
-			
-			<div id="carousel" class="list_carousel">
+			<br/>
+			<c:if test="${!empty images}">
+			<h3>
+				<spring:message code="images"/>
+				<span id="ratingLink"><a href="/restaurant/image/${restaurant.id}"><spring:message code="addimage"/></a></span>
+			</h3>
+			<div class="divBox">
+			<div id="carousel">
 				<ul>
 				<c:forEach items="${images}" var="image" varStatus="i">
 					<li>
@@ -56,6 +61,8 @@
 			    <!-- pagination -->
 			    <div id="pager" class="pager"></div>
 			</div>
+			</div>
+			</c:if>
 			
 			<h3>
 				<spring:message code="reviews"/>
@@ -69,7 +76,7 @@
 							<p>${r.user.login}</p>
 						</div>
 						<div class="reviewRight">
-							<em>${r.title}</em>
+							<em><a name="${r.id}">${r.title}</a></em>
 							<div class="ratingDiv rating " id="rating${i.index}">
 							</div>
 							<p><fmt:formatDate value="${r.date}" pattern="dd/MM/yyyy HH:mm"/></p>

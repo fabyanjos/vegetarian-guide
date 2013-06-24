@@ -246,6 +246,11 @@
      	<artifactId>dropbox-java-sdk</artifactId>
      	<version>1.5.3.2</version>
      </dependency>
+     <dependency>
+     	<groupId>com.googlecode</groupId>
+     	<artifactId>gmail4j</artifactId>
+     	<version>0.3</version>
+     </dependency>
   </dependencies>
   <build>
     <finalName>vegetarian-guide</finalName>

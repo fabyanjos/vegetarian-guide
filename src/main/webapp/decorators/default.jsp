@@ -53,10 +53,10 @@
    <nav>
    <ul id="menu">
    <li><a href="/"><spring:message code="home"/></a></li>
-   <li><a href="/restaurant/search" <c:if test="${!empty add}">class="current"</c:if>><spring:message code="search"/></a></li>
+   <li><a href="/restaurant/search"><spring:message code="search"/></a></li>
    <li><a href="/restaurant/new"><spring:message code="add"/></a></li>
-   <li><a href="#">About us ${add}</a></li>
-   <li><a href="#">Contact</a></li>
+   <li><a href="/about"><spring:message code="about"/></a></li>
+   <li><a href="/contact"><spring:message code="contact"/></a></li>
    </ul>
    </nav>
    <!--end menu-->

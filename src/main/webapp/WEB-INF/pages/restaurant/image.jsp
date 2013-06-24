@@ -18,16 +18,19 @@
 		<fieldset id="place">
 			<ul>
 				<li>
-					<form:label path="name">Name</form:label>
+					<label><spring:message code="title"/>: <span class="mandatory">*</span> </label>
 					<form:input path="name" />
+					<form:errors cssClass="error" path="name"/>
 				</li>
 				<li>
-					<form:label path="description">Description</form:label>
+					<label><spring:message code="description"/>: </label>
 					<form:textarea path="description" />
+					<form:errors cssClass="error" path="description"/>
 				</li>
 				<li>
-					<form:label path="filePath">Document</form:label>
+					<label><spring:message code="image"/>: <span class="mandatory">*</span> </label>
 					<input type="file" name="file" id="file" accept="image/png, image/gif, image/jpeg"></input>
+					<form:errors cssClass="error" path="file"/>
 				</li>				
 				<li><input type="submit" value="<spring:message code="save"/>" class="button"/></li>
 			</ul>

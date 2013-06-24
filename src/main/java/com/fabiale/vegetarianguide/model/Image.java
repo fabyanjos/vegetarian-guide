@@ -18,6 +18,9 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.ForeignKey;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fabiale.vegetarianguide.validator.ImageExtension;
 
 @Entity(name = "images")
 @SequenceGenerator(name = "SEQ_IMAGE", sequenceName = "SEQ_IMAGE", initialValue = 1, allocationSize = 1)
@@ -34,7 +37,8 @@ public class Image {
 	private String filename;
 	private String filePath;
 	private String thumbnail;
-	@Transient
+	@ImageExtension(extension = {"PNG", "JPG", "GIF"}) @Transient
+	private MultipartFile file;
 	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
@@ -49,6 +53,14 @@ public class Image {
 	@NotNull
 	private User user;
 	
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
 	public String getThumbnail() {
 		return thumbnail;
 	}

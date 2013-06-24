@@ -13,7 +13,9 @@ $(window).load(function () {
 					var date = new Date(review.date).toString('dd/MM/yy HH:mm');
     				$("#lastReviews").append(
     					$('<article>').attr('class', 'holder_news').append(
-    						$('<h4>').text(review.restaurant.name).append(
+    						$('<h4>').append(
+    							$('<a>').text(review.restaurant.name).attr('href', '/restaurant/details/'+review.restaurant.id+'#'+review.id))
+    							.append(
     							$('<span>').text(date))).append(
     	    				$('<p>').text(review.description.substring(0,130))));
 				}
@@ -26,7 +28,7 @@ $(window).load(function () {
 					$('<article>').attr('class', 'holder_news').append(
 						$('<h4>').append(
 							$('<span>'))).append(
-	    				$('<p>').text('not found')));
+	    				$('<p>').text('')));
 		}
 		}); 
  });

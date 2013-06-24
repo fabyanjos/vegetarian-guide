@@ -14,11 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dropbox.client2.DropboxAPI;
-import com.dropbox.client2.DropboxAPI.DropboxFileInfo;
+import com.dropbox.client2.DropboxAPI.ChunkedUploader;
 import com.dropbox.client2.DropboxAPI.DropboxLink;
 import com.dropbox.client2.DropboxAPI.Entry;
-import com.dropbox.client2.DropboxAPI.ThumbFormat;
-import com.dropbox.client2.DropboxAPI.ThumbSize;
 import com.dropbox.client2.exception.DropboxException;
 import com.dropbox.client2.session.WebAuthSession;
 import com.fabiale.vegetarianguide.model.Image;
@@ -72,15 +70,15 @@ public class ImageService {
         
         // Upload image
         byte[] byteArray = byteArray(newIs);
-//        ChunkedUploader chunkedUploader = dbApi.getChunkedUploader(newIs, byteArray.length);
-//        chunkedUploader.upload();
-//        Entry newEntry = chunkedUploader.finish(FOLDER_NAME + image.getFilename(), null);
+        ChunkedUploader chunkedUploader = dbApi.getChunkedUploader(newIs, byteArray.length);
+        chunkedUploader.upload();
+        Entry newEntry = chunkedUploader.finish(FOLDER_NAME + image.getFilename(), null);
         
-        Entry newEntry = dbApi.putFile(FOLDER_NAME + image.getFilename(), newIs, byteArray.length, null, null);
+//        Entry newEntry = dbApi.putFile(FOLDER_NAME + image.getFilename(), newIs, byteArray.length, null, null);
         
-        DropboxFileInfo thumbnail = dbApi.getThumbnail(newEntry.path, new ByteArrayOutputStream(), ThumbSize.ICON_128x128, ThumbFormat.JPEG, null);
-        System.out.println("thumbnail: " + (dbApi.media(thumbnail.getMetadata().path, false)).url);
-        System.out.println("Path:" + newEntry.path);
+//        DropboxFileInfo thumbnail = dbApi.getThumbnail(newEntry.path, new ByteArrayOutputStream(), ThumbSize.ICON_128x128, ThumbFormat.JPEG, null);
+//        System.out.println("thumbnail: " + (dbApi.media(thumbnail.getMetadata().path, false)).url);
+//        System.out.println("Path:" + newEntry.path);
 		
 //        dbApi.share(newEntry.path);
 //        DropboxLink media = dbApi.media(newEntry.path, false);

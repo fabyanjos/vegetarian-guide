@@ -6,6 +6,9 @@ import java.util.logging.Logger;
 
 import javassist.NotFoundException;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -46,6 +49,20 @@ public class ExceptionHandlerBinder {
 
 	@ExceptionHandler(DataIntegrityViolationException.class)
 	public ModelAndView handleIOException(DataIntegrityViolationException ex) {
+		ConstraintViolationException constraint = (ConstraintViolationException) ex.getCause();
+		logger.log(Level.SEVERE, "handleIOException - Catching: " + ex.getClass().getSimpleName(), ex);
+		return errorModelAndView(ex, constraint.getConstraintName() + ".error");
+	}
+	
+	@ExceptionHandler(AddressException.class)
+	public ModelAndView handleIOException(AddressException ex) {
+		ConstraintViolationException constraint = (ConstraintViolationException) ex.getCause();
+		logger.log(Level.SEVERE, "handleIOException - Catching: " + ex.getClass().getSimpleName(), ex);
+		return errorModelAndView(ex, constraint.getConstraintName() + ".error");
+	}
+	
+	@ExceptionHandler(MessagingException.class)
+	public ModelAndView handleIOException(MessagingException ex) {
 		ConstraintViolationException constraint = (ConstraintViolationException) ex.getCause();
 		logger.log(Level.SEVERE, "handleIOException - Catching: " + ex.getClass().getSimpleName(), ex);
 		return errorModelAndView(ex, constraint.getConstraintName() + ".error");
