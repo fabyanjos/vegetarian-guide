@@ -28,6 +28,9 @@
     <script src="//www.google.com/jsapi"></script>
     <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry,places&amp;language=${pageContext.response.locale}"></script>
     
+    <script type="text/javascript">
+    	var lang = '${pageContext.response.locale}';
+    </script>
     
     <script src="/js/photobox.js"></script>
     <script src="/js/jquery.carouFredSel-6.2.1.js"></script>
@@ -92,7 +95,7 @@
 			</div>
 		</c:when>
 		<c:otherwise>
-			<p style="display: none;" onclick="login();" id="loginBtn"><img src="/images/facebook.png" alt="Facebook"/></p>
+			<div style="display: none;" onclick="login();" id="loginBtn"><p><spring:message code="facebook.connect"/></p></div>
 		</c:otherwise>
 	</c:choose>
 	<div class="fb-like" data-href="<spring:message code="site.url"/>" data-send="true" data-width="250" data-show-faces="true"></div>

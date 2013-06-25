@@ -10,9 +10,10 @@ window.fbAsyncInit = function() {
 };
 
 (function(d) {
+	var jsUrl = "//connect.facebook.net/" + lang + "/all.js";
     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
     js = d.createElement('script'); js.id = id; js.async = true;
-    js.src = "//connect.facebook.net/en_US/all.js";
+    js.src = jsUrl;
     d.getElementsByTagName('head')[0].appendChild(js);
 }(document));
 
