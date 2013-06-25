@@ -357,3 +357,12 @@ h3 .ratingDiv {
 	background-color: #EFFBEF;
 }
 
+#loginBtn {
+	margin: 20px 0 0 0; 
+	cursor: pointer; 
+	
+}
+
+#loginBtn img {
+	width: 270px;
+}

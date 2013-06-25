@@ -92,11 +92,10 @@
 			</div>
 		</c:when>
 		<c:otherwise>
-			<p style="margin-top: 20px; cursor: pointer; display: none;" onclick="login();" id="loginBtn"><img src="/images/facebook.png" height="45" alt="Facebook"/></p>
+			<p style="display: none;" onclick="login();" id="loginBtn"><img src="/images/facebook.png" alt="Facebook"/></p>
 		</c:otherwise>
 	</c:choose>
-	<br/>
-	<div class="fb-like" data-href="http://veggie-out.herokuapp.com" data-send="false" data-width="250"  data-show-faces="true"></div>   
+	<div class="fb-like" data-href="http://veggie-out.herokuapp.com" data-send="true" data-width="250" data-show-faces="true"></div>
    <h3><spring:message code="latest.reviews"/></h3>
 
    <div id="lastReviews">

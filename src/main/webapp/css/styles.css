@@ -394,7 +394,7 @@ footer{
 
 nav{
 	position: absolute;
-	width: 580px;
+	width: 500px;
 	top: 25px;
 	height: 55px;
 	right: 0;
@@ -414,7 +414,7 @@ nav{
 
 nav ul li{
 	float: left;
-	margin-left:16px;
+	margin-left:20px;
 	line-height:normal;
 }
 

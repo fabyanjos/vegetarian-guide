@@ -50,7 +50,7 @@
 					<form:errors cssClass="error" path="subject"/>
 				</li>
 				<li>
-					<label><spring:message code="description"/>: <span class="mandatory">*</span> </label>
+					<label><spring:message code="message"/>: <span class="mandatory">*</span> </label>
 					<form:textarea path="description" />
 					<form:errors cssClass="error" path="description"/>
 				</li>				
