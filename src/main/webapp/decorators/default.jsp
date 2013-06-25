@@ -95,9 +95,9 @@
 			<p style="display: none;" onclick="login();" id="loginBtn"><img src="/images/facebook.png" alt="Facebook"/></p>
 		</c:otherwise>
 	</c:choose>
-	<div class="fb-like" data-href="http://veggie-out.herokuapp.com" data-send="true" data-width="250" data-show-faces="true"></div>
+	<div class="fb-like" data-href="<spring:message code="site.url"/>" data-send="true" data-width="250" data-show-faces="true"></div>
+   
    <h3><spring:message code="latest.reviews"/></h3>
-
    <div id="lastReviews">
    </div>
    

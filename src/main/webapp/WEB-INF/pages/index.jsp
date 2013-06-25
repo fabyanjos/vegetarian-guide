@@ -4,26 +4,26 @@
 <%@ taglib uri="http://www.springframework.org/tags" 	prefix="spring"%>
 <!doctype html>
 <html lang="en">
+
 <head>
-
-</head>
-
-	<head>
 	<!--start intro-->
-
-   <div id="intro">
-   <img src="/images/banner1.png"  alt="baner">
-   </div>
-   <!--end intro-->
-
-   <header class="group_bannner_left">
-   <hgroup>
-   <h1>We serve fresh ideas</h1>
-   <h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. 
-   </h2>
-   </hgroup>
-   </header>
-   </head>
+	
+	<div id="intro">
+		<img src="images/banner1.png" alt="baner">
+	</div>
+	<!--end intro-->
+	
+	<header class="group_bannner_left">
+		<hgroup>
+			<h1>We serve fresh ideas</h1>
+			<h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+				Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin.</h2>
+		</hgroup>
+		<div class="button black banner">
+			<a href="#">Read more about our fresh ideas</a>
+		</div>
+</header>
+</head>
 
 <body>
 	<h3><spring:message code="latest.restaurants"/></h3>

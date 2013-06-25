@@ -91,12 +91,13 @@ h1 span{
 }
 
 h2{
-	font-size: 20px;
-	line-height:1.5;
-	color:black;
-	text-align: justify;
-	padding: 5px 0 0 0;
-	margin: 0 10px 0 10px;
+	font-size: 18px;
+	line-height: 1.7;
+	color: black;
+	text-align: left;
+	width: 350px;
+	padding-top: 8px;
+	margin-left: 40px;
 }
 
 h2 span{
@@ -571,3 +572,6 @@ nav ul li a.current{
 #FooterTree a {
 	color: #000000;	
 }
+
+.banner {
+	margin: 10px 0 0 40px;
