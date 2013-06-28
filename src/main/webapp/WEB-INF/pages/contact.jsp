@@ -24,10 +24,10 @@
 					<label><spring:message code="name"/>: </label>
 					<c:choose>
 					<c:when test="${!empty SPRING_SECURITY_CONTEXT.authentication.principal}">
-						<form:input path="name" value="${SPRING_SECURITY_CONTEXT.authentication.principal.name}"/>
+						<form:input path="name" value="${SPRING_SECURITY_CONTEXT.authentication.principal.name}" cssErrorClass="inputError"/>
 					</c:when>
 					<c:otherwise>
-						<form:input path="name" />
+						<form:input path="name" cssErrorClass="inputError"/>
 					</c:otherwise>
 					</c:choose>
 					<form:errors cssClass="error" path="name"/>
@@ -36,25 +36,25 @@
 					<label><spring:message code="email"/>: <span class="mandatory">*</span> </label>
 					<c:choose>
 					<c:when test="${!empty SPRING_SECURITY_CONTEXT.authentication.principal}">
-						<form:input path="email" value="${SPRING_SECURITY_CONTEXT.authentication.principal.email}"/>
+						<form:input path="email" value="${SPRING_SECURITY_CONTEXT.authentication.principal.email}" cssErrorClass="inputError"/>
 					</c:when>
 					<c:otherwise>
-						<form:input path="email" />
+						<form:input path="email" cssErrorClass="inputError"/>
 					</c:otherwise>
 					</c:choose>
 					<form:errors cssClass="error" path="email"/>
 				</li>
 				<li>
 					<label><spring:message code="subject"/>: <span class="mandatory">*</span> </label>
-					<form:input path="subject" />
+					<form:input path="subject" cssErrorClass="inputError"/>
 					<form:errors cssClass="error" path="subject"/>
 				</li>
 				<li>
 					<label><spring:message code="message"/>: <span class="mandatory">*</span> </label>
-					<form:textarea path="description" />
+					<form:textarea path="description" cssErrorClass="inputError"/>
 					<form:errors cssClass="error" path="description"/>
 				</li>				
-				<li><input type="submit" value="<spring:message code="save"/>" class="button"/></li>
+				<li><input type="submit" value="<spring:message code="send"/>" class="button"/></li>
 			</ul>
 		</fieldset>
 	</form:form>

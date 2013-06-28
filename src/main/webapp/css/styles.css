@@ -395,9 +395,9 @@ footer{
 
 nav{
 	position: absolute;
-	width: 500px;
+	width: 550px;
 	top: 25px;
-	height: 55px;
+	height: 50px;
 	right: 0;
 	text-shadow: 0 1px 1px rgba(0,0,0,.3);
 	-webkit-border-radius: .5em;
@@ -411,12 +411,13 @@ nav{
 	background-image: -moz-linear-gradient(bottom, rgb(0,0,0) 15%, rgb(84,107,87) 71%);
 	background-image: -webkit-linear-gradient(bottom, rgb(0,0,0) 15%, rgb(84,107,87) 71%);
 	background-image: -ms-linear-gradient(bottom, rgb(0,0,0) 15%, rgb(84,107,87) 71%);
+	text-align: center;
 }
 
 nav ul li{
 	float: left;
-	margin-left:20px;
 	line-height:normal;
+	width: 20%;
 }
 
 nav ul li a{
