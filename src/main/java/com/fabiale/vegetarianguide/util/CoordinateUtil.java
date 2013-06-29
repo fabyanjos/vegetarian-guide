@@ -37,7 +37,7 @@ public class CoordinateUtil {
 			String url ="http://maps.googleapis.com/maps/api/geocode/json?address={address}&sensor=false";
 			
 			AddressResult result = restTemplate.getForObject(url, AddressResult.class, address);
-			
+			logger.log(Level.INFO, result.toString());
 			return result;
 		} catch(Exception e) {
 			logger.log(Level.SEVERE, "Details error api: " + e.getMessage(), e);
