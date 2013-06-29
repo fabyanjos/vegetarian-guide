@@ -4,6 +4,7 @@ import java.util.EnumSet;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.FilterRegistration;
+import javax.servlet.FilterRegistration.Dynamic;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
@@ -11,6 +12,7 @@ import javax.servlet.ServletRegistration;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -30,6 +32,13 @@ public class WebAppInitializer implements WebApplicationInitializer {
 		
 		FilterRegistration.Dynamic sitemeshFilter = context.addFilter("sitemesh", new SiteMeshFilter());
 		sitemeshFilter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class),false,"/*");
+		
+		//utf-8 filter
+		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+		characterEncodingFilter.setEncoding("UTF-8");
+		characterEncodingFilter.setForceEncoding(true);
+		Dynamic urtf8Filter = context.addFilter("encoding-filter" , characterEncodingFilter);
+		urtf8Filter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class),false,"/*");
 		
 		// Register Spring security filter
 		FilterRegistration.Dynamic springSecurityFilterChain = context.addFilter("springSecurityFilterChain", DelegatingFilterProxy.class);
