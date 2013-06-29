@@ -34,7 +34,7 @@ public class AddressResult {
 	}
 	
 	public void populate(Restaurant restaurant) {
-		if(this.getStatus().equals("OK")){
+		if(this.getStatus().equals("OK")) {
 			List<Address> results = this.getResults();
 			if(results != null & !results.isEmpty()) {
 				Address address2 = results.get(0);
@@ -69,6 +69,7 @@ public class AddressResult {
 				}
 			}
 		}
+		System.out.println("Populate: " + restaurant);
 	}
 }
 

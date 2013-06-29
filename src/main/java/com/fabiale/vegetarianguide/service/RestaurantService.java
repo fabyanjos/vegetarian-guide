@@ -51,7 +51,7 @@ public class RestaurantService {
 		if(ar != null && ar.getStatus() != null && ar.getStatus().equals("OK") && ar.getResults() != null) {
 			ar.populate(restaurant);
 			Double dist = 0.05;
-			
+			System.out.println(restaurant);
 			Double latMin = restaurant.getLatitude() - dist;
 			Double lngMin = restaurant.getLongitude() - dist;
 			Double latMax = restaurant.getLatitude() + dist;
