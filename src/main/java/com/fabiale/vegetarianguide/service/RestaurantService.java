@@ -53,7 +53,7 @@ public class RestaurantService {
 		List<Restaurant> result = null;
 		AddressResult ar = coordinate.addressDetails(restaurant.getAddress());  
 		if(ar != null && ar.getStatus() != null && ar.getStatus().equals("OK") && ar.getResults() != null) {
-			ar.populate(restaurant);
+			restaurant = ar.populate(restaurant);
 			Double dist = 0.05;
 			logger.log(Level.INFO, restaurant.toString());
 			Double latMin = restaurant.getLatitude() - dist;
