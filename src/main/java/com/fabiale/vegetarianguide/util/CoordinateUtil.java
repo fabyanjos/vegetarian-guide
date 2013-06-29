@@ -34,9 +34,11 @@ public class CoordinateUtil {
 	
 	public AddressResult addressDetails(String address) {
 		try {
-			String url ="http://maps.googleapis.com/maps/api/geocode/json?address={address}&sensor=false";
+			logger.log(Level.INFO, address);
+			String url = "http://maps.googleapis.com/maps/api/geocode/json?address={address}&sensor=false";
+			url = url.replace("{address}", address);
 			
-			AddressResult result = restTemplate.getForObject(url, AddressResult.class, address);
+			AddressResult result = restTemplate.getForObject(url, AddressResult.class);
 			logger.log(Level.INFO, result.toString());
 			return result;
 		} catch(Exception e) {
