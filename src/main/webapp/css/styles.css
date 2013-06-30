@@ -414,6 +414,10 @@ nav{
 	text-align: center;
 }
 
+nav ul {
+	margin-left: 5px;
+}
+
 nav ul li{
 	float: left;
 	line-height:normal;
