@@ -56,23 +56,20 @@ public class ExceptionHandlerBinder {
 	
 	@ExceptionHandler(AddressException.class)
 	public ModelAndView handleIOException(AddressException ex) {
-		ConstraintViolationException constraint = (ConstraintViolationException) ex.getCause();
-		logger.log(Level.SEVERE, "handleIOException - Catching: " + ex.getClass().getSimpleName(), ex);
-		return errorModelAndView(ex, constraint.getConstraintName() + ".error");
+		logger.log(Level.SEVERE, "Exception found: " + ex, ex);
+		return errorModelAndView(ex, "");
 	}
 	
 	@ExceptionHandler(MessagingException.class)
 	public ModelAndView handleIOException(MessagingException ex) {
-		ConstraintViolationException constraint = (ConstraintViolationException) ex.getCause();
-		logger.log(Level.SEVERE, "handleIOException - Catching: " + ex.getClass().getSimpleName(), ex);
-		return errorModelAndView(ex, constraint.getConstraintName() + ".error");
+		logger.log(Level.SEVERE, "Exception found: " + ex, ex);
+		return errorModelAndView(ex, "");
 	}
 	
 	@ExceptionHandler(NumberFormatException.class)
 	public ModelAndView handleIOException(NumberFormatException ex) {
-		ConstraintViolationException constraint = (ConstraintViolationException) ex.getCause();
-		logger.log(Level.SEVERE, "handleIOException - Catching: " + ex.getClass().getSimpleName(), ex);
-		return errorModelAndView(ex, constraint.getConstraintName() + ".error");
+		logger.log(Level.SEVERE, "Exception found: " + ex, ex);
+		return errorModelAndView(ex, "");
 	}
 
 	/**
