@@ -2,6 +2,7 @@ package com.fabiale.vegetarianguide.web;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,8 @@ public class ContactController {
 	@Autowired MailService mailService;
 	
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)
-	public String contact(ModelMap map) {
-		map.addAttribute("current", "contact");
+	public String init(HttpSession session) {
+		session.setAttribute("current", "contact");
 		return "/contact";
 	}
 	

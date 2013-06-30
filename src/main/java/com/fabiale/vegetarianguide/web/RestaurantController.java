@@ -4,6 +4,7 @@ import java.util.List;
 
 import javassist.NotFoundException;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +40,8 @@ public class RestaurantController {
 
 	@Secured("ROLE_USER")
 	@RequestMapping(value = "/restaurant/new", method = RequestMethod.GET)
-	public String home(ModelMap map) {
-		map.addAttribute("current", "add");
+	public String home(HttpSession session) {
+		session.setAttribute("current", "add");
 		return "/restaurant/add";
 	}
 	

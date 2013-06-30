@@ -10,7 +10,7 @@ $(window).load(function () {
 			if((result != null)) {
 				for(var i = 0; i < result.length; i++) {
 					var r = result[i];
-					var link = 'http://localhost:8080/restaurant/details/' + r.id;
+					var link = '/restaurant/details/' + r.id;
     				$("#restaurantsListHome").append(
     	    				$('<article>').attr('class', 'holder_gallery').append(
 	    						$('<a>').attr('href', link).attr('class', 'photo_hover2').append(

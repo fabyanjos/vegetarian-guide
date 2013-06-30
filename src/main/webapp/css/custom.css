@@ -389,3 +389,7 @@ h3 .ratingDiv {
 	font-size: 20px;
 	line-height: 2;
 }
+
+:first-letter {
+	text-transform: capitalize; 
+}
