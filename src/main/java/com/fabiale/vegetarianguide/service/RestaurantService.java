@@ -2,8 +2,6 @@ package com.fabiale.vegetarianguide.service;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +21,6 @@ public class RestaurantService {
 	@Autowired private CoordinateUtil coordinate;
 	@Autowired private CountryService countryService;
 	
-	private Logger logger = Logger.getLogger(RestaurantService.class.getName());
-	
-
 	public List<Restaurant> getAll() {
 		return this.repository.getAll();
 	}
@@ -53,9 +48,9 @@ public class RestaurantService {
 		List<Restaurant> result = null;
 		AddressResult ar = coordinate.addressDetails(restaurant.getAddress());  
 		if(ar != null && ar.getStatus() != null && ar.getStatus().equals("OK") && ar.getResults() != null) {
-			restaurant = ar.populate(restaurant);
+			ar.populate(restaurant);
 			Double dist = 0.05;
-			logger.log(Level.INFO, restaurant.toString());
+
 			Double latMin = restaurant.getLatitude() - dist;
 			Double lngMin = restaurant.getLongitude() - dist;
 			Double latMax = restaurant.getLatitude() + dist;

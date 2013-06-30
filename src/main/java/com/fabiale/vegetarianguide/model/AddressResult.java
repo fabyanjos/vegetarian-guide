@@ -33,7 +33,7 @@ public class AddressResult {
 		return builder.toString();
 	}
 	
-	public Restaurant populate(Restaurant restaurant) {
+	public void populate(Restaurant restaurant) {
 		if(this.getStatus().equals("OK")) {
 			List<Address> results = this.getResults();
 			if(results != null & !results.isEmpty()) {
@@ -69,7 +69,6 @@ public class AddressResult {
 				}
 			}
 		}
-		return restaurant;
 	}
 }
 

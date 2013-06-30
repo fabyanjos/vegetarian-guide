@@ -39,7 +39,8 @@ public class RestaurantController {
 
 	@Secured("ROLE_USER")
 	@RequestMapping(value = "/restaurant/new", method = RequestMethod.GET)
-	public String home() {
+	public String home(ModelMap map) {
+		map.addAttribute("current", "add");
 		return "/restaurant/add";
 	}
 	
@@ -60,7 +61,8 @@ public class RestaurantController {
 	}
 	
 	@RequestMapping(value = "/restaurant/search", method = RequestMethod.GET)
-	public String search() {
+	public String search(ModelMap map) {
+		map.addAttribute("current", "search");
 		return "/restaurant/search";
 	}
 	

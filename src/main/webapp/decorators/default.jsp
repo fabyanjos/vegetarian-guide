@@ -54,11 +54,11 @@
    <!--start menu-->
    <nav>
    <ul id="menu">
-   <li><a href="/"><spring:message code="home"/></a></li>
-   <li><a href="/restaurant/search"><spring:message code="search"/></a></li>
-   <li><a href="/restaurant/new"><spring:message code="add"/></a></li>
-   <li><a href="/about"><spring:message code="about"/></a></li>
-   <li><a href="/contact"><spring:message code="contact"/></a></li>
+   <li><a href="/" <c:if test="${current eq 'home'}">class="current"</c:if>><spring:message code="home"/></a></li>
+   <li><a href="/restaurant/search" <c:if test="${current eq 'search'}">class="current"</c:if>><spring:message code="search"/></a></li>
+   <li><a href="/restaurant/new" <c:if test="${current eq 'add'}">class="current"</c:if>><spring:message code="add"/></a></li>
+   <li><a href="/about" <c:if test="${current eq 'about'}">class="current"</c:if>><spring:message code="about"/></a></li>
+   <li><a href="/contact" <c:if test="${current eq 'contact'}">class="current"</c:if>><spring:message code="contact"/></a></li>
    </ul>
    </nav>
    <!--end menu-->

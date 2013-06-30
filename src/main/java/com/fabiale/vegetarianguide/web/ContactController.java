@@ -21,7 +21,8 @@ public class ContactController {
 	@Autowired MailService mailService;
 	
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)
-	public String contact() {
+	public String contact(ModelMap map) {
+		map.addAttribute("current", "contact");
 		return "/contact";
 	}
 	

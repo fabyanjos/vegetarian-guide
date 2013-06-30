@@ -395,7 +395,7 @@ footer{
 
 nav{
 	position: absolute;
-	width: 550px;
+	width: 600px;
 	top: 25px;
 	height: 50px;
 	right: 0;
@@ -446,7 +446,7 @@ nav ul li a.current{
 	background-image: -moz-linear-gradient(bottom, rgb(69,99,82) 15%, rgb(155,199,163) 71%);
 	background-image: -webkit-linear-gradient(bottom, rgb(69,99,82) 15%, rgb(155,199,163) 71%);
 	background-image: -ms-linear-gradient(bottom, rgb(69,99,82) 15%, rgb(155,199,163) 71%);
-	padding:15px;
+	padding: 14px;
 }
 
 .content_menu{
