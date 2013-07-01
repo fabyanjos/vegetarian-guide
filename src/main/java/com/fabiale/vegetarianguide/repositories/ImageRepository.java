@@ -43,6 +43,15 @@ public class ImageRepository {
     	criteria.add(Restrictions.eq("restaurant", restaurant));
     	return criteria.list();
     }
+    
+    @SuppressWarnings("unchecked")
+	public List<Image> getByRestaurant(Restaurant restaurant, int qtd) {
+    	Criteria criteria = this.factory.getCurrentSession().createCriteria(Image.class);
+    	criteria.add(Restrictions.eq("restaurant", restaurant));
+    	criteria.setMaxResults(qtd);
+    	return criteria.list();
+    }
+    
     @SuppressWarnings("unchecked")
     public List<Image> getLastUptades(int quantity) {
     	Criteria criteria = this.factory.getCurrentSession().createCriteria(Image.class);

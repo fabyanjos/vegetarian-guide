@@ -2,7 +2,7 @@ $(window).load(function () {
   $.ajax({
 		type : "GET",
 		async : false,
-		url : "/restaurant/list/2",
+		url : "/restaurant/list/3",
 		contentType : "application/json; charset=utf-8",
 		dataType : "json",
 		processData : true, 
@@ -11,12 +11,15 @@ $(window).load(function () {
 				for(var i = 0; i < result.length; i++) {
 					var r = result[i];
 					var link = '/restaurant/details/' + r.id;
-    				$("#restaurantsListHome").append(
-    	    				$('<article>').attr('class', 'holder_gallery').append(
-	    						$('<a>').attr('href', link).attr('class', 'photo_hover2').append(
-	    							$('<image>').attr('src', '/images/picture2.jpg'))).append(
-	    					$('<a>').attr('href', link).append($('<h2>').text(r.name.substring(0,50)))).append(
-	    					$('<p>').text(r.description.substring(0,275))));
+					var article = $('<article>').attr('class', 'holder_gallery');
+					if(r.imageUrl != null) {
+						article.append(
+							$('<a>').attr('href', link).attr('class', 'photo_hover2').append(
+							$('<image>').attr('src', r.imageUrl)));
+					}
+					article.append($('<a>').attr('href', link).append($('<h2>').text(r.name.substring(0,50)))).append(
+							$('<p>').text(r.description.substring(0,275)));
+    				$("#restaurantsListHome").append(article);
 //	    					.append(
 //	    					$('<span>').attr('class', 'readmore').append(
 //	    						$('<a>').attr('href', link).text('details'))));

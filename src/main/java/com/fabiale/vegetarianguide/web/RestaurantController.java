@@ -90,8 +90,14 @@ public class RestaurantController {
     
     @RequestMapping(value = "/restaurant/list/{qtd}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody
-	public List<Restaurant> getLastUpdates(@PathVariable("qtd") int qtd) {
-		return service.getLastUptades(qtd);
+	public List<Restaurant> getLastUpdates(@PathVariable("qtd") int qtd) throws DropboxException {
+		List<Restaurant> lastUptades = service.getLastUptades(qtd);
+		for (Restaurant restaurant : lastUptades) {
+			List<Image> images = imageService.getByRestaurant(restaurant, 1);
+			if(images!= null && !images.isEmpty())
+				restaurant.setImageUrl(images.iterator().next().getFilePath());
+		}
+		return lastUptades;
 	}
 	
 	@ModelAttribute("restaurant")

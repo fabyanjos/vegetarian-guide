@@ -13,7 +13,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.ForeignKey;
 import org.hibernate.validator.constraints.Length;
@@ -44,12 +43,10 @@ public class Image {
 	@ManyToOne
 	@JoinColumn(name = "restaurant_id", nullable = false)
 	@ForeignKey(name = "FK_IMAGE_RESTAURANT")
-	@NotNull
 	private Restaurant restaurant;
 	@ManyToOne
 	@JoinColumn(name = "user_id", nullable = false)
 	@ForeignKey(name = "FK_IMAGE_USER")
-	@NotNull
 	private User user;
 	
 	public MultipartFile getFile() {

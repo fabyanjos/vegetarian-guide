@@ -57,6 +57,15 @@ public class ImageService {
 		return images;
 	}
 	
+	public List<Image> getByRestaurant(Restaurant restaurant, int qtd) throws DropboxException {
+		List<Image> images = this.repository.getByRestaurant(restaurant, qtd);
+		for (Image image : images) {
+			DropboxLink media = dbApi.media(image.getFilePath(), false);
+			image.setFilePath(media.url);
+		}
+		return images;
+	}
+	
 	public List<Image> getLastUptades(int quantity) {
 		return this.repository.getLastUptades(quantity);
 	}

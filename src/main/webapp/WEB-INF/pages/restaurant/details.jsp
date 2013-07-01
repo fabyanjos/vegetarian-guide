@@ -38,11 +38,11 @@
 				<p>${restaurant.street}, ${restaurant.number} ${restaurant.postalCode}, ${restaurant.city}, <spring:message code="${restaurant.country.name}"/></p>
 			</div>
 			<br/>
-			<c:if test="${!empty images}">
 			<h3>
 				<spring:message code="images"/>
 				<span id="ratingLink"><a href="/restaurant/image/${restaurant.id}"><spring:message code="addimage"/></a></span>
 			</h3>
+			<c:if test="${!empty images}">
 			<div class="divBox">
 			<div id="carousel">
 				<ul>

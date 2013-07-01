@@ -303,6 +303,10 @@ header{
 	a.photo_hover2:hover {
 	border: 1px solid #E1E1E1;
 }
+a.photo_hover2 img {
+	width: 150px;
+	height: 99px;
+}
 
 /***************************************************
 				   GALLERY
@@ -317,6 +321,7 @@ header{
 
 .holder_gallery a.photo_hover {left:42px}
 .holder_gallery h3 { clear:left}
+.holder_gallery h2 { margin-left: 0 }
 	
 .holder_gallery a.name{
 	font-size:12px;

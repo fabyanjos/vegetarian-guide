@@ -83,6 +83,17 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
+	@Column(insertable = false, updatable = false)
+	@Transient
+	private String imageUrl;
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 
 	public Integer getRating() {
 		return rating;
