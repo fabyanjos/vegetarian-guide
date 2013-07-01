@@ -30,7 +30,7 @@
 				<p>${restaurant.description}</p>
 				<p class="address">${restaurant.street}, ${restaurant.number} ${restaurant.postalCode}, ${restaurant.city}, <spring:message code="${restaurant.country.name}"/></p>
 				<c:if test="${!empty restaurant.phone}"><p class="phone">${restaurant.phone}</p></c:if>
-				<c:if test="${!empty restaurant.website}"><p><a href="${restaurant.website}" target="_blank" class="websiteLink"><spring:message code="website"/></a></p></c:if>
+				<c:if test="${!empty restaurant.website}"><p class="websiteLink"><a href="${restaurant.website}" target="_blank"><spring:message code="website"/></a></p></c:if>
 			</div>
 			
 			<div id="infoWindow" style="display: none;">

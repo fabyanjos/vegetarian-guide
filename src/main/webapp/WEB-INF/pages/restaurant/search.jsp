@@ -32,11 +32,11 @@
 								<spring:message code="${r.type}"/>
 								<span class="ratingDiv rating " id="rating${i.index}"></span>
 							</p>
-							<p>${r.street} ${r.number} - ${r.postalCode}, ${r.city}, <spring:message code="${r.country.name}"/></p>
 							
 							<p>${r.description}</p>
-							<c:if test="${!empty r.phone}"><p><span class="phone">${r.phone}</span></p></c:if>
-							<c:if test="${!empty r.website}"><p><a href="${r.website}" target="_blank" class="websiteLink"><spring:message code="website"/></a></p></c:if>
+							<p class="address">${r.street} ${r.number} - ${r.postalCode}, ${r.city}, <spring:message code="${r.country.name}"/></p>
+							<c:if test="${!empty r.phone}"><p class="phone">${r.phone}</p></c:if>
+							<c:if test="${!empty r.website}"><p class="websiteLink"><a href="${r.website}" target="_blank"><spring:message code="website"/></a></p></c:if>
 						</div>
 						<div class="resultRight">
 							<p>
