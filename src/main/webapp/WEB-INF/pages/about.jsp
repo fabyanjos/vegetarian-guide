@@ -11,7 +11,10 @@
 <body>
 	<div id="main">
 		<h3><spring:message code="about"/></h3>	
-		<p>write about</p>
+		<p>
+			Veggie Out é uma ferramenta de busca de restaurantes Vegetarianos e Veganos.
+			Compartilhe e avalie opções para comer para pessoas como você e ajude para que novas opções sejam descobertas.
+		</p>
 	</div>
 </body>
 </html>

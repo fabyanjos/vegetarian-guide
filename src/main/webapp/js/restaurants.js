@@ -13,19 +13,20 @@ $(window).load(function () {
 					var link = '/restaurant/details/' + r.id;
 					var article = $('<article>').attr('class', 'holder_gallery');
 					if(r.imageUrl != null) {
-						article.append(
-							$('<a>').attr('href', link).attr('class', 'photo_hover2').append(
-							$('<image>').attr('src', r.imageUrl)));
+						article
+							.append($('<a>').attr('href', link).attr('class', 'photo_hover2')
+							.append($('<image>').attr('src', r.imageUrl)));
 					}
-					article.append($('<a>').attr('href', link).append($('<h2>').text(r.name.substring(0,50)))).append(
-							$('<p>').text(r.description.substring(0,275)));
+					article
+						.append($('<a>').attr('href', link).append($('<h2>').text(r.name.substring(0,50))))
+						.append($('<p>').text(r.description.substring(0,275)));
     				$("#restaurantsListHome").append(article);
 //	    					.append(
 //	    					$('<span>').attr('class', 'readmore').append(
 //	    						$('<a>').attr('href', link).text('details'))));
 				}
     		} else {
-    			alert("vazio");
+//    			alert("vazio");
     		}
 		},
 		eror : function() {

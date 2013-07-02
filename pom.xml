@@ -251,6 +251,11 @@
      	<artifactId>gmail4j</artifactId>
      	<version>0.3</version>
      </dependency>
+     <dependency>
+     	<groupId>com.newrelic.agent.java</groupId>
+     	<artifactId>newrelic-agent</artifactId>
+     	<version>2.19.1</version>
+     </dependency>
   </dependencies>
   <build>
     <finalName>vegetarian-guide</finalName>
@@ -274,6 +279,18 @@
                         </artifactItems>
                     </configuration>
                 </execution>
+                <execution>
+		          <id>copy-new-relic</id>
+		          <phase>package</phase>
+		         <goals>
+		           <goal>copy-dependencies</goal>
+		          </goals>
+		          <configuration>
+		            <includeGroupIds>com.newrelic.agent.java</includeGroupIds>
+		            <includeArtifactIds>newrelic-agent</includeArtifactIds>
+		            <stripVersion>true</stripVersion>
+		          </configuration>
+		        </execution>
             </executions>
         </plugin>
         <plugin>
