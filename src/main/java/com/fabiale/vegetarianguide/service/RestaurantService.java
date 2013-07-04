@@ -65,6 +65,7 @@ public class RestaurantService {
 			for(Restaurant r : result) {
 				coordinate.distance(restaurant, r);
 				r.setRating(reviewRepository.getRestaurantRating(r));
+				System.out.println("DISTANCE: " + r.getDistance());
 			}
 			
 			Collections.sort(result);
