@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dropbox.client2.exception.DropboxException;
+import com.fabiale.vegetarianguide.exception.RestaurantNotFoundException;
 import com.fabiale.vegetarianguide.model.Image;
 import com.fabiale.vegetarianguide.model.Restaurant;
 import com.fabiale.vegetarianguide.model.User;
@@ -41,7 +42,7 @@ public class ImageController {
 	
 	@Secured("ROLE_USER")
 	@RequestMapping(value = "/restaurant/image/save/{id}", method = {RequestMethod.POST, RequestMethod.GET})
-	public String save(@PathVariable("id") Integer id, @ModelAttribute("image") @Valid Image image, BindingResult result, ModelMap modelMap, RedirectAttributes redirectAttributes) throws IOException, DropboxException {
+	public String save(@PathVariable("id") Integer id, @ModelAttribute("image") @Valid Image image, BindingResult result, ModelMap modelMap, RedirectAttributes redirectAttributes) throws IOException, DropboxException, RestaurantNotFoundException {
 		
 		if (result.hasErrors()) {
 			modelMap.addAttribute("restaurantId", id);

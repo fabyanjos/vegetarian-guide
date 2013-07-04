@@ -30,15 +30,9 @@ public class WebAppInitializer implements WebApplicationInitializer {
 		// Add context loader listener 
 		context.addListener(new ContextLoaderListener(appContext));
 		
-		FilterRegistration.Dynamic sitemeshFilter = context.addFilter("sitemesh", new SiteMeshFilter());
-		sitemeshFilter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class),false,"/*");
+		this.sitemesh(context);
 		
-		//utf-8 filter
-		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
-		characterEncodingFilter.setEncoding("UTF-8");
-		characterEncodingFilter.setForceEncoding(true);
-		Dynamic urtf8Filter = context.addFilter("encoding-filter" , characterEncodingFilter);
-		urtf8Filter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class),false,"/*");
+		this.encodingFilter(context);
 		
 		// Register Spring security filter
 		FilterRegistration.Dynamic springSecurityFilterChain = context.addFilter("springSecurityFilterChain", DelegatingFilterProxy.class);
@@ -48,5 +42,18 @@ public class WebAppInitializer implements WebApplicationInitializer {
 		ServletRegistration.Dynamic dispatcher = context.addServlet("dispatcher", new DispatcherServlet(appContext));
 		dispatcher.setLoadOnStartup(1);
 		dispatcher.addMapping("/");
+	}
+
+	private void sitemesh(ServletContext context) {
+		FilterRegistration.Dynamic sitemeshFilter = context.addFilter("sitemesh", new SiteMeshFilter());
+		sitemeshFilter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class),false,"/*");
+	}
+
+	private void encodingFilter(ServletContext context) {
+		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+		characterEncodingFilter.setEncoding("UTF-8");
+		characterEncodingFilter.setForceEncoding(true);
+		Dynamic urtf8Filter = context.addFilter("encoding-filter" , characterEncodingFilter);
+		urtf8Filter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class),false,"/*");
 	}
 }

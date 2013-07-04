@@ -11,7 +11,16 @@
 	<div id="main">
 		<fieldset id="place">
 		    <h3><spring:message code="error"/></h3>
-		    <p class="errorMsg"><spring:message code="${msg}"/></p>
+		    <p class="errorMsg">
+		    	<c:choose>
+		    		<c:when test="${!empty msg}">
+		    			<spring:message code="${msg}"/>
+		    		</c:when>
+		    		<c:otherwise>
+		    			<spring:message code="system.error"/>
+		    		</c:otherwise>
+		    	</c:choose>
+		    </p>
 	    </fieldset>
     </div>
 </body>

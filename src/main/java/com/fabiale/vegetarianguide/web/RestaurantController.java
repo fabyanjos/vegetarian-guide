@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dropbox.client2.exception.DropboxException;
+import com.fabiale.vegetarianguide.exception.RestaurantNotFoundException;
 import com.fabiale.vegetarianguide.model.Image;
 import com.fabiale.vegetarianguide.model.Restaurant;
 import com.fabiale.vegetarianguide.model.Review;
@@ -78,7 +79,7 @@ public class RestaurantController {
 	}
 	
     @RequestMapping(value = "/restaurant/details/{id}", method = {RequestMethod.POST, RequestMethod.GET})
-    public String getDetails(@PathVariable("id") Integer id, ModelMap modelMap) throws NotFoundException, DropboxException {
+    public String getDetails(@PathVariable("id") Integer id, ModelMap modelMap) throws NotFoundException, DropboxException, RestaurantNotFoundException {
 		Restaurant restaurant = service.getById(id);
 		List<Review> reviews = reviewService.getByRestaurant(restaurant);
 		List<Image> images = imageService.getByRestaurant(restaurant);

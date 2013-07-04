@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fabiale.vegetarianguide.exception.RestaurantNotFoundException;
 import com.fabiale.vegetarianguide.model.Restaurant;
 import com.fabiale.vegetarianguide.model.Review;
 import com.fabiale.vegetarianguide.model.User;
@@ -39,7 +40,7 @@ public class ReviewController {
 	
 	@Secured("ROLE_USER")
 	@RequestMapping(value = "/restaurant/review/save/{id}", method = {RequestMethod.POST, RequestMethod.GET})
-	public String save(@PathVariable("id") Integer id, @ModelAttribute("review") @Valid Review review, BindingResult result, ModelMap modelMap, RedirectAttributes redirectAttributes) {
+	public String save(@PathVariable("id") Integer id, @ModelAttribute("review") @Valid Review review, BindingResult result, ModelMap modelMap, RedirectAttributes redirectAttributes) throws RestaurantNotFoundException {
 		
 		if (result.hasErrors()) {
 			modelMap.addAttribute("restaurantId", id);

@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException;
 
 import com.dropbox.client2.exception.DropboxException;
+import com.fabiale.vegetarianguide.exception.RestaurantNotFoundException;
 
 @ControllerAdvice
 public class ExceptionHandlerBinder {
@@ -39,6 +41,12 @@ public class ExceptionHandlerBinder {
 	public ModelAndView handleException(final NotFoundException exception) {
 		logger.log(Level.SEVERE, "Exception found: " + exception, exception);
 		return errorModelAndView(exception, "");
+	}
+	
+	@ExceptionHandler({ RestaurantNotFoundException.class })
+	public ModelAndView handleException(final RestaurantNotFoundException exception) {
+		logger.log(Level.SEVERE, "Exception found: " + exception, exception);
+		return errorModelAndView(exception, "restaurant.not.found");
 	}
 	
 	@ExceptionHandler({ IOException.class })
@@ -71,11 +79,23 @@ public class ExceptionHandlerBinder {
 		logger.log(Level.SEVERE, "Exception found: " + ex, ex);
 		return errorModelAndView(ex, "");
 	}
+	
+	@ExceptionHandler(Throwable.class)
+	public ModelAndView handleIOException(Throwable ex) {
+		logger.log(Level.SEVERE, "Exception found: " + ex, ex);
+		return errorModelAndView(ex, "system.error");
+	}
+	
+	@ExceptionHandler(NoSuchRequestHandlingMethodException.class)
+	public ModelAndView handleIOException(NoSuchRequestHandlingMethodException ex) {
+		logger.log(Level.SEVERE, "Exception found: " + ex, ex);
+		return errorModelAndView(ex, "page.not.found");
+	}
 
 	/**
 	 * Get the users details for the 'personal' page
 	 */
-	private ModelAndView errorModelAndView(Exception ex, String msg) {
+	private ModelAndView errorModelAndView(Throwable ex, String msg) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("error");
 		modelAndView.addObject("msg", msg);

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fabiale.vegetarianguide.exception.RestaurantNotFoundException;
 import com.fabiale.vegetarianguide.model.AddressResult;
 import com.fabiale.vegetarianguide.model.Country;
 import com.fabiale.vegetarianguide.model.Restaurant;
@@ -38,10 +39,13 @@ public class RestaurantService {
 		return this.repository.create(restaurant);
 	}
 	
-	public Restaurant getById(Integer id) {
+	public Restaurant getById(Integer id) throws RestaurantNotFoundException {
 		Restaurant r = this.repository.getById(id);
-		r.setRating(reviewRepository.getRestaurantRating(r));
-		return r;
+		if (r != null) {
+			r.setRating(reviewRepository.getRestaurantRating(r));
+			return r;
+		}
+		throw new RestaurantNotFoundException("Not Found");
 	}
 	
 	public List<Restaurant> getNearBy(Restaurant restaurant) {
