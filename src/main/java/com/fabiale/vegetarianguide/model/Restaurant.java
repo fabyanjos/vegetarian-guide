@@ -306,6 +306,12 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 
 	@Override
 	public int compareTo(Restaurant o) {
+		if(this.distance == null && o.getDistance() != null)
+			return -1;
+		else if(this.distance != null &&  o.getDistance() == null)
+			return 1;
+		else if(this.distance == null && o.getDistance() == null)
+			return 0;
 		return this.distance.compareTo(o.getDistance());
 	}
 }
