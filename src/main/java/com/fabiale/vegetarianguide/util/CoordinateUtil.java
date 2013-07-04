@@ -26,6 +26,7 @@ public class CoordinateUtil {
 			MapsResult result = restTemplate.getForObject(url, MapsResult.class, origin.getLatLng(), destination.getLatLng());
 			
 			destination.setDistance(result.getDistance());
+			logger.info("STATUS CODE: " + result.getStatus());
 		} catch(Exception e) {
 			logger.log(Level.SEVERE, "Distance error api: " + e.getMessage(), e);
 			throw new RestClientException("Distance error api: " + e.getMessage(), e);

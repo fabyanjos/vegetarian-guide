@@ -236,14 +236,17 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	}
 
 	public String getDistanceString() {
-		Locale locale = LocaleContextHolder.getLocale();
-		NumberFormat fmt = NumberFormat.getInstance(locale);
-		fmt.setMaximumFractionDigits(2);
-		fmt.setMinimumFractionDigits(2);
-		if (distance < 1000)
-			return fmt.format(distance) + " m";
-		else
-			return fmt.format(distance / 1000) + " km";
+		if(distance != null) {
+			Locale locale = LocaleContextHolder.getLocale();
+			NumberFormat fmt = NumberFormat.getInstance(locale);
+			fmt.setMaximumFractionDigits(2);
+			fmt.setMinimumFractionDigits(2);
+			if (distance < 1000)
+				return fmt.format(distance) + " m";
+			else
+				return fmt.format(distance / 1000) + " km";
+		} else
+			return "";
 	}
 
 	public User getCreatedBy() {
