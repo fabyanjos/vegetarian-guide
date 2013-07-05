@@ -4,7 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,7 +12,7 @@ import com.fabiale.vegetarianguide.model.AddressResult;
 import com.fabiale.vegetarianguide.model.MapsResult;
 import com.fabiale.vegetarianguide.model.Restaurant;
 
-@Service
+@Component
 public class CoordinateUtil {
 	
 	@Autowired RestTemplate restTemplate;
@@ -26,7 +26,6 @@ public class CoordinateUtil {
 			MapsResult result = restTemplate.getForObject(url, MapsResult.class, origin.getLatLng(), destination.getLatLng());
 			
 			destination.setDistance(result.getDistance());
-			logger.info("STATUS CODE: " + result.getStatus() + " DISTANCE: " + result.getDistance());
 		} catch(Exception e) {
 			logger.log(Level.SEVERE, "Distance error api: " + e.getMessage(), e);
 			throw new RestClientException("Distance error api: " + e.getMessage(), e);

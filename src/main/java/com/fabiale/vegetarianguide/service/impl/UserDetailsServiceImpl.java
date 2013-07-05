@@ -1,4 +1,4 @@
-package com.fabiale.vegetarianguide.service;
+package com.fabiale.vegetarianguide.service.impl;
 
 import java.security.MessageDigest;
 

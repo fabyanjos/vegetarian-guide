@@ -9,9 +9,9 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class ImageUtil {
 
 	public BufferedImage resizeImage(InputStream imageStream) throws IOException {
