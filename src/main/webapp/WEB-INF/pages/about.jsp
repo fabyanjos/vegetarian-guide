@@ -15,6 +15,12 @@
 			Veggie Out sua ferramenta para busca de restaurantes Vegetarianos e Veganos.
 			Compartilhe e avalie opções para comer para pessoas como você e ajude para que novas opções sejam descobertas.
 		</p>
+		<ul>
+			<li>Acesse com sua conta do Facebook</li>
+			<li>Compartilhe sua opnião sobre os locais</li>
+			<li>Compartilhe fotos</li>
+			<li>Pesquise pelos locais próximos</li>
+		</ul>
 	</div>
 </body>
 </html>

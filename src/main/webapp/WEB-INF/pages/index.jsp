@@ -32,6 +32,7 @@
     
 	<h3>About us</h3>
 	<a class="photo_hover2" href="/about"><img src="/images/picture1.jpg" width="200" height="97" alt="picture1"/></a>
+	<br/>
 	<p>Veggie Out sua ferramenta para busca de restaurantes Vegetarianos e Veganos.</p>
 	<p>Compartilhe e avalie opções para comer para pessoas como você e ajude para que novas opções sejam descobertas.<span class="readmore"> <a href="/about">Read more..</a></span>
 	</p>

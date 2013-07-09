@@ -8,9 +8,11 @@ import javassist.NotFoundException;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.client.RestClientException;
@@ -86,6 +88,18 @@ public class ExceptionHandlerBinder {
 		return errorModelAndView(ex, "system.error");
 	}
 	
+	@ExceptionHandler(AccessDeniedException.class)
+	public ModelAndView handleIOException(AccessDeniedException ex, HttpSession session) {
+		logger.log(Level.INFO, "Access denied" + ex);
+		session.setAttribute("current", "");
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("error");
+		modelAndView.addObject("warn", "login.request");
+
+		return modelAndView;
+	}
+	
 	@ExceptionHandler(NoSuchRequestHandlingMethodException.class)
 	public ModelAndView handleIOException(NoSuchRequestHandlingMethodException ex) {
 		logger.log(Level.SEVERE, "Exception found: " + ex, ex);
@@ -98,7 +112,7 @@ public class ExceptionHandlerBinder {
 	private ModelAndView errorModelAndView(Throwable ex, String msg) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("error");
-		modelAndView.addObject("msg", msg);
+		modelAndView.addObject("error", msg);
 
 		return modelAndView;
 	}

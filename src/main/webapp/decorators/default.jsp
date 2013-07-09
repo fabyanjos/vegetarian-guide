@@ -80,10 +80,10 @@
 
    <aside class="group2">
    
-   <p id="languageBtn">
+   <!--p id="languageBtn">
 		<a href="<c:url value='?lang=en'/>" title="<spring:message code="english"/>"><img src="/images/english-icon.png"/></a> 
 		<a href="<c:url value='?lang=pt_BR'/>" title="<spring:message code="portuguese"/>"><img src="/images/portuguese-icon.png"/></a>
-	</p>
+	</p-->
 	<c:choose>
 		<c:when test="${!empty SPRING_SECURITY_CONTEXT.authentication.principal}">
 			<div id="userBox">
