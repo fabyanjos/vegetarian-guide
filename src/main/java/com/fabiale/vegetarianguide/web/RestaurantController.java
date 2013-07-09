@@ -48,7 +48,7 @@ public class RestaurantController {
 	
 	@Secured("ROLE_USER")
 	@RequestMapping(value = "/restaurant/add", method = {RequestMethod.POST, RequestMethod.GET})
-	public String save(@ModelAttribute("restaurant") @Valid Restaurant restaurant, BindingResult result, ModelMap modelMap) {
+	public String save(@ModelAttribute("restaurant") @Valid Restaurant restaurant, BindingResult result, ModelMap modelMap) throws NotFoundException {
 		
 		if (result.hasErrors()) {
 			modelMap.addAttribute("error", "error.add.validation.restaurant");
@@ -69,7 +69,7 @@ public class RestaurantController {
 	}
 	
 	@RequestMapping(value = "/restaurant/results", method = {RequestMethod.POST, RequestMethod.GET})
-	public String result(@ModelAttribute("restaurant") Restaurant restaurant, ModelMap modelMap) {
+	public String result(@ModelAttribute("restaurant") Restaurant restaurant, ModelMap modelMap) throws NotFoundException {
 
 		List<Restaurant> list = service.getNearBy(restaurant);
 

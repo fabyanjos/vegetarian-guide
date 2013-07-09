@@ -3,6 +3,8 @@ package com.fabiale.vegetarianguide.service.impl;
 import java.util.Collections;
 import java.util.List;
 
+import javassist.NotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +30,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 		return this.repository.getAll();
 	}
 
-	public Integer create(Restaurant restaurant) {
+	public Integer create(Restaurant restaurant) throws NotFoundException {
 		AddressResult details = coordinate.addressDetails(restaurant.getAddress());
 		details.populate(restaurant);
 		
@@ -50,7 +52,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 		throw new RestaurantNotFoundException("Not Found");
 	}
 	
-	public List<Restaurant> getNearBy(Restaurant restaurant) {
+	public List<Restaurant> getNearBy(Restaurant restaurant) throws NotFoundException {
 		List<Restaurant> result = null;
 		AddressResult ar = coordinate.addressDetails(restaurant.getAddress());  
 		if(ar != null && ar.getStatus() != null && ar.getStatus().equals("OK") && ar.getResults() != null) {

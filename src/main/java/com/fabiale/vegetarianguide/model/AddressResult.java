@@ -2,6 +2,8 @@ package com.fabiale.vegetarianguide.model;
 
 import java.util.List;
 
+import javassist.NotFoundException;
+
 public class AddressResult {
 	private String status;
 	private List<Address> results;
@@ -33,7 +35,7 @@ public class AddressResult {
 		return builder.toString();
 	}
 	
-	public void populate(Restaurant restaurant) {
+	public void populate(Restaurant restaurant) throws NotFoundException {
 		if(this.getStatus().equals("OK")) {
 			List<Address> results = this.getResults();
 			if(results != null & !results.isEmpty()) {
@@ -68,6 +70,8 @@ public class AddressResult {
 					}
 				}
 			}
+		} else {
+			throw new NotFoundException("address not found");
 		}
 	}
 }

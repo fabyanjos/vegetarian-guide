@@ -113,7 +113,9 @@
    </ul>
    </article>
 
-   <a class="photo_hover2" href="#"><img src="/images/picture3.jpg" width="257" height="295" alt="picture"/></a>   </aside>
+   <!-- a class="photo_hover2" href="#"><img src="/images/picture3.jpg" width="257" height="295" alt="picture"/></a-->   
+   
+   </aside>
 
    </div>
    <!--end holder-->
