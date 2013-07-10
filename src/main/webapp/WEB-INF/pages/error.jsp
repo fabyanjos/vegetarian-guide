@@ -13,7 +13,7 @@
 		    <h3><spring:message code="system.msg"/></h3>
 		    <c:choose>
 		    	<c:when test="${!empty warn}">
-		    		<p class="validationMsg">
+		    		<p class="warningMsg">
 		    			<spring:message code="${warn}"/>
 		    		</p>
 		    	</c:when>

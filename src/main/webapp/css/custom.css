@@ -191,7 +191,7 @@
 	font-weight: bolder;
 }
 
-.errorMsg, .successMsg, .validationMsg, .infoMsg {
+.errorMsg, .successMsg, .validationMsg, .infoMsg, .warningMsg {
 	border: 1px solid;
 	margin: 10px 0px;
 	padding:15px 10px 15px 50px;
@@ -221,6 +221,12 @@
 	color: #00529B;
 	background-color: #BDE5F8;
 	background-image: url('/images/info.png');
+}
+
+.warningMsg {
+	color: #9F6000;
+	background-color: #FEEFB3;
+	background-image: url('/images/warning.png');
 }
 
 #ratingLink {
