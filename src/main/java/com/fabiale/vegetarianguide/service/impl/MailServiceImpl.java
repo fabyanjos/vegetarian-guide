@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.fabiale.vegetarianguide.model.Contact;
 import com.fabiale.vegetarianguide.service.MailService;
+import com.fabiale.vegetarianguide.spring.MailConfig;
 
 @Service
 public class MailServiceImpl implements MailService {
@@ -22,7 +23,7 @@ public class MailServiceImpl implements MailService {
 	public void send(Contact contact) throws AddressException, MessagingException {
 		Message message = new MimeMessage(session);
 		message.setReplyTo(InternetAddress.parse(contact.getEmail()));
-		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("fabyanjos@gmail.com"));
+		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(MailConfig.EMAIL_ADDRESS));
 		message.setSubject(contact.getSubject());
 		String msg = "<b>From: </b>" + contact.getName() + " " + contact.getEmail();
 		msg += "<br/><br/>" + contact.getDescription();

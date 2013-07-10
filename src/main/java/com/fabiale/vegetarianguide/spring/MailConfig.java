@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class MailConfig {
+	
+	public static final String EMAIL_ADDRESS = "veggie.out.app@gmail.com";
 
 	@Bean
 	public Session mailSession() {
@@ -24,7 +26,7 @@ public class MailConfig {
 				new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
 						return new PasswordAuthentication(
-								"fabyanjos@gmail.com", "angel&pikachu16");
+								EMAIL_ADDRESS, "oceans16");
 					}
 				});
 		return session;

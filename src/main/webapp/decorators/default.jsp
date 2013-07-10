@@ -104,14 +104,14 @@
    <div id="lastReviews">
    </div>
    
-   <article class="holder_news">
+   <!--article class="holder_news">
    <h4>Try @Home</h4>
    <ul>
    	<li>teste 01</li>
    	<li>teste 02</li>
    	<li>teste 03</li>
    </ul>
-   </article>
+   </article-->
 
    <!-- a class="photo_hover2" href="#"><img src="/images/picture3.jpg" width="257" height="295" alt="picture"/></a-->   
    
