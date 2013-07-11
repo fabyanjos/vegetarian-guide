@@ -5,6 +5,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+	<title><spring:message code="success"/></title>
 </head>
 
 <body>

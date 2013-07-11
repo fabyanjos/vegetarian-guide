@@ -6,7 +6,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-	
+	<title><spring:message code="review"/></title>
 </head>
 <body>
 	<div id="main">

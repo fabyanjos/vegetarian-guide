@@ -7,7 +7,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Restaurant</title>
+<title><spring:message code="restaurant"/> :: ${restaurant.name}</title>
 
 </head>
 <body>

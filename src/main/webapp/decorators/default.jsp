@@ -10,10 +10,10 @@
 	<meta charset="UTF-8">
 	<meta http-equiv=”content-language” content="en">
 	<meta name="robots" content="noindex, nofollow" />
-	<meta name="description" content="Veggie Out">
-	<meta name="keywords" content="Food, Restaurants, Vegggie, Vegetarian, Vegan, Search">
+	<meta name="description" content="<spring:message code="meta.description"/>">
+	<meta name="keywords" content="<spring:message code="meta.keywords"/>">
 	<meta name="author" content="Fabiana Anjos">
-	<title><decorator:title default="Veggie Out"/></title>
+	<title>Veggie Out :: <decorator:title/></title>
 	<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon"/> 
 	
 	<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
@@ -78,33 +78,44 @@
     
    </section>
 
-   <aside class="group2">
-   
-   <!--p id="languageBtn">
+			<aside class="group2">
+
+				<!--p id="languageBtn">
 		<a href="<c:url value='?lang=en'/>" title="<spring:message code="english"/>"><img src="/images/english-icon.png"/></a> 
 		<a href="<c:url value='?lang=pt_BR'/>" title="<spring:message code="portuguese"/>"><img src="/images/portuguese-icon.png"/></a>
 	</p-->
-	<c:choose>
-		<c:when test="${!empty SPRING_SECURITY_CONTEXT.authentication.principal}">
-			<div id="userBox">
-				<img src="https://graph.facebook.com/<c:out value="${SPRING_SECURITY_CONTEXT.authentication.principal.login}"/>/picture?type=square"/>
-				<div>
-					<p><c:out value="${SPRING_SECURITY_CONTEXT.authentication.principal.name}"/></p>
-					<a href="/rest/user/logout">Logout</a>
-				</div>
-			</div>
-		</c:when>
-		<c:otherwise>
-			<div style="display: none;" onclick="login();" id="loginBtn"><p><spring:message code="facebook.connect"/></p></div>
-		</c:otherwise>
-	</c:choose>
-	<div class="fb-like" data-href="<spring:message code="site.url"/>" data-send="false" data-width="250" data-show-faces="true"></div>
-   
-   <h3><spring:message code="latest.reviews"/></h3>
-   <div id="lastReviews">
-   </div>
-   
-   <!--article class="holder_news">
+				<c:choose>
+					<c:when
+						test="${!empty SPRING_SECURITY_CONTEXT.authentication.principal}">
+						<div id="userBox">
+							<img
+								src="https://graph.facebook.com/<c:out value="${SPRING_SECURITY_CONTEXT.authentication.principal.login}"/>/picture?type=square" />
+							<div>
+								<p>
+									<c:out
+										value="${SPRING_SECURITY_CONTEXT.authentication.principal.name}" />
+								</p>
+								<a href="/rest/user/logout">Logout</a>
+							</div>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div style="display: none;" onclick="login();" id="loginBtn">
+							<p>
+								<spring:message code="facebook.connect" />
+							</p>
+						</div>
+					</c:otherwise>
+				</c:choose>
+				<div class="fb-like" data-href="<spring:message code="site.url"/>"
+					data-send="false" data-width="250" data-show-faces="true"></div>
+
+				<h3>
+					<spring:message code="latest.reviews" />
+				</h3>
+				<div id="lastReviews"></div>
+
+				<!--article class="holder_news">
    <h4>Try @Home</h4>
    <ul>
    	<li>teste 01</li>
@@ -113,11 +124,11 @@
    </ul>
    </article-->
 
-   <!-- a class="photo_hover2" href="#"><img src="/images/picture3.jpg" width="257" height="295" alt="picture"/></a-->   
-   
-   </aside>
+				<!-- a class="photo_hover2" href="#"><img src="/images/picture3.jpg" width="257" height="295" alt="picture"/></a-->
 
-   </div>
+			</aside>
+
+		</div>
    <!--end holder-->
 
    </div>

@@ -7,7 +7,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Restaurant</title>
+<title><spring:message code="restaurant.search"/></title>
 </head>
 <body>
 	<div id="main">

@@ -6,7 +6,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-	
+	<title><spring:message code="contact"/></title>
 </head>
 <body>
 	<div id="main">
