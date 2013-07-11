@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
 <title><spring:message code="restaurant"/> :: ${restaurant.name}</title>
-
+<meta name="description" content="<spring:message code="meta.description"/>, ${restaurant.name}, ${restaurant.street} ${restaurant.number}, ${restaurant.city}">
 </head>
 <body>
 	<div id="main">

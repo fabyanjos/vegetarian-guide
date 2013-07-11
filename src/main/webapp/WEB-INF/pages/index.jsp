@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ page isELIgnored="false" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core"				prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"		prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" 	prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!doctype html>
 <html lang="en">
 
@@ -29,8 +30,17 @@
 <body>
 	<h3><spring:message code="latest.restaurants"/></h3>
 
-	<div id="restaurantsListHome">
-	</div>
+	<c:forEach items="${restaurants}" var="r" varStatus="i">
+		<article class="holder_gallery">
+			<c:if test="${!empty r.imageUrl}">
+				<a href="/restaurant/details/${r.id}" class="photo_hover2">
+					<img alt="${r.name}" src="${r.imageUrl}">
+				</a>
+			</c:if>
+			<h2><a href="/restaurant/details/${r.id}">${r.name}</a></h2>
+			<p>${fn:substring(r.description, 0, 275)}</p>
+		</article>
+	</c:forEach>
     
 	<h3><spring:message code="about.us"/></h3>
 	<a class="photo_hover2" href="/about"><img src="/images/map-with-pin.jpg" width="200" height="97" alt="picture1"/></a>
@@ -46,6 +56,5 @@
    <p>"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. 
    Vestibulum condimentum facilisis nulla. In hac habitasse platea dictumst." - Lorem ipsum  </p-->
    
-   <script type="text/javascript" src="/js/restaurants.js"></script>
 </body>
 </html>

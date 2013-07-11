@@ -9,6 +9,7 @@
 <head> 
 	<meta charset="UTF-8">
 	<meta http-equiv=”content-language” content="en">
+	<meta name="description" content="<spring:message code="meta.description"/>">
 	<meta name="keywords" content="<spring:message code="meta.keywords"/>">
 	<meta name="author" content="Fabiana Anjos">
 	<title>Veggie Out :: <decorator:title/></title>
@@ -36,7 +37,6 @@
     <script src="/js/custom.js"></script>
     <script src="/js/facebook.js"></script>
 
-	<decorator:head/>
 </head>
 
 <body>
@@ -58,13 +58,14 @@
 				   <li><a href="/restaurant/new" <c:if test="${current eq 'add'}">class="current"</c:if>><spring:message code="add"/></a></li>
 				   <li><a href="/about" <c:if test="${current eq 'about'}">class="current"</c:if>><spring:message code="about"/></a></li>
 				   <li><a href="/contact" <c:if test="${current eq 'contact'}">class="current"</c:if>><spring:message code="contact"/></a></li>
-				</ul>
+			   </ul>
 			</nav>
 			<!--end menu-->
 
 			<!--end header-->
 		</header>
 
+		<decorator:head />
 		<!--start holder-->
 
 		<div class="holder_content">
@@ -74,8 +75,7 @@
 				<decorator:body />
 
 			</section>
-			
-			<!-- side menu -->
+
 			<aside class="group2">
 
 				<jsp:include page="/WEB-INF/pages/menu.jsp"></jsp:include>
