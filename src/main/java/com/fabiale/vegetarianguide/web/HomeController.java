@@ -20,7 +20,7 @@ public class HomeController {
 	@Autowired RestaurantService restaurantService;
 	@Autowired ImageService imageService;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.HEAD})
 	public String home(ModelMap modelMap) throws DropboxException {
 		modelMap.addAttribute("current", "home");
 		List<Restaurant> results = restaurantService.getLastUptades(3);
