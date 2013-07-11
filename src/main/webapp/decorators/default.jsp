@@ -41,7 +41,7 @@
 </head>
 
 <body>
-	<div id="fb-root"></div>
+   <div id="fb-root"></div>
    <!--start container-->
    <div id="container">
    <!--start header-->
@@ -98,7 +98,7 @@
 			<div style="display: none;" onclick="login();" id="loginBtn"><p><spring:message code="facebook.connect"/></p></div>
 		</c:otherwise>
 	</c:choose>
-	<div class="fb-like" data-href="<spring:message code="site.url"/>" data-send="true" data-width="250" data-show-faces="true"></div>
+	<div class="fb-like" data-href="<spring:message code="site.url"/>" data-send="false" data-width="250" data-show-faces="true"></div>
    
    <h3><spring:message code="latest.reviews"/></h3>
    <div id="lastReviews">

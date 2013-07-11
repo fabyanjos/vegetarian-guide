@@ -29,13 +29,15 @@ public class ContactController {
 	
 	@RequestMapping(value = "/contact/send", method = {RequestMethod.POST, RequestMethod.GET})
 	public String send(@ModelAttribute("message") @Valid Contact contact, BindingResult result, ModelMap modelMap) throws AddressException, MessagingException {
-		if(result.hasErrors()) 
+		if(result.hasErrors()) { 
 			modelMap.addAttribute("error", "error.add.validation.restaurant");
-		else {
+			return "/contact";
+		} else {
 			mailService.send(contact);
 			modelMap.addAttribute("success", "success.send.email");
+			return "/success";
 		}
-		return "/contact";
+		
 	}
 	
 	@ModelAttribute("message")

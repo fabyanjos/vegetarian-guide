@@ -10,10 +10,10 @@
 </head>
 <body>
 	<div id="main">
-		<h3><spring:message code="about"/></h3>	
+		<h3><spring:message code="about.us"/></h3>	
 		<p>
 			Veggie Out sua ferramenta para busca de restaurantes Vegetarianos e Veganos.
-			Compartilhe e avalie opções para comer para pessoas como você e ajude para que novas opções sejam descobertas.
+			Compartilhe e avalie opções para comer com outras pessoas e ajude para que novas opções sejam descobertas.
 		</p>
 		<p>
 			Possui sugestões para melhorar a ferramenta? Entre em contato conosco pelo formulário de <a href="contact">contato</a>.

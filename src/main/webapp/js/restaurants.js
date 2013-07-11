@@ -18,7 +18,7 @@ $(window).load(function () {
 							.append($('<image>').attr('src', r.imageUrl)));
 					}
 					article
-						.append($('<a>').attr('href', link).append($('<h2>').text(r.name.substring(0,50))))
+						.append($('<h2>').append($('<a>').attr('href', link).text(r.name.substring(0,50))))
 						.append($('<p>').text(r.description.substring(0,275)));
     				$("#restaurantsListHome").append(article);
 //	    					.append(
