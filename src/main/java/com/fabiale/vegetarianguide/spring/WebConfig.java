@@ -32,6 +32,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/css/**").addResourceLocations("/css/**");
 		registry.addResourceHandler("/channel.html").addResourceLocations("/channel.html");
 		registry.addResourceHandler("/robots.txt").addResourceLocations("/robots.txt");
+		registry.addResourceHandler("/sitemap.xml").addResourceLocations("/sitemap.xml");
 		super.addResourceHandlers(registry);
 	}
 	
