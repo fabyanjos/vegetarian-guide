@@ -9,7 +9,6 @@
 <head> 
 	<meta charset="UTF-8">
 	<meta http-equiv=”content-language” content="en">
-	<meta name="robots" content="noindex, nofollow" />
 	<meta name="description" content="<spring:message code="meta.description"/>">
 	<meta name="keywords" content="<spring:message code="meta.keywords"/>">
 	<meta name="author" content="Fabiana Anjos">
