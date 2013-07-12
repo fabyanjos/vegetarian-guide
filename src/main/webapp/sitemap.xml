@@ -25,12 +25,35 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>http://veggie-out.herokuapp.com/restaurant/details/12</loc>
+  <loc>http://veggie-out.herokuapp.com/restaurant/details/2</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://veggie-out.herokuapp.com/restaurant/details/3</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://veggie-out.herokuapp.com/restaurant/details/4</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://veggie-out.herokuapp.com/restaurant/details/5</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://veggie-out.herokuapp.com/restaurant/details/6</loc>
   <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>http://veggie-out.herokuapp.com/restaurant/details/7</loc>
   <changefreq>weekly</changefreq>
 </url>
-
+<url>
+  <loc>http://veggie-out.herokuapp.com/restaurant/details/11</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://veggie-out.herokuapp.com/restaurant/details/12</loc>
+  <changefreq>weekly</changefreq>
+</url>
 </urlset>
