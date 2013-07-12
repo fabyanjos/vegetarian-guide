@@ -285,18 +285,20 @@ header{
 			        GALLERY
 ***************************************************/
 	 
-	 a.photo_hover3{
+a.photo_hover3{
 	position:relative;
-	float: right;
+	float: left;
 	margin:5px 13px 8px 0;
 	padding: 8px;
 
-	}
-	a.photo_hover3{ background-color:white;
-	border: 1px solid #E1E1E1;
-
 }
-	a.photo_hover3:hover {
+a.photo_hover3{ 
+	background-color:white;
+	border: 1px solid #E1E1E1;
+	width: 257px;
+	
+}
+a.photo_hover3:hover {
 	border: 1px dotted #66CCFF;
 	background-color:#C7EDFF;
 	opacity:0.9;

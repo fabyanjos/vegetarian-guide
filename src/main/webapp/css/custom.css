@@ -426,3 +426,18 @@ h3 .ratingDiv {
 :first-letter {
 	text-transform: capitalize; 
 }
+.side-banners {
+	text-align: center;
+	font-size: 22px;
+}
+.side-banners span {
+	position: absolute;
+	bottom: -6px;
+	left: 85px;
+}
+.side-banners img {
+	padding: 5px 0 5px 0;
+}
+.recycle-banner {
+	color: #2E7637;
+}

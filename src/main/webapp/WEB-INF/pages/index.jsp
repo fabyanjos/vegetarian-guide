@@ -22,7 +22,7 @@
 			<h2>sua ferramenta para busca de restaurantes Vegetarianos e Veganos.</h2>
 		</hgroup>
 		<div class="button black banner">
-			<a href="/restaurant/search">Pesquisar</a>
+			<a href="/restaurant/search" onclick="_gaq.push(['_trackEvent', 'Home', 'Banner', 'Search']);">Pesquisar</a>
 		</div>
 	</header>
 </head>

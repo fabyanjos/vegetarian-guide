@@ -51,8 +51,12 @@
    	<li>teste 03</li>
    </ul>
    </article-->
-
-	<!-- a class="photo_hover2" href="#"><img src="/images/picture3.jpg" width="257" height="295" alt="picture"/></a-->
+	<h3>Links</h3>
+	<a class="photo_hover3 side-banners recycle-banner" href="http://www.brasil.gov.br/sobre/meio-ambiente/gestao-do-lixo/reciclagem" 
+		title="Recicle" target="_blank">
+		<img src="/images/recycle.gif" width="100" alt="Recicle" title="Recicle"/>
+		<span>Reciclagem</span>
+	</a>
 
 </body>
 </html>
