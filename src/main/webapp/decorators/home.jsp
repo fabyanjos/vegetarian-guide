@@ -44,26 +44,7 @@
 	<!--start container-->
 	<div id="container">
 		<!--start header-->
-		<header>
-
-			<!--start logo-->
-			<a href="/" id="logo"><img src="/images/logo.png" alt="logo" /></a>
-			<!--end logo-->
-
-			<!--start menu-->
-			<nav>
-				<ul id="menu">
-				   <li><a href="/" <c:if test="${current eq 'home'}">class="current"</c:if>><spring:message code="home"/></a></li>
-				   <li><a href="/restaurant/search" <c:if test="${current eq 'search'}">class="current"</c:if>><spring:message code="search"/></a></li>
-				   <li><a href="/restaurant/new" <c:if test="${current eq 'add'}">class="current"</c:if>><spring:message code="add"/></a></li>
-				   <li><a href="/about" <c:if test="${current eq 'about'}">class="current"</c:if>><spring:message code="about"/></a></li>
-				   <li><a href="/contact" <c:if test="${current eq 'contact'}">class="current"</c:if>><spring:message code="contact"/></a></li>
-			   </ul>
-			</nav>
-			<!--end menu-->
-
-			<!--end header-->
-		</header>
+		<jsp:include page="/WEB-INF/pages/header.jsp"/>
 
 		<decorator:head />
 		<!--start holder-->
@@ -78,7 +59,7 @@
 
 			<aside class="group2">
 
-				<jsp:include page="/WEB-INF/pages/menu.jsp"></jsp:include>
+				<jsp:include page="/WEB-INF/pages/menu.jsp"/>
 
 			</aside>
 
