@@ -7,6 +7,7 @@
 <html lang="en">
 <head>
 	<title><spring:message code="image"/></title>	
+	<meta name="description" content="<spring:message code="meta.description"/>, <spring:message code="image"/>">
 </head>
 <body>
 	<form:form method="post" action="/restaurant/image/save/${restaurantId}" modelAttribute="image" enctype="multipart/form-data">

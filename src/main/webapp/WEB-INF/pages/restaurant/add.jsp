@@ -7,6 +7,7 @@
 <html lang="en">
 <head>
 	<title><spring:message code="add"/></title>
+	<meta name="description" content="<spring:message code="meta.description"/>, <spring:message code="add"/>">
 </head>
 <body>
 		<form:form method="post" action="/restaurant/add" modelAttribute="restaurant">

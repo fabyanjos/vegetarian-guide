@@ -7,6 +7,7 @@
 <html lang="en">
 <head>
 	<title><spring:message code="review"/></title>
+	<meta name="description" content="<spring:message code="meta.description"/>, <spring:message code="review"/>">
 </head>
 <body>
 	<form:form method="post" action="/restaurant/review/save/${restaurantId}" modelAttribute="review">

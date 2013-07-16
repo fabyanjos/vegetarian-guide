@@ -6,6 +6,7 @@
 <html lang="en">
 <head>
 	<title><spring:message code="system.msg"/></title>
+	<meta name="description" content="<spring:message code="meta.description"/>, <spring:message code="system.msg"/>">
 </head>
 
 <body>

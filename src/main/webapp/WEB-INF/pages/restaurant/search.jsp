@@ -8,6 +8,7 @@
 <html lang="en">
 <head>
 <title><spring:message code="restaurant.search"/></title>
+<meta name="description" content="<spring:message code="meta.description"/>, <spring:message code="restaurant.search"/>">
 </head>
 <body>
 		<h2><spring:message code="restaurant.search"/></h2>
