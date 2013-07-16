@@ -9,29 +9,25 @@
 </head>
 
 <body>
-	<div id="main">
-		<fieldset id="place">
-		    <h3><spring:message code="system.msg"/></h3>
-		    <c:choose>
-		    	<c:when test="${!empty warn}">
-		    		<p class="warningMsg">
-		    			<spring:message code="${warn}"/>
-		    		</p>
-		    	</c:when>
-		    	<c:otherwise>
-				    <p class="errorMsg">
-				    	<c:choose>
-				    		<c:when test="${!empty error}">
-				    			<spring:message code="${error}"/>
-				    		</c:when>
-				    		<c:otherwise>
-				    			<spring:message code="system.error"/>
-				    		</c:otherwise>
-				    	</c:choose>
-				    </p>
-			    </c:otherwise>
-		    </c:choose>
-	    </fieldset>
-    </div>
+	    <h2><spring:message code="system.msg"/></h2>
+	    <c:choose>
+	    	<c:when test="${!empty warn}">
+	    		<p class="warningMsg">
+	    			<spring:message code="${warn}"/>
+	    		</p>
+	    	</c:when>
+	    	<c:otherwise>
+			    <p class="errorMsg">
+			    	<c:choose>
+			    		<c:when test="${!empty error}">
+			    			<spring:message code="${error}"/>
+			    		</c:when>
+			    		<c:otherwise>
+			    			<spring:message code="system.error"/>
+			    		</c:otherwise>
+			    	</c:choose>
+			    </p>
+		    </c:otherwise>
+	    </c:choose>
 </body>
 </html>

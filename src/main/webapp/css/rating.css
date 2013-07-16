@@ -24,7 +24,6 @@
 .rating{
 	width:80px;
 	height:16px;
-	margin:0 0 20px 0;
 	padding:0;
 	list-style:none;
 	clear:both;
@@ -73,14 +72,15 @@ ul.rating li.three a:hover {background-position:0 -128px}
 ul.rating li.four a:hover {background-position:0 -144px}
 ul.rating li.five a:hover {background-position:0 -160px}
 /* end rating code */
-
 #ratingDiv {
 	display: inline-block;
 	width: 244px;
 	margin-left: -10px;
 }
-
 .ratingDiv {
 	display: inline-block;
 	float: right;
+}
+h2 .ratingDiv {
+	top: 15px;
 }

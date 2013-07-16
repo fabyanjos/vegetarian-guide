@@ -12,11 +12,11 @@ $(window).load(function () {
 					var review = result[i];
 					var date = new Date(review.date).toString('dd/MM/yy HH:mm');
     				$("#lastReviews").append(
-    					$('<article>').attr('class', 'holder_news').append(
+    					$('<article>').append(
     						$('<h4>').append(
     							$('<a>').text(review.restaurant.name).attr('href', '/restaurant/details/'+review.restaurant.id+'#'+review.id))
     							.append(
-    							$('<span>').text(date))).append(
+    							$('<span>').attr('class', 'light-green').text(date))).append(
     	    				$('<p>').text(review.description.substring(0,130))));
 				}
     		} else {

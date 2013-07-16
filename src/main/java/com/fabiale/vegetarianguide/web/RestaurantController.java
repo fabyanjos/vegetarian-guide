@@ -63,8 +63,8 @@ public class RestaurantController {
 	}
 	
 	@RequestMapping(value = "/restaurant/search", method = RequestMethod.GET)
-	public String search(ModelMap map) {
-		map.addAttribute("current", "search");
+	public String search(HttpSession session) {
+		session.setAttribute("current", "search");
 		return "/restaurant/search";
 	}
 	

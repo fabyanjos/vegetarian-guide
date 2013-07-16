@@ -10,60 +10,64 @@
 <title><spring:message code="restaurant.search"/></title>
 </head>
 <body>
-	<div id="main">
+		<h2><spring:message code="restaurant.search"/></h2>
 		<form onsubmit="search(); return false;">
-			<div class="button black" style="width:580px;">
+			<div id="search-btn" class="light-green">
 				<input id="autocomplete" name="autocomplete" type="text"/>
-				&nbsp;<a href="javascript:codeAddress(search); return false;"><spring:message code="search"/></a></div>
+				&nbsp;<a href="javascript:search(); return false;"><spring:message code="search"/></a></div>
 		</form>
 		<div id="map-canvas"></div>
 		
-		<div id="place">
 		<c:choose>
-		<c:when test="${!empty restaurants}">
-			<ul id="listResult">
-				<c:forEach items="${restaurants}" var="r" varStatus="i">
-					<li>
-						<div class="resultLeftSearch">
-							<p>
-								<em>
-									<a href="/restaurant/details/${r.id}" title="<spring:message code="details"/>">${r.name}</a>
-								</em> 
-								<spring:message code="${r.type}"/>
-								<span class="ratingDiv rating " id="rating${i.index}"></span>
-							</p>
-							
-							<p>${r.description}</p>
-							<p class="address">${r.street} ${r.number} - ${r.postalCode}, ${r.city}, <spring:message code="${r.country.name}"/></p>
-							<c:if test="${!empty r.phone}"><p class="phone">${r.phone}</p></c:if>
-							<c:if test="${!empty r.website}"><p class="websiteLink"><a href="${r.website}" target="_blank"><spring:message code="website"/></a></p></c:if>
+			<c:when test="${!empty restaurants}">
+				<section id="comments">
+					<c:forEach items="${restaurants}" var="r" varStatus="i">
+						<article>
+							<div class="resultLeftSearch">
+								<p>
+									<em>
+										<a href="/restaurant/details/${r.id}" title="<spring:message code="details"/>">${r.name}</a>
+									</em> 
+									<spring:message code="${r.type}"/>
+									<span class="ratingDiv rating " id="rating${i.index}"></span>
+								</p>
+								
+								<p>${r.description}</p>
+								<p class="address">${r.street} ${r.number} - ${r.postalCode}, ${r.city}, <spring:message code="${r.country.name}"/></p>
+								<c:if test="${!empty r.phone}"><p class="phone">${r.phone}</p></c:if>
+								<c:if test="${!empty r.website}"><p class="websiteLink"><a href="${r.website}" target="_blank"><spring:message code="website"/></a></p></c:if>
+							</div>
+							<div class="resultRight">
+								<p>
+									<a href="https://maps.google.com/?saddr=${origin.latitude},${origin.longitude}&daddr=${r.latitude},${r.longitude}" target="_blank">
+										<img src="/images/compass.png" alt="<spring:message code="directions"/>" title="<spring:message code="directions"/>"/>
+									</a>
+									<br/>${r.distanceString}
+								</p>
+								<p></p>
+							</div>
+							<div id="infoWindow${i.index+1}" style="display: none;">
+								<span class="infoWindowTitle">${r.name}</span>
+								<p>${r.street}, ${r.number} ${r.postalCode}, ${r.city}, <spring:message code="${r.country.name}"/></p>
+							</div>
+						</article>
+					</c:forEach>
+				</section>
+			</c:when>
+			<c:otherwise>
+				<section>
+					<article>
+					<c:if test="${!empty origin}">
+						<div class="infoMsg">
+							<spring:message code="noresults"/>
 						</div>
-						<div class="resultRight">
-							<p>
-								<a href="https://maps.google.com/?saddr=${origin.latitude},${origin.longitude}&daddr=${r.latitude},${r.longitude}" target="_blank">
-									<img src="/images/compass.png" alt="<spring:message code="directions"/>" title="<spring:message code="directions"/>"/>
-								</a>
-								<br/>${r.distanceString}
-							</p>
-							<p></p>
-						</div>
-						<div id="infoWindow${i.index+1}" style="display: none;">
-							<span class="infoWindowTitle">${r.name}</span>
-							<p>${r.street}, ${r.number} ${r.postalCode}, ${r.city}, <spring:message code="${r.country.name}"/></p>
-						</div>
-					</li>
-				</c:forEach>
-			</ul>
-		</c:when>
-		<c:otherwise>
-			<c:if test="${!empty origin}">
-				<div class="infoMsg">
-					<spring:message code="noresults"/>
-				</div>
-			</c:if>
-		</c:otherwise>
+					</c:if>
+					</article>
+				</section>
+			</c:otherwise>
 		</c:choose>
-		</div>
+		
+		
 		<div id="infoWindowYour" style="display: none;">
 			<span class="infoWindowTitle"><spring:message code="your.location"/></span>
 			<p>${origin.street}, ${origin.number} ${origin.postalCode}, ${origin.city}, <spring:message code="${origin.country.name}"/></p>
@@ -76,7 +80,6 @@
 			</ul>
 		</form:form>
 	
-	</div>
 <script type="text/javascript" src="/js/maps.js"></script>  
 <script type="text/javascript">
 google.maps.event.addDomListener(window, 'load', initialize);

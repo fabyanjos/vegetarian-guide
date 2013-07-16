@@ -17,7 +17,6 @@
 	<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/custom.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/rating.css"/>
-	<link rel="stylesheet" type="text/css" href="/css/photobox.css"/>
 	<link rel="stylesheet" href="//www.google.com/cse/style/look/default.css" type="text/css" />
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
     
@@ -30,8 +29,6 @@
     	var lang = '${pageContext.response.locale}';
     </script>
     
-    <script src="/js/photobox.js"></script>
-    <script src="/js/jquery.carouFredSel-6.2.1.js"></script>
     <script src="/js/date.js"></script>
     <script src="/js/custom.js"></script>
     <script src="/js/facebook.js"></script>
@@ -40,46 +37,24 @@
 </head>
 
 <body>
-	<div id="fb-root"></div>
-	<!--start container-->
-	<div id="container">
-		<!--start header-->
-		<jsp:include page="/WEB-INF/pages/header.jsp"/>
-
-		<!--start holder-->
-
-		<div class="holder_content">
-
-			<section class="group1">
-
-				<decorator:body />
-
-			</section>
-			
-			<!-- side menu -->
-			<aside class="group2">
-
-				<jsp:include page="/WEB-INF/pages/menu.jsp"/>
-
-			</aside>
-
+	<jsp:include page="/WEB-INF/pages/template/header.jsp"/>
+	
+	<decorator:head/>
+	
+	<div id="content">
+		
+		<div id="mainContent">
+			<decorator:body/>
 		</div>
-		<!--end holder-->
-
+		
+		<aside>
+			<jsp:include page="/WEB-INF/pages/template/menu.jsp"/>
+		</aside>
 	</div>
-	<!--end container-->
-
-	<!--start footer-->
-   <footer>
-   <div class="container">
-   <div id="FooterTwo"> © 2013 Veggie Out </div>
-   <div id="FooterTree"> Design and code by <a href="http://www.marijazaric.com">marija zaric</a>, customized by fabyanjos</div> 
-   </div>
-   </footer>
-   <!--end footer-->
-   <!-- Free template distributed by http://freehtml5templates.com -->
-   <!-- Flag's icons by http://www.icons-land.com from http://www.iconarchive.com/ -->
-   <script type="text/javascript" src="/js/reviews.js"></script>
+	<footer>
+		<div id="footer-left">Created by fabyanjos</div>
+		<div id="footer-right">© 2013 Veggie Out</div>
+	</footer>
    <script type="text/javascript">
 	  var _gaq = _gaq || [];
 	  _gaq.push(['_setAccount', 'UA-40354748-1']);

@@ -9,54 +9,50 @@
 	<title><spring:message code="review"/></title>
 </head>
 <body>
-	<div id="main">
 	<form:form method="post" action="/restaurant/review/save/${restaurantId}" modelAttribute="review">
-		<h3><spring:message code="review"/></h3>
+		<h2>
+			<spring:message code="review"/>
+		</h2>
 		<c:if test="${!empty error}">
-			<p class="validationMsg"><spring:message code="${error}"/></p>
+			<p class="validationMsg">
+				<spring:message code="${error}"/><br/>
+			</p>
 		</c:if>
 		<span style="display: none;"><form:input path="rating"/></span>
-		<fieldset id="place">
-			<ul>
-				<li>
-					<label><spring:message code="rate"/>: <span class="mandatory">*</span> </label>
-					<div id="ratingDiv">
-					<ul class="rating nostar" id="ratingList">
-						<li class="one"><a href="javascript:rating(1);" title="1 Star">1</a></li>
-						<li class="two"><a href="javascript:rating(2);" title="2 Stars">2</a></li>
-						<li class="three"><a href="javascript:rating(3);" title="3 Stars">3</a></li>
-						<li class="four"><a href="javascript:rating(4);" title="4 Stars">4</a></li>
-						<li class="five"><a href="javascript:rating(5);" title="5 Stars">5</a></li>
-					</ul>
-				</div>
-					<form:errors cssClass="error" path="rating"/>
-				</li>
-				<li>
-					<label><spring:message code="summary"/>: <span class="mandatory">*</span> </label>
-					<form:input path="title" cssErrorClass="inputError" maxlength="40"/>
-					<form:errors cssClass="error" path="title"/>
-				</li>
-				<li>
-					<label><spring:message code="description"/>: <span class="mandatory">*</span> </label>
-					<form:textarea path="description" cssErrorClass="inputError"/>
-					<form:errors cssClass="error" path="description"/>
-				</li>
-				<li>
-					<label><spring:message code="pros"/>: </label>
-					<form:input path="pros" cssErrorClass="inputError" maxlength="100"/>
-					<form:errors cssClass="error" path="pros"/>
-				</li>
-				<li>
-					<label><spring:message code="cons"/>: </label>
-					<form:input path="cons" cssErrorClass="inputError" maxlength="100"/>
-					<form:errors cssClass="error" path="cons"/>
-				</li>
-				
-				<li><input type="submit" value="<spring:message code="save"/>" class="button"/></li>
-			</ul>
-		</fieldset>
+		<p style="display:inline-block;">
+			<label><spring:message code="rate"/>: <span class="mandatory">*</span> </label>
+				<ul class="rating nostar" id="ratingList" style="display:inline-block;top:-30px;right:25px;">
+					<li class="one"><a href="javascript:rating(1);" title="1 Star">1</a></li>
+					<li class="two"><a href="javascript:rating(2);" title="2 Stars">2</a></li>
+					<li class="three"><a href="javascript:rating(3);" title="3 Stars">3</a></li>
+					<li class="four"><a href="javascript:rating(4);" title="4 Stars">4</a></li>
+					<li class="five"><a href="javascript:rating(5);" title="5 Stars">5</a></li>
+				</ul>
+			<form:errors cssClass="error" path="rating" cssStyle="display: inline-block;position: absolute;margin: -2px 0 0 200px;"/>
+		</p>
+		<p style="margin-top:-30px;">
+			<label><spring:message code="summary"/>: <span class="mandatory">*</span> </label>
+			<form:input path="title" cssErrorClass="inputError" maxlength="40"/>
+			<form:errors cssClass="error" path="title"/>
+		</p>
+		<p>
+			<label><spring:message code="description"/>: <span class="mandatory">*</span> </label>
+			<form:textarea path="description" cssErrorClass="inputError"/>
+			<form:errors cssClass="error" path="description"/>
+		</p>
+		<p>
+			<label><spring:message code="pros"/>: </label>
+			<form:input path="pros" cssErrorClass="inputError" maxlength="100"/>
+			<form:errors cssClass="error" path="pros"/>
+		</p>
+		<p>
+			<label><spring:message code="cons"/>: </label>
+			<form:input path="cons" cssErrorClass="inputError" maxlength="100"/>
+			<form:errors cssClass="error" path="cons"/>
+		</p>
+		
+		<p><input type="submit" value="<spring:message code="save"/>" class="button"/></p>
 	</form:form>
-	</div>
 <script type="text/javascript">
 	$(window).load(function () {
 		var rating = $("#rating").val();

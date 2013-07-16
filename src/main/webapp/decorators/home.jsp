@@ -40,46 +40,24 @@
 </head>
 
 <body>
-	<div id="fb-root"></div>
-	<!--start container-->
-	<div id="container">
-		<!--start header-->
-		<jsp:include page="/WEB-INF/pages/header.jsp"/>
-
-		<decorator:head />
-		<!--start holder-->
-
-		<div class="holder_content">
-
-			<section class="group1">
-
-				<decorator:body />
-
-			</section>
-
-			<aside class="group2">
-
-				<jsp:include page="/WEB-INF/pages/menu.jsp"/>
-
-			</aside>
-
+	<jsp:include page="/WEB-INF/pages/template/header.jsp"/>
+	
+	<decorator:head/>
+	
+	<div id="content">
+		
+		<div id="mainContent">
+			<decorator:body/>
 		</div>
-		<!--end holder-->
-
+		
+		<aside>
+			<jsp:include page="/WEB-INF/pages/template/menu.jsp"/>
+		</aside>
 	</div>
-	<!--end container-->
-
-	<!--start footer-->
-   <footer>
-   <div class="container">
-   <div id="FooterTwo"> © 2013 Veggie Out </div>
-   <div id="FooterTree"> Design and code by <a href="http://www.marijazaric.com">marija zaric</a>, customized by fabyanjos</div> 
-   </div>
-   </footer>
-   <!--end footer-->
-   <!-- Free template distributed by http://freehtml5templates.com -->
-   <!-- Flag's icons by http://www.icons-land.com from http://www.iconarchive.com/ -->
-   <script type="text/javascript" src="/js/reviews.js"></script>
+	<footer>
+		<div id="footer-left">Created by fabyanjos</div>
+		<div id="footer-right">© 2013 Veggie Out</div>
+	</footer>
    <script type="text/javascript">
 	  var _gaq = _gaq || [];
 	  _gaq.push(['_setAccount', 'UA-40354748-1']);

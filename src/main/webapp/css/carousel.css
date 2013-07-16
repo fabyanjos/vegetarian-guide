@@ -1,0 +1,86 @@
+#carousel {
+	margin: 0 0 30px 80px;
+	width: 530px;
+	position: relative;
+}
+#carousel ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: block;
+}
+#carousel li {
+	font-size: 40px;
+	color: #999;
+	text-align: center;
+	width: 232px;
+	height: 178px;
+	padding: 0;
+	margin: 6px;
+	display: block;
+	float: left;
+	background: transparent url('/images/carousel_polaroid.png') no-repeat 0 0;
+	position:relative;
+}
+
+#carousel li img {
+	width:200px;
+	height:127px;
+	background: transparent url('/images/carousel_shine.png') no-repeat 0 0;
+	z-index:2;
+	top:14px;
+	left:16px;
+	position:absolute;
+	display:block;
+}
+
+#carousel li a {
+	text-indent:-999em;
+}			
+
+.clearfix {
+	float: none;
+	clear: both;
+}
+
+#carousel .prev, #carousel .next {
+	margin-left: 10px;
+	width:15px;
+	height:21px;			
+	display:block;				
+	text-indent:-999em;
+	background: transparent url('/images/carousel_control.png') no-repeat 0 0;
+	position:absolute;
+	top:70px;				
+}
+#carousel .prev {
+	background-position:0 0;
+	left:-30px;
+}
+#carousel .prev:hover {
+	left:-31px;
+}			
+#carousel .next {
+	background-position: -18px 0;
+	right:-20px;
+}
+#carousel .next:hover {
+	right:-21px;
+}				
+#carousel .pager {
+	margin:0 auto;
+	text-align: center;
+}
+#carousel .pager a {
+	margin: 0 5px 0 0;
+	text-decoration: none;
+	display:inline-block;
+	width:8px;
+	height:8px;
+	background: transparent url('/images/carousel_control.png') no-repeat -2px -32px;
+	text-indent:-999em;
+}
+#carousel .pager a.selected {
+	text-decoration: underline;
+	background: transparent url('/images/carousel_control.png') no-repeat -12px -32px;				
+}

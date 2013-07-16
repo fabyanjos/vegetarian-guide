@@ -9,11 +9,7 @@
 </head>
 
 <body>
-	<div id="main">
-		<fieldset id="place">
-		    <h3><spring:message code="message"/></h3>
-		    <p class="successMsg"><spring:message code="${success}"/></p>
-	    </fieldset>
-    </div>
+    <h2><spring:message code="message"/></h2>
+    <p class="successMsg"><spring:message code="${success}"/></p>
 </body>
 </html>
