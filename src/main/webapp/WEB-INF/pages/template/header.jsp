@@ -7,11 +7,11 @@
 <!doctype html>
 <html lang="en">
 <body>
-
+	<!--[if lte IE 8]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/"><strong>upgrade your browser</strong></a> or <a href="http://www.google.com/chromeframe/?redirect=true"><strong>activate Google Chrome Frame</strong></a> to improve your experience.</p>
+        <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+    <![endif]-->
 	<div id="fb-root"></div>
-	<!--[if lte IE 7]>
-		<script src="ie6/warning.js"></script><script>window.onload=function(){e("js/ie6/")}</script>
-	<![endif]-->
 	<header>
 		<a href="/" id="logo">
 			<h1>Veggie Out</h1>

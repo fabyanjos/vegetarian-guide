@@ -21,7 +21,7 @@
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script id="jqueryui" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js" defer async></script>
+    <script id="jqueryui" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" defer async></script>
     <script src="//www.google.com/jsapi"></script>
     <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry,places&amp;language=${pageContext.response.locale}"></script>
     
@@ -29,7 +29,6 @@
     	var lang = '${pageContext.response.locale}';
     </script>
     
-    <script src="/js/date.js"></script>
     <script src="/js/custom.js"></script>
     <script src="/js/facebook.js"></script>
 
