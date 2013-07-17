@@ -19,6 +19,9 @@ body {
 	box-shadow: 0 0 10px 10px #D8D8D8;
 	line-height: 2.0;
 }
+img {
+	border: none;
+}
 p {
 	text-align: justify;
 }
@@ -444,7 +447,6 @@ a.side-banner img {
 	float: right;
 	text-align: center;
 }
-
 .resultRight a:hover {
 	text-decoration: none;
 }

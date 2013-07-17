@@ -25,13 +25,12 @@
 					<c:forEach items="${restaurants}" var="r" varStatus="i">
 						<article>
 							<div class="resultLeftSearch">
-								<p>
-									<em>
-										<a href="/restaurant/details/${r.id}" title="<spring:message code="details"/>">${r.name}</a>
-									</em> 
-									<spring:message code="${r.type}"/>
+								
+								<h5>
+									<a href="/restaurant/details/${r.id}" title="<spring:message code="details"/>">${r.name}</a>
 									<span class="ratingDiv rating " id="rating${i.index}"></span>
-								</p>
+								</h5> 
+								<spring:message code="${r.type}"/>
 								
 								<p>${r.description}</p>
 								<p class="address">${r.street} ${r.number} - ${r.postalCode}, ${r.city}, <spring:message code="${r.country.name}"/></p>
