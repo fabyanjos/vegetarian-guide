@@ -14,7 +14,7 @@
 	<div id="fb-root"></div>
 	<header>
 		<a href="/" id="logo">
-			<img id="campaign-icon" src="/image/logo.png">
+			<img id="campaign-icon" src="/images/logo.png">
 			<h1>Veggie Out</h1>
 		</a>
 	</header>
