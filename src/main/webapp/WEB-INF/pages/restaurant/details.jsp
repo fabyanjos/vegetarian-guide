@@ -79,7 +79,7 @@
 			<article>
 				<header>
 					<a href="https://www.facebook.com/${r.user.login}" target="_blank">
-						<img src="https://graph.facebook.com/${r.user.login}/picture?type=square"/>
+						<img src="${r.user.imageUrl}"/>
 						<span>${r.user.name}</span>
 					</a> 
 				</header>

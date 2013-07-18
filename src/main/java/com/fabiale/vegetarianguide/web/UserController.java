@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.fabiale.vegetarianguide.model.Network;
 import com.fabiale.vegetarianguide.model.User;
 import com.fabiale.vegetarianguide.service.UserService;
 
@@ -38,10 +40,18 @@ public class UserController {
     	return user;
 	}
 	
-	@RequestMapping(value="/user/login/facebook", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE, method = {RequestMethod.PUT, RequestMethod.POST})
+//	@RequestMapping(value="/user/login/facebook", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE, method = {RequestMethod.PUT, RequestMethod.POST})
+//	@ResponseBody
+//	public User register(@RequestBody User user, HttpServletRequest request, HttpServletResponse response, ModelMap model) throws NoSuchAlgorithmException {
+//		service.authentication(user);
+//        
+//        return user;
+//	}
+	
+	@RequestMapping(value="/user/login/{network}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE, method = {RequestMethod.PUT, RequestMethod.POST})
 	@ResponseBody
-	public User register(@RequestBody User user, HttpServletRequest request, HttpServletResponse response, ModelMap model) throws NoSuchAlgorithmException {
-        user.setFacebook(true);
+	public User login(@PathVariable("network") String network, @RequestBody User user, HttpServletRequest request, HttpServletResponse response, ModelMap model) throws NoSuchAlgorithmException {
+		user.setNetwork(Network.valueOf(network.toUpperCase()));
 		service.authentication(user);
         
         return user;

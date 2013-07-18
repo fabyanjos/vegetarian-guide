@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fabiale.vegetarianguide.model.Network;
 import com.fabiale.vegetarianguide.model.User;
 import com.fabiale.vegetarianguide.repositories.UserRepository;
 
@@ -35,9 +36,10 @@ public class UserRepositoryImpl implements UserRepository {
     	return (User) criteria.uniqueResult();
     }
     
-    public User findByLogin(String login) {
+    public User findByLogin(String login, Network network) {
     	Criteria criteria = this.factory.getCurrentSession().createCriteria(User.class);
-    	criteria.add(Restrictions.eq("login", login));
+    	criteria.add(Restrictions.eq("email", login));
+    	criteria.add(Restrictions.eq("network", network));
     	return (User) criteria.uniqueResult();
     }
 }

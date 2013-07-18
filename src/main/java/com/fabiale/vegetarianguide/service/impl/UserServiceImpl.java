@@ -30,16 +30,16 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	public User findByLogin(String login) {
-		return this.repository.findByLogin(login);
+		return null;
 	}
 	
 	public void authentication(User user) throws NoSuchAlgorithmException {
 		user.setPass(this.md5(user.getPass()));
 		
-		User result = repository.findByLogin(user.getLogin());
+		User result = repository.findByLogin(user.getEmail(), user.getNetwork());
 		
 		if(result != null) {
-			if(result.getLogin().equals(user.getLogin()) && result.getPass().equals(user.getPass())) {
+			if(result.getEmail().equals(user.getEmail()) && result.getPass().equals(user.getPass())) {
 				user = result;
 			} else {
 				throw new BadCredentialsException("Falha na autenticação");

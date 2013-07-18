@@ -20,7 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DataAccessException {
 
-		User user = repository.findByLogin(username);
+		User user = repository.findByLogin(username, null);
 		
 		if(user != null)
 			return user;

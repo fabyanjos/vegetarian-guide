@@ -12,7 +12,7 @@
 	<meta name="keywords" content="<spring:message code="meta.keywords"/>">
 	<meta name="author" content="Fabiana Anjos">
 	<title>Veggie Out :: <decorator:title/></title>
-	<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon"/> 
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/> 
 	
 	<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/custom.css"/>

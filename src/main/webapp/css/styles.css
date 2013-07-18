@@ -166,6 +166,7 @@ nav ul li.selected a {
 }
 #mainContent article {
 	min-height: 125px;
+	height: auto !important;
 }
 aside {
 	display: table-cell;
@@ -202,7 +203,7 @@ aside {
 }
 #comments article header img {
 	display: block;
-	margin-left: 50px;
+	margin-left: 45px;
 }
 /* FORMS */
 form p {
@@ -485,4 +486,46 @@ a.side-banner img {
     padding: 0.2em 0;
     line-height: 2.5;
     text-align: center;
+}
+#facebook-login { 
+	background-image: linear-gradient(bottom, rgb(67,97,159) 45%, rgb(89,114,168) 73%, rgb(101,123,176) 87%);
+	background-image: -o-linear-gradient(bottom, rgb(67,97,159) 45%, rgb(89,114,168) 73%, rgb(101,123,176) 87%);
+	background-image: -moz-linear-gradient(bottom, rgb(67,97,159) 45%, rgb(89,114,168) 73%, rgb(101,123,176) 87%);
+	background-image: -webkit-linear-gradient(bottom, rgb(67,97,159) 45%, rgb(89,114,168) 73%, rgb(101,123,176) 87%);
+	background-image: -ms-linear-gradient(bottom, rgb(67,97,159) 45%, rgb(89,114,168) 73%, rgb(101,123,176) 87%);
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.45, rgb(67,97,159)), color-stop(0.73, rgb(89,114,168)), color-stop(0.87, rgb(101,123,176)));
+	background-color: #43609F;
+}
+#google-login {
+	background-image: linear-gradient(bottom, rgb(167,41,27) 27%, rgb(193,58,43) 64%, rgb(196,59,44) 82%);
+	background-image: -o-linear-gradient(bottom, rgb(167,41,27) 27%, rgb(193,58,43) 64%, rgb(196,59,44) 82%);
+	background-image: -moz-linear-gradient(bottom, rgb(167,41,27) 27%, rgb(193,58,43) 64%, rgb(196,59,44) 82%);
+	background-image: -webkit-linear-gradient(bottom, rgb(167,41,27) 27%, rgb(193,58,43) 64%, rgb(196,59,44) 82%);
+	background-image: -ms-linear-gradient(bottom, rgb(167,41,27) 27%, rgb(193,58,43) 64%, rgb(196,59,44) 82%);
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.27, rgb(167,41,27)), color-stop(0.64, rgb(193,58,43)), color-stop(0.82, rgb(196,59,44)));
+	background-color: #A7291B;
+}
+#facebook-login, #google-login {
+	cursor: pointer;
+	-webkit-border-radius: .3em;
+	-moz-border-radius: .3em;
+	border-radius: .3em;
+	color: #FFF;
+	width: 120px;	
+	display: inline-block;
+	margin-left: 15px;
+}
+#facebook-login p, #google-login p {
+	padding: 0 0 0 30px;
+	background-repeat: no-repeat;
+	background-size: 35px 35px;
+	text-align: center;
+	font-size: 16px;
+	line-height: 2.3;
+}
+#facebook-login p {
+	background-image: url("/images/facebook-f.png");	
+}
+#google-login p {
+	background-image: url("/images/google.png");
 }

@@ -19,7 +19,7 @@
 				test="${!empty SPRING_SECURITY_CONTEXT.authentication.principal}">
 				<div id="userBox">
 					<img
-						src="https://graph.facebook.com/<c:out value="${SPRING_SECURITY_CONTEXT.authentication.principal.login}"/>/picture?type=square" />
+						src="${SPRING_SECURITY_CONTEXT.authentication.principal.imageUrl}" />
 					<div>
 						<p>
 							<c:out
@@ -30,14 +30,25 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-				<div style="display: none;" onclick="login();" id="loginBtn">
+				<h3>Conectar com:</h3>
+				<div onclick="faceLogin();" id="facebook-login">
 					<p>
-						<spring:message code="facebook.connect" />
+						Facebook
+					</p>
+				</div>
+				<div onclick="googleLogin();" id="google-login">
+					<p>
+						Google
 					</p>
 				</div>
 			</c:otherwise>
 		</c:choose>
-		<div class="fb-like" data-href="<spring:message code="site.url"/>" data-send="false" data-width="250" data-show-faces="true"></div>
+	</section>
+	
+	<section>
+		<h3>Redes sociais:</h3>
+		<div class="fb-like" data-href="<spring:message code="site.url"/>" data-send="false" data-width="50" data-show-faces="false"></div>
+		<g:plusone href="<spring:message code="site.url"/>"/>
 	</section>
 	
 	<section>

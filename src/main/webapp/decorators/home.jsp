@@ -13,7 +13,7 @@
 	<meta name="keywords" content="<spring:message code="meta.keywords"/>">
 	<meta name="author" content="Fabiana Anjos">
 	<title>Veggie Out :: <decorator:title/></title>
-	<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon"/> 
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/> 
 	
 	<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/custom.css"/>
@@ -33,6 +33,15 @@
     
     <script src="/js/custom.js"></script>
     <script src="/js/facebook.js"></script>
+    <script src="/js/hello.js"></script>
+    <script src="/js/social-network.js"></script>
+    <script type="text/javascript">
+	  (function() {
+	    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	    po.src = 'https://apis.google.com/js/plusone.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	  })();
+	</script>
 
 </head>
 

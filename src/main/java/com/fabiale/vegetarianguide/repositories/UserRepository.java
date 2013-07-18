@@ -1,5 +1,6 @@
 package com.fabiale.vegetarianguide.repositories;
 
+import com.fabiale.vegetarianguide.model.Network;
 import com.fabiale.vegetarianguide.model.User;
 
 public interface UserRepository {
@@ -10,5 +11,5 @@ public interface UserRepository {
     
     public User findByName(String name);
     
-    public User findByLogin(String login);
+    public User findByLogin(String login, Network network);
 }

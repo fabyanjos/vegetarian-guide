@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +29,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity(name = "users")
 @SequenceGenerator(name = "SEQ_USER", sequenceName = "SEQ_USER", initialValue = 1, allocationSize = 1)
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = { "email" }, name = "UQ_USER_NAME"))
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = { "email", "network" }, name = "UQ_USER_NAME"))
 @XmlRootElement
 @XmlType
 @XmlAccessorType(value = XmlAccessType.FIELD)
@@ -44,22 +46,30 @@ public class User implements UserDetails, Serializable {
 	private String name;
 	@Column(nullable = false)
 	private String email;
-	@Column(nullable = false)
 	private String login;
 	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 	@Column(nullable = false)
 	private String pass;
-	@org.hibernate.annotations.Type(type="yes_no")
-	private Boolean facebook;
+	private String imageUrl;
+	@Enumerated(EnumType.STRING)
+	private Network network;
 
-	public Boolean isFacebook() {
-		return facebook;
+	public String getImageUrl() {
+		return imageUrl;
 	}
 
-	public void setFacebook(Boolean facebook) {
-		this.facebook = facebook;
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public Network getNetwork() {
+		return network;
+	}
+
+	public void setNetwork(Network network) {
+		this.network = network;
 	}
 
 	public String getPass() {
