@@ -11,6 +11,7 @@
 <meta name="description" content="<spring:message code="meta.description"/>, <spring:message code="restaurant.search"/>">
 </head>
 <body>
+	<section>
 		<h2><spring:message code="restaurant.search"/></h2>
 		<form onsubmit="search(); return false;">
 			<div id="search-btn" class="light-green">
@@ -18,7 +19,7 @@
 				&nbsp;<a href="javascript:search(); return false;"><spring:message code="search"/></a></div>
 		</form>
 		<div id="map-canvas"></div>
-		
+	</section>
 		<c:choose>
 			<c:when test="${!empty restaurants}">
 				<section id="comments">

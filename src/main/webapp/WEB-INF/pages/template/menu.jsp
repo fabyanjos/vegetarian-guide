@@ -45,11 +45,11 @@
 		</c:choose>
 	</section>
 	
-	<section>
+	<!--section>
 		<h3>Redes sociais:</h3>
 		<div class="fb-like" data-href="<spring:message code="site.url"/>" data-send="false" data-width="50" data-show-faces="false"></div>
-		<g:plusone href="<spring:message code="site.url"/>"/>
-	</section>
+		<div class="g-plusone" data-size="tall" data-href="<spring:message code="site.url"/>"></div>
+	</section-->
 	
 	<section>
 		<header>
