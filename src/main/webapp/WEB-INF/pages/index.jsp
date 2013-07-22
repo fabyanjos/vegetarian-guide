@@ -12,7 +12,7 @@
 		<header>
 			<h2>Veggie Out</h2>
 		</header>
-		<p>Sua ferramenta para busca de restaurantes Vegetarianos e Veganos.</p>
+		<p>Sua ferramenta para busca de restaurantes Vegetarianos e Veganos. <a href="/restaurant/new">Compartilhe seus lugares favoritos.</a></p>
 		<img src="http://veggie-out.herokuapp.com/images/map-with-pin.jpg" alt="Veggie Out" />
 	</section>
 </head>
