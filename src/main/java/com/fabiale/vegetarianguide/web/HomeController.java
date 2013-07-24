@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.dropbox.client2.exception.DropboxException;
 import com.fabiale.vegetarianguide.model.Image;
@@ -35,11 +34,9 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/error", method = RequestMethod.GET)
-	public ModelAndView error() {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("error");
-		modelAndView.addObject("warn", "page.not.found");
+	public String error(ModelMap modelMap) {
+		modelMap.addAttribute("warn", "page.not.found");
 		System.out.println("ERROR CONTROLLER");
-		return modelAndView;
+		return "error";
 	}
 }
