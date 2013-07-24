@@ -31,12 +31,12 @@
 			</c:when>
 			<c:otherwise>
 				<h3>Conectar com:</h3>
-				<div onclick="faceLogin();" id="facebook-login">
+				<div onclick="faceLogin(); _gaq.push(['_trackEvent', 'Side', 'Login', 'Facebook']);" id="facebook-login">
 					<p>
 						Facebook
 					</p>
 				</div>
-				<div onclick="googleLogin();" id="google-login">
+				<div onclick="googleLogin(); _gaq.push(['_trackEvent', 'Side', 'Login', 'Google']);" id="google-login">
 					<p>
 						Google
 					</p>

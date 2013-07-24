@@ -235,7 +235,7 @@ common: &default_settings
     # To stop specific exceptions from reporting to New Relic, set this
     # property to a comma separated list of full class names.
     #
-    # ignore_errors: com/somecompany/SomeException
+    ignore_errors: org/springframework/security/access/AccessDeniedException
 
     # To stop specific http status codes from being reporting to New
     # Relic as errors, set this property to a comma separated list of
