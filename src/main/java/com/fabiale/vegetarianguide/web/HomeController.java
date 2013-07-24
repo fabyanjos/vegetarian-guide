@@ -39,7 +39,7 @@ public class HomeController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("error");
 		modelAndView.addObject("warn", "page.not.found");
-
+		System.out.println("ERROR CONTROLLER");
 		return modelAndView;
 	}
 }
