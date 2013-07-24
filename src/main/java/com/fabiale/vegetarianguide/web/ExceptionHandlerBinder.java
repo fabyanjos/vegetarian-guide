@@ -1,6 +1,7 @@
 package com.fabiale.vegetarianguide.web;
 
 import java.io.IOException;
+import java.net.BindException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,10 +12,15 @@ import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpSession;
 
 import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.beans.ConversionNotSupportedException;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.web.HttpMediaTypeNotAcceptableException;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException;
@@ -101,11 +107,36 @@ public class ExceptionHandlerBinder {
 	}
 	
 	@ExceptionHandler(NoSuchRequestHandlingMethodException.class)
+	@ResponseStatus(value = HttpStatus.NOT_FOUND)
 	public ModelAndView handleIOException(NoSuchRequestHandlingMethodException ex) {
 		logger.log(Level.SEVERE, "Exception found: " + ex, ex);
 		return errorModelAndView(ex, "page.not.found");
 	}
-
+	
+	@ExceptionHandler(BindException.class)
+	public ModelAndView handleIOException(BindException ex) {
+		logger.log(Level.SEVERE, "Exception found: " + ex, ex);
+		return errorModelAndView(ex, "system.error");
+	}
+	
+	@ExceptionHandler(ConversionNotSupportedException.class)
+	public ModelAndView handleIOException(ConversionNotSupportedException ex) {
+		logger.log(Level.SEVERE, "Exception found: " + ex, ex);
+		return errorModelAndView(ex, "system.error");
+	}
+	
+	@ExceptionHandler(HttpMediaTypeNotAcceptableException.class)
+	public ModelAndView handleIOException(HttpMediaTypeNotAcceptableException ex) {
+		logger.log(Level.SEVERE, "Exception found: " + ex, ex);
+		return errorModelAndView(ex, "system.error");
+	}
+	
+	@ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+	public ModelAndView handleIOException(HttpMediaTypeNotSupportedException ex) {
+		logger.log(Level.SEVERE, "Exception found: " + ex, ex);
+		return errorModelAndView(ex, "system.error");
+	}
+	
 	/**
 	 * Get the users details for the 'personal' page
 	 */

@@ -16,6 +16,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import com.fabiale.vegetarianguide.web.filter.ClearSitemeshAppliedOnceFilter;
 import com.opensymphony.sitemesh.webapp.SiteMeshFilter;
 
 public class WebAppInitializer implements WebApplicationInitializer {
@@ -46,7 +47,10 @@ public class WebAppInitializer implements WebApplicationInitializer {
 
 	private void sitemesh(ServletContext context) {
 		FilterRegistration.Dynamic sitemeshFilter = context.addFilter("sitemesh", new SiteMeshFilter());
-		sitemeshFilter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class),false,"/*");
+		sitemeshFilter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class),false,"*");
+		
+		FilterRegistration.Dynamic clearSiteMeshAppliedOnce = context.addFilter("clearSiteMeshAppliedOnce", new ClearSitemeshAppliedOnceFilter());
+		clearSiteMeshAppliedOnce.addMappingForUrlPatterns(EnumSet.of(DispatcherType.ERROR), false, "*");
 	}
 
 	private void encodingFilter(ServletContext context) {
