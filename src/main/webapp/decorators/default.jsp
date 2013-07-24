@@ -31,6 +31,15 @@
     
     <script src="/js/custom.js"></script>
     <script src="/js/facebook.js"></script>
+    <script src="/js/hello.js"></script>
+    <script src="/js/social-network.js"></script>
+    <script type="text/javascript">
+	  (function() {
+	    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	    po.src = 'https://apis.google.com/js/plusone.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	  })();
+	</script>
 
 	<decorator:head/>
 </head>
