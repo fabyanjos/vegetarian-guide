@@ -38,11 +38,14 @@
 	</c:choose>
 </section>
 
-<!--section>
-	<h3>Redes sociais:</h3>
-	<div class="fb-like" data-href="<spring:message code="site.url"/>" data-send="false" data-width="50" data-show-faces="false"></div>
-	<div class="g-plusone" data-size="tall" data-href="<spring:message code="site.url"/>"></div>
-</section-->
+<section>
+	<h3><spring:message code="share"/>:</h3>
+	<!--div class="fb-like" data-href="<spring:message code="site.url"/>" data-send="false" data-width="50" data-show-faces="false"></div>
+	<div class="g-plusone" data-size="tall" data-href="<spring:message code="site.url"/>"></div-->
+	
+	<div id="shareme" data-url="<spring:message code="site.url"/>" data-text="Veggie Out: <spring:message code="share.text"/>"></div>
+	
+</section>
 
 <section>
 	<header>

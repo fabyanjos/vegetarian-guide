@@ -529,3 +529,11 @@ a.side-banner img {
 #google-login p {
 	background-image: url("/images/google.png");
 }
+.sharrre .button {
+  	float: left;
+  	width: 50px;
+  	margin-left: 30px;
+}
+.sharrre {
+	display: inline-block;
+}

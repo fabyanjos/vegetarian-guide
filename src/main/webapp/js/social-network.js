@@ -41,3 +41,22 @@ function login(auth) {
 			});
 	});
 }
+
+$(document).ready(function () {
+	$('#shareme').sharrre({
+	  share: {
+	    googlePlus: true,
+	    facebook: true,
+	    twitter: true
+	  },
+	  buttons: {
+	    googlePlus: {size: 'tall', annotation:'bubble'},
+	    facebook: {layout: 'box_count'},
+	    twitter: {count: 'vertical'}
+	  },
+	  enableHover: true,
+	  enableCounter: false,
+	  enableTracking: true,
+	  urlCurl: ''
+	});
+});
