@@ -61,8 +61,14 @@
 		</aside>
 	</div>
 	<footer>
-		<div id="footer-left">Created by fabyanjos</div>
-		<div id="footer-right">© 2013 Veggie Out</div>
+		<div id="footer-left">Created by fabyanjos | © 2013 Veggie Out</div>
+		<div id="footer-right">
+			
+			<p id="languageBtn">
+				<a href="<c:url value='?lang=en'/>" title="<spring:message code="english"/>"><img src="/images/english-icon.png"/></a> 
+				<a href="<c:url value='?lang=pt_BR'/>" title="<spring:message code="portuguese"/>"><img src="/images/portuguese-icon.png"/></a>
+			</p>
+		</div>
 	</footer>
    <script type="text/javascript">
 	  var _gaq = _gaq || [];

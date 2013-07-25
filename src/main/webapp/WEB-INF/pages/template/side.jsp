@@ -38,14 +38,6 @@
 	</c:choose>
 </section>
 
-<section>
-	<h3><spring:message code="language"/>:</h3>
-	<p id="languageBtn">
-		<a href="<c:url value='?lang=en'/>" title="<spring:message code="english"/>"><img src="/images/english-icon.png"/></a> 
-		<a href="<c:url value='?lang=pt_BR'/>" title="<spring:message code="portuguese"/>"><img src="/images/portuguese-icon.png"/></a>
-	</p>
-</section>
-
 <!--section>
 	<h3>Redes sociais:</h3>
 	<div class="fb-like" data-href="<spring:message code="site.url"/>" data-send="false" data-width="50" data-show-faces="false"></div>

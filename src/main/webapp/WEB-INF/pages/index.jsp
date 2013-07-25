@@ -12,7 +12,7 @@
 		<header>
 			<h2>Veggie Out</h2>
 		</header>
-		<p>Sua ferramenta para busca de restaurantes Vegetarianos e Veganos. <a href="/restaurant/new">Compartilhe seus lugares favoritos.</a></p>
+		<p><spring:message code="intro.text"/> <a href="/restaurant/new"><spring:message code="intro.text.link"/></a></p>
 		<img src="http://veggie-out.herokuapp.com/images/map-with-pin.jpg" alt="Veggie Out" />
 	</section>
 </head>
@@ -41,8 +41,8 @@
 	<article>
 		<a class="photo" href="/about"><img src="/images/map-with-pin.jpg" alt="<spring:message code="about.us"/>"></a>
 		<p>&nbsp;</p>
-		<p>Veggie Out sua ferramenta para busca de restaurantes Vegetarianos e Veganos.</p>
-		<p>Compartilhe e avalie opções para comer com outras pessoas e ajude para que novas opções sejam descobertas.<span class="readmore"> <a href="/about"><spring:message code="read.more"/>..</a></span>
+		<p><spring:message code="about.one"/></p>
+		<p><spring:message code="about.two"/><span class="readmore"> <a href="/about"><spring:message code="read.more"/>..</a></span>
 		</p>
 	</article>
 	</section>
