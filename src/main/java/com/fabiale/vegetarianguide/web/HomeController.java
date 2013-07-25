@@ -35,6 +35,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/error", method = RequestMethod.GET)
 	public String error(ModelMap modelMap) {
+		modelMap.addAttribute("current", "");
 		modelMap.addAttribute("warn", "page.not.found");
 		System.out.println("ERROR CONTROLLER");
 		return "error";

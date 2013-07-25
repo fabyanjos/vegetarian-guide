@@ -57,7 +57,7 @@
 		</div>
 		
 		<aside>
-			<jsp:include page="/WEB-INF/pages/template/menu.jsp"/>
+			<jsp:include page="/WEB-INF/pages/template/side.jsp"/>
 		</aside>
 	</div>
 	<footer>

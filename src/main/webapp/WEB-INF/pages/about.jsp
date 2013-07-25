@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h2><spring:message code="about.us"/></h2>
-	<section style="width: 640px;">
+	<section>
 		<article>
 			<p>
 				Veggie Out sua ferramenta para busca de restaurantes Vegetarianos e Veganos.

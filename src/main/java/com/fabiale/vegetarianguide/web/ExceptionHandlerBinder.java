@@ -97,9 +97,10 @@ public class ExceptionHandlerBinder {
 	@ExceptionHandler(AccessDeniedException.class)
 	public ModelAndView handleIOException(AccessDeniedException ex, HttpSession session) {
 		logger.log(Level.INFO, "Access denied" + ex);
-		session.setAttribute("current", "");
+//		session.setAttribute("current", "");
 		
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("current", "");
 		modelAndView.setViewName("error");
 		modelAndView.addObject("warn", "login.request");
 
@@ -142,6 +143,7 @@ public class ExceptionHandlerBinder {
 	 */
 	private ModelAndView errorModelAndView(Throwable ex, String msg) {
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("current", "");
 		modelAndView.setViewName("error");
 		modelAndView.addObject("error", msg);
 
