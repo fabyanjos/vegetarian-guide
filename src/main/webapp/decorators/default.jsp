@@ -28,11 +28,11 @@
     <script type="text/javascript">
     	var lang = '${pageContext.response.locale}';
     </script>
-    
+    <script src="/js/jquery.sharrre-1.3.4.min.js"></script>
     <script src="/js/custom.js"></script>
     <script src="/js/facebook.js"></script>
     <script src="/js/hello.js"></script>
-    <script src="/js/jquery.sharrre-1.3.4.min.js"></script>
+    <script src="/js/jquery.blockUI.js"></script>
     <script src="/js/social-network.js"></script>
 
 	<decorator:head/>
@@ -53,20 +53,8 @@
 			<jsp:include page="/WEB-INF/pages/template/side.jsp"/>
 		</aside>
 	</div>
-	<footer>
-		<div id="footer-left">Created by fabyanjos</div>
-		<div id="footer-right">© 2013 Veggie Out</div>
-	</footer>
-   <script type="text/javascript">
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-40354748-1']);
-	  _gaq.push(['_trackPageview']);
 
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-	</script>
+	<jsp:include page="/WEB-INF/pages/template/footer.jsp"/>
+	
    </body>
 </html>

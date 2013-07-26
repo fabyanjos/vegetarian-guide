@@ -4,12 +4,14 @@ hello.init({
 },{redirect_uri:'/'});
 
 function faceLogin() {
+	$(window).load('/js/hello.js');
 	hello.login('facebook', function(auth) {
 		if(auth.error == null)
 			login(auth);
 	});
 }
 function googleLogin() {
+	$(window).load('/js/hello.js');
 	hello.login('google', function(auth) {
 		if(auth.error == null)
 			login(auth);
@@ -17,10 +19,13 @@ function googleLogin() {
 }
 function AjaxSucceeded(result) {
 	window.location.href = '/';
+	$(document).ajaxStop($.unblockUI);
 }
 function AjaxFailed(result) {
+	$(document).ajaxStop($.unblockUI);
 }
 function login(auth) {
+	modalMessage();
 	hello.api(auth.network + '/me', function(user){
 		var userDetail = {
 				"name" : user.name,
@@ -42,7 +47,14 @@ function login(auth) {
 	});
 }
 
+function modalMessage() {
+	$(window).load('/js/jquery.blockUI.js');
+	if($.blockUI != null)
+		$.blockUI({ message: $('#loadingMessage') }); 
+}
+
 $(document).ready(function () {
+	$(window).load('/js/jquery.sharrre-1.3.4.min.js');
 	$('#shareme').sharrre({
 	  share: {
 	    googlePlus: true,
