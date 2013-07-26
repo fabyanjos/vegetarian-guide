@@ -124,6 +124,8 @@ nav ul li.selected a {
 	-moz-border-radius: 22px;
 	border-radius: 22px;
 	background-color: #D7D7D7;
+	border-top: dashed #000 1px;
+	font-weight: bold;
 }
 #intro h2,#intro p {
 	position: relative;
@@ -294,7 +296,7 @@ footer #footer-right {
 	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.23, rgb(19, 56, 28) ), color-stop(0.71, rgb(83, 105, 85) ) );
 	background-color: #13381C;
 }
-.light-green {
+.light-green, #intro {
 	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
 	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
 	box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
