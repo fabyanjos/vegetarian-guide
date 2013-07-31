@@ -26,7 +26,7 @@ public class MailConfig {
 				new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
 						return new PasswordAuthentication(
-								EMAIL_ADDRESS, "oceans16");
+								EMAIL_ADDRESS, "");
 					}
 				});
 		return session;
