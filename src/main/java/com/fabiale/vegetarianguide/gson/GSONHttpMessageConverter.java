@@ -21,6 +21,8 @@ import org.springframework.stereotype.Component;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
@@ -76,7 +78,10 @@ public class GSONHttpMessageConverter extends AbstractHttpMessageConverter<Objec
         try {
             // See http://code.google.com/p/google-gson/issues/detail?id=199 for details on SQLTimestamp conversion
             Gson gson = gsonBuilder.create();
-            writer.append(gson.toJson(o, genericType));
+            JsonElement json = gson.toJsonTree(o, genericType);
+            JsonObject jo = new JsonObject();
+            jo.add("result", json);
+			writer.append(jo.toString());
         } catch(Exception e) {
         	logger.log(Level.SEVERE, "Could write JSON: " + e.getMessage(), e);
         	throw new HttpMessageNotWritableException("Could write JSON: " + e.getMessage(), e);
