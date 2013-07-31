@@ -31,7 +31,7 @@ public class GSONHttpMessageConverter extends AbstractHttpMessageConverter<Objec
     private Logger logger = Logger.getLogger(GSONHttpMessageConverter.class.getName());
 
     private GsonBuilder gsonBuilder = new GsonBuilder()
-            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").setPrettyPrinting();
 
     public GSONHttpMessageConverter() {
         super(new MediaType("application", "json", DEFAULT_CHARSET));
