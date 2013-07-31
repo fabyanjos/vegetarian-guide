@@ -32,6 +32,19 @@ public class CoordinateUtil {
 		}
 	}
 	
+	public void distance(double lat, double lng, Restaurant destination) {
+		try {
+			String url ="http://maps.googleapis.com/maps/api/distancematrix/json?origins={origin}&destinations={destination}&sensor=false";
+			
+			MapsResult result = restTemplate.getForObject(url, MapsResult.class, lat + "," + lng, destination.getLatLng());
+			
+			destination.setDistance(result.getDistance());
+		} catch(Exception e) {
+			logger.log(Level.SEVERE, "Distance error api: " + e.getMessage(), e);
+			throw new RestClientException("Distance error api: " + e.getMessage(), e);
+		}
+	}
+	
 	public AddressResult addressDetails(String address) {
 		try {
 			String url ="http://maps.googleapis.com/maps/api/geocode/json?address={address}&sensor=false";

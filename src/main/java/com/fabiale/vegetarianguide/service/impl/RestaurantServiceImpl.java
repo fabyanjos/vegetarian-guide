@@ -57,26 +57,32 @@ public class RestaurantServiceImpl implements RestaurantService {
 		AddressResult ar = coordinate.addressDetails(restaurant.getAddress());  
 		if(ar != null && ar.getStatus() != null && ar.getStatus().equals("OK") && ar.getResults() != null) {
 			ar.populate(restaurant);
-			Double dist = 0.05;
-
-			Double latMin = restaurant.getLatitude() - dist;
-			Double lngMin = restaurant.getLongitude() - dist;
-			Double latMax = restaurant.getLatitude() + dist;
-			Double lngMax = restaurant.getLongitude() + dist;
-			
-			result = this.repository.getNearBy(latMin, lngMin, latMax, lngMax);
-			
-			for(Restaurant r : result) {
-				coordinate.distance(restaurant, r);
-				r.setRating(reviewRepository.getRestaurantRating(r));
-			}
-			
-			Collections.sort(result);
+			result = this.getNearBy(restaurant.getLatitude(), restaurant.getLongitude());
 		}
 		return result;
 	}
 	
 	public List<Restaurant> getLastUptades(int quantity) {
 		return repository.getLastUptades(quantity);
+	}
+
+	@Override
+	public List<Restaurant> getNearBy(Double lat, Double lng) throws NotFoundException {
+		
+		Double dist = 0.05;
+
+		Double latMin = lat - dist;
+		Double lngMin = lng - dist;
+		Double latMax = lat + dist;
+		Double lngMax = lng + dist;
+		
+		List<Restaurant> result = this.repository.getNearBy(latMin, lngMin, latMax, lngMax);
+		for(Restaurant r : result) {
+			coordinate.distance(lat, lng, r);
+			r.setRating(reviewRepository.getRestaurantRating(r));
+		}
+		
+		Collections.sort(result);
+		return result;
 	}
 }

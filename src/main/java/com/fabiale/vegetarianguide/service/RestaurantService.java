@@ -17,6 +17,8 @@ public interface RestaurantService {
 	
 	public List<Restaurant> getNearBy(Restaurant restaurant) throws NotFoundException;
 	
+	public List<Restaurant> getNearBy(Double lat, Double lng) throws NotFoundException;
+	
 	public List<Restaurant> getLastUptades(int quantity);
 
 }
