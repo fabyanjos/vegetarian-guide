@@ -44,7 +44,7 @@ common: &default_settings
   # app_name: My Application;My Application 2
   # This setting is required.
 
-  app_name: veggie-out-local
+  app_name: veggie-out
 
   # The agent uses its own log file to keep its logging separate from
   # that of your application.  Specify the log level here.  This
