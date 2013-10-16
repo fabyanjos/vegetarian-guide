@@ -13,7 +13,7 @@ common: &default_settings
   # account.  This key binds your Agent's data to your account in the
   # New Relic service.
 
-  license_key: my_license_key
+  license_key: 5bad1b96790a5b87a1ed5706b0e4e9e5e57c8b99 
 
   # Agent Enabled
   # Use this setting to force the agent to run or not run.
@@ -44,7 +44,7 @@ common: &default_settings
   # app_name: My Application;My Application 2
   # This setting is required.
 
-  app_name: Veggie-Out
+  app_name: veggie-out-local
 
   # The agent uses its own log file to keep its logging separate from
   # that of your application.  Specify the log level here.  This
