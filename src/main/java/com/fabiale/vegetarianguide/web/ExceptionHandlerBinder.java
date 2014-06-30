@@ -9,6 +9,7 @@ import javassist.NotFoundException;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -64,10 +65,10 @@ public class ExceptionHandlerBinder {
 	}
 
 	@ExceptionHandler(DataIntegrityViolationException.class)
-	public ModelAndView handleIOException(DataIntegrityViolationException ex) {
+	public ModelAndView handleIOException(DataIntegrityViolationException ex, HttpServletRequest request) {
 		ConstraintViolationException constraint = (ConstraintViolationException) ex.getCause();
 		logger.log(Level.SEVERE, "handleIOException - Catching: " + ex.getClass().getSimpleName(), ex);
-		return errorModelAndView(ex, constraint.getConstraintName() + ".error");
+		return errorModelAndView(ex, constraint.getConstraintName() + ".error", request.getParameter("name"));
 	}
 	
 	@ExceptionHandler(AddressException.class)
@@ -97,7 +98,6 @@ public class ExceptionHandlerBinder {
 	@ExceptionHandler(AccessDeniedException.class)
 	public ModelAndView handleIOException(AccessDeniedException ex, HttpSession session) {
 		logger.log(Level.INFO, "Access denied" + ex);
-//		session.setAttribute("current", "");
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("current", "");
@@ -141,11 +141,13 @@ public class ExceptionHandlerBinder {
 	/**
 	 * Get the users details for the 'personal' page
 	 */
-	private ModelAndView errorModelAndView(Throwable ex, String msg) {
+	private ModelAndView errorModelAndView(Throwable ex, String msg, String... msgs) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("current", "");
 		modelAndView.setViewName("error");
 		modelAndView.addObject("error", msg);
+		if(msgs.length > 0 && msgs[0] != null)
+			modelAndView.addObject("restaurantName", msgs[0].replaceAll(" ", "-"));
 
 		return modelAndView;
 	}

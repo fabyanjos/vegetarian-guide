@@ -85,7 +85,7 @@
 				</header>
 				<section>
 					<h5>
-						<a name="${r.id}">${r.title}</a>
+						<a name="review-${r.id}">${r.title}</a>
 						<span class="rating " id="rating${i.index}"></span>
 					</h5>
 					<div style="width: 480px;">

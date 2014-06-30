@@ -55,7 +55,7 @@
 	<c:forEach items="${reviewsList}" var="review" varStatus="i">
 		<article>
 			<h4>
-				<a href="/restaurant/details/${review.restaurant.id}#${review.id}">${review.restaurant.name}</a>
+				<a href="/restaurant/${review.restaurant.nameUrl}#review-${review.id}">${review.restaurant.name}</a>
 				<span class="light-green"><fmt:formatDate pattern="dd/MM/yy HH:mm" value="${review.date}"/></span>
 			</h4>
 			<p>

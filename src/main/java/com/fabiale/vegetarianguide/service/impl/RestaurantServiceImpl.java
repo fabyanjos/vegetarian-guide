@@ -88,6 +88,11 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 	@Override
 	public Restaurant getByName(String name) throws RestaurantNotFoundException {
-		return repository.getByName(name.replace("-", " "));
+		Restaurant r = this.repository.getByName(name.replaceAll("-", " "));
+		if (r != null) {
+			r.setRating(reviewRepository.getRestaurantRating(r));
+			return r;
+		}
+		throw new RestaurantNotFoundException("Not Found");
 	}
 }

@@ -42,6 +42,7 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_RESTAURANT")
 	private Integer id;
 	@NotEmpty @Length(max = 255)
+	@Column(unique = true)
 	private String name;
 	@NotEmpty @Length(max = 255)
 	private String street;
@@ -258,7 +259,7 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	}
 	
 	public String getNameUrl() {
-		return this.name.replace(" ", "-").toLowerCase();
+		return this.name.replaceAll(" ", "-").toLowerCase();
 	}
 
 	public String getAddress() {

@@ -27,6 +27,10 @@
 			    			<spring:message code="system.error"/>
 			    		</c:otherwise>
 			    	</c:choose>
+			    	<c:if test="${!empty restaurantName}">
+			    		<br/>
+		    			<a href="/restaurant/${restaurantName}">Visualizar</a>
+		    		</c:if>
 			    </p>
 		    </c:otherwise>
 	    </c:choose>
