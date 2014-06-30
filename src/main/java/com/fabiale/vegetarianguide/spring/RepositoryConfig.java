@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class RepositoryConfig {
 
-	// ${jdbc.driverClassName}
 	@Value("${jdbc.driverClassName}") private String hibernateDriver;
 	@Value("${hibernate.dialect}") private String hibernateDialect; 
 	@Value("${hibernate.show_sql}") private String hibernateShowSql;
@@ -30,12 +29,13 @@ public class RepositoryConfig {
 		return new URI(System.getenv("DATABASE_URL"));
 	}
 
-	@Bean()
+	@Bean
 	public DataSource dataSource() throws URISyntaxException {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
-		ds.setUrl("jdbc:postgresql://" + dbUrl().getHost() + ":" + dbUrl().getPort() + dbUrl().getPath() );
-		ds.setUsername(dbUrl().getUserInfo().split(":")[0]);
-		ds.setPassword(dbUrl().getUserInfo().split(":")[1]);
+		URI dbUrl = dbUrl();
+		ds.setUrl("jdbc:postgresql://" + dbUrl.getHost() + ":" + dbUrl.getPort() + dbUrl.getPath() );
+		ds.setUsername(dbUrl.getUserInfo().split(":")[0]);
+		ds.setPassword(dbUrl.getUserInfo().split(":")[1]);
 		ds.setDriverClassName(hibernateDriver);
 		return ds;
 	}

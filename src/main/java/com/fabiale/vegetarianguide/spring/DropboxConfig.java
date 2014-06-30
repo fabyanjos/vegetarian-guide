@@ -12,10 +12,10 @@ import com.dropbox.client2.session.WebAuthSession;
 @Configuration
 public class DropboxConfig {
 
-	private static final String APP_KEY = "1xz9xqh3jh1e0y3";
-    private static final String APP_SECRET = "zzfq1vx36k6m5fo";
-    private static final String USER_KEY = "qq1oi37ufc70cci";
-    private static final String USER_SECRET = "6hqwwa7ao8xwux5";
+	private static final String APP_KEY = System.getenv("DROPBOX_APP_KEY");
+    private static final String APP_SECRET = System.getenv("DROPBOX_APP_SECRET");
+    private static final String USER_KEY = System.getenv("DROPBOX_USER_KEY");
+    private static final String USER_SECRET = System.getenv("DROPBOX_USER_SECRET");
     private static final AccessType ACCESS_TYPE = AccessType.DROPBOX;
     
     @Bean

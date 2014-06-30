@@ -68,6 +68,9 @@
 
 <section>
 	<h3>Links</h3>
+	<ul class="arrow-list">
+		<li><a href="http://composicao-alimentos.herokuapp.com" target="_blank">Composição dos Alimentos</a></li>
+	</ul>
 	<a class="side-banner recycle-banner" href="http://www.brasil.gov.br/sobre/meio-ambiente/gestao-do-lixo/reciclagem" 
 		title="Recicle" target="_blank">
 		<img src="/images/recycle.gif" width="100" alt="Recicle" title="Recicle"/>
