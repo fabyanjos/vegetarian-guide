@@ -12,6 +12,8 @@ public interface RestaurantRepository {
     
     public Restaurant getById(Integer id);
     
+    public Restaurant getByName(String name);
+    
     public List<Restaurant> getNearBy(Double latMin, Double lngMin, Double latMax, Double lngMax);
     
     public List<Restaurant> getLastUptades(int quantity);

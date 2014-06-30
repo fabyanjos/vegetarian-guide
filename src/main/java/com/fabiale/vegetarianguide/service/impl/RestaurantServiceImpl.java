@@ -85,4 +85,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 		Collections.sort(result);
 		return result;
 	}
+
+	@Override
+	public Restaurant getByName(String name) throws RestaurantNotFoundException {
+		return repository.getByName(name.replace("-", " "));
+	}
 }

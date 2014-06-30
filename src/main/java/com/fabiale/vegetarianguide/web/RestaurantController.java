@@ -98,6 +98,17 @@ public class RestaurantController {
         return "/restaurant/details";
     }
     
+    @RequestMapping(value = "/restaurant/{name}", method = {RequestMethod.POST, RequestMethod.GET})
+    public String getDetailsByName(@PathVariable("name") String name, ModelMap modelMap) throws NotFoundException, DropboxException, RestaurantNotFoundException {
+		Restaurant restaurant = service.getByName(name);
+		List<Review> reviews = reviewService.getByRestaurant(restaurant);
+		List<Image> images = imageService.getByRestaurant(restaurant);
+		modelMap.addAttribute("restaurant", restaurant);
+		modelMap.addAttribute("reviews", reviews);
+		modelMap.addAttribute("images", images);
+        return "/restaurant/details";
+    }
+    
     @RequestMapping(value = "/restaurant/list/{qtd}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody
 	public List<Restaurant> getLastUpdates(@PathVariable("qtd") int qtd) throws DropboxException {

@@ -256,6 +256,10 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	public void setCreatedBy(User createdBy) {
 		this.createdBy = createdBy;
 	}
+	
+	public String getNameUrl() {
+		return this.name.replace(" ", "-").toLowerCase();
+	}
 
 	public String getAddress() {
 		StringBuffer sb = new StringBuffer();

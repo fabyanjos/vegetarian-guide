@@ -28,7 +28,7 @@
 							<div class="resultLeftSearch">
 								
 								<h5>
-									<a href="/restaurant/details/${r.id}" title="<spring:message code="details"/>">${r.name}</a>
+									<a href="/restaurant/${r.nameUrl}" title="<spring:message code="details"/>">${r.name}</a>
 									<span class="ratingDiv rating " id="rating${i.index}"></span>
 								</h5> 
 								<spring:message code="${r.type}"/>

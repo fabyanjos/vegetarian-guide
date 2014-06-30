@@ -23,11 +23,11 @@
 		<c:forEach items="${restaurants}" var="r" varStatus="i">
 			<article>
 				<c:if test="${!empty r.imageUrl}">
-					<a href="/restaurant/details/${r.id}" class="photo">
+					<a href="/restaurant/${r.nameUrl}" class="photo">
 						<img alt="${r.name}" src="${r.imageUrl}">
 					</a>
 				</c:if>
-				<h4><a href="/restaurant/details/${r.id}">${r.name}</a></h4>
+				<h4><a href="/restaurant/${r.nameUrl}">${r.name}</a></h4>
 				<p>
 					${fn:substring(r.description, 0, 250)}
 					<c:if test="${fn:length(r.description) > 250}">...</c:if>

@@ -15,6 +15,8 @@ public interface RestaurantService {
 	
 	public Restaurant getById(Integer id) throws RestaurantNotFoundException;
 	
+	public Restaurant getByName(String name) throws RestaurantNotFoundException;
+	
 	public List<Restaurant> getNearBy(Restaurant restaurant) throws NotFoundException;
 	
 	public List<Restaurant> getNearBy(Double lat, Double lng) throws NotFoundException;

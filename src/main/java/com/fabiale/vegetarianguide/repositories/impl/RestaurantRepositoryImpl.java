@@ -38,6 +38,12 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
 		return restaurant;
     }
     
+    public Restaurant getByName(String name) {
+    	Criteria criteria = this.factory.getCurrentSession().createCriteria(Restaurant.class);
+    	criteria.add(Restrictions.eq("name", name).ignoreCase());
+    	return (Restaurant) criteria.uniqueResult();
+    }
+    
     @SuppressWarnings("unchecked")
     public List<Restaurant> getNearBy(Double latMin, Double lngMin, Double latMax, Double lngMax) {
     	Criteria criteria = this.factory.getCurrentSession().createCriteria(Restaurant.class);
