@@ -54,7 +54,7 @@
 				<c:forEach items="${images}" var="image" varStatus="i">
 					<li>
 						<a href="${image.filePath}">
-							<img src="${image.filePath}" alt="${image.name}"/>
+							<img src="${image.filePath}" alt="${image.name}" title="${image.name}"/>
 						</a>
 					</li>
 				</c:forEach>
