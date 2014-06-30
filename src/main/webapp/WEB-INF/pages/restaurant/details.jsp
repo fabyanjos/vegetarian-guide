@@ -44,7 +44,7 @@
 	
 	<section>
 		<h3>
-			<spring:message code="images"/>
+			<a name="images"><spring:message code="images"/></a>
 			<span class="light-green"><a href="/restaurant/image/${restaurant.id}"><spring:message code="addimage"/></a></span>
 		</h3>
 		<c:if test="${!empty images}">
@@ -72,7 +72,7 @@
 	
 	<section id="comments">
 		<h3>
-			<spring:message code="reviews"/>
+			<a name="reviews"><spring:message code="reviews"/></a>
 			<span class="light-green"><a href="/restaurant/review/${restaurant.id}"><spring:message code="rating"/></a></span>
 		</h3>
 		<c:forEach items="${reviews}" var="r" varStatus="i">

@@ -4,56 +4,43 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<url>
-  <loc>http://veggie-out.herokuapp.com/</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://veggie-out.herokuapp.com/restaurant/search</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://veggie-out.herokuapp.com/restaurant/new</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://veggie-out.herokuapp.com/about</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://veggie-out.herokuapp.com/contact</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://veggie-out.herokuapp.com/restaurant/details/2</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://veggie-out.herokuapp.com/restaurant/details/3</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://veggie-out.herokuapp.com/restaurant/details/4</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://veggie-out.herokuapp.com/restaurant/details/5</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://veggie-out.herokuapp.com/restaurant/details/6</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://veggie-out.herokuapp.com/restaurant/details/7</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://veggie-out.herokuapp.com/restaurant/details/11</loc>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>http://veggie-out.herokuapp.com/restaurant/details/12</loc>
-  <changefreq>weekly</changefreq>
-</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com</loc>
+	</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com/restaurant/search</loc>
+	</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com/restaurant/new</loc>
+	</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com/about</loc>
+	</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com/contact</loc>
+	</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com/restaurant/62-graus</loc>
+	</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com/restaurant/apfel-jardins</loc>
+	</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com/restaurant/gopala-hari</loc>
+	</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com/restaurant/apfel-centro</loc>
+	</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com/restaurant/gopala-madhava</loc>
+	</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com/restaurant/bio-alternativa-higien%C3%B3polis</loc>
+	</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com/restaurant/bio-alternativa-jardins</loc>
+	</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com/restaurant/goshala</loc>
+	</url>
 </urlset>
