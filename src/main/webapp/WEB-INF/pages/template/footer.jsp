@@ -10,7 +10,7 @@
 </div> 
 
 <footer>
-	<div id="footer-left">Created by fabyanjos | © 2013 Veggie Out</div>
+	<div id="footer-left">© 2014 Veggie Out</div>
 	<div id="footer-right">
 		
 		<!-- id="languageBtn">
