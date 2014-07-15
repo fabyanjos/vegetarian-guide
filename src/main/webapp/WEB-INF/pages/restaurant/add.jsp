@@ -20,10 +20,20 @@
 					<label><spring:message code="type"/>: <span class="mandatory">*</span> </label>
 					<form:select path="type" cssErrorClass="inputError">
 						<form:option value=""></form:option>
-						<form:option value="VEGETARIAN"><spring:message code="vegetarian"/></form:option>
+						<form:option value="OVO_LACTO"><spring:message code="ovolacto"/></form:option>
+						<form:option value="LACTO"><spring:message code="lacto"/></form:option>
 						<form:option value="VEGAN"><spring:message code="vegan"/></form:option>
+						<form:option value="VEGETARIAN"><spring:message code="vegetarian"/></form:option>
 					</form:select>
 					<form:errors cssClass="error" path="type"/>
+				</p>
+				<p>
+					<label><spring:message code="delivery"/>: </label>
+					<span>
+						<form:radiobutton path="delivery" value="yes"/><label for="delivery1"><spring:message code="true"/></label> 
+						<form:radiobutton path="delivery" value="no"/><label for="delivery2"><spring:message code="false"/></label>
+					</span>
+					<form:errors cssClass="error" path="delivery"/>
 				</p>
 				<p>
 					<label><spring:message code="name"/>: <span class="mandatory">*</span> </label>
@@ -56,7 +66,7 @@
 				</p>
 				<p>
 					<label><spring:message code="country"/>: <span class="mandatory">*</span> </label>
-					<form:input path="country.name" cssErrorClass="inputError"/> 
+					<form:input path="country.name" cssErrorClass="inputError" value="Brasil"/> 
 					<form:errors cssClass="error" path="country.name"/>
 				</p>
 				<p>

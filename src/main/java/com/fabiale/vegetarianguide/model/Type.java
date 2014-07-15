@@ -1,5 +1,5 @@
 package com.fabiale.vegetarianguide.model;
 
 public enum Type {
-	VEGETARIAN, VEGAN
+	VEGETARIAN, VEGAN, OVO_LACTO, LACTO
 }

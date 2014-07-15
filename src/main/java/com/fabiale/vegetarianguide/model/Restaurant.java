@@ -87,7 +87,17 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	@Column(insertable = false, updatable = false)
 	@Transient
 	private String imageUrl;
+	@org.hibernate.annotations.Type(type="yes_no")
+	private boolean delivery = false;
 	
+	public boolean isDelivery() {
+		return delivery;
+	}
+
+	public void setDelivery(boolean delivery) {
+		this.delivery = delivery;
+	}
+
 	public String getImageUrl() {
 		return imageUrl;
 	}

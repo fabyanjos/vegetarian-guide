@@ -48,7 +48,8 @@ h4 {
 h5 {
 	font-size: 14px;
 }
-h2 span,h3 span,h4 span, h5 span {
+
+h3 span,h4 span {
 	display: inline-block;
 	float: right;
 	margin-right: 5px;
@@ -62,9 +63,10 @@ h2 span,h3 span,h4 span, h5 span {
 	text-align: center;
 	color: #FFF;
 }
-h2 span a,h3 span a,h4 span a {
+h3 span a,h4 span a {
 	color: #FFF;
 }
+
 a {
 	color: #000;
 	text-decoration: none;
@@ -73,7 +75,7 @@ a:hover {
 	text-decoration: underline;
 }
 article {
-	padding-bottom: 22px;
+	padding-bottom: 12px;
 }
 /* NAVIGATION */
 nav {
@@ -163,12 +165,12 @@ nav ul li.selected a {
 	position: relative;
 }
 #mainContent section {
-	margin-top: 10px;
+	margin-top: 12px;
 }
-#mainContent article {
-	min-height: 125px;
+/* #mainContent article {
+	min-height: 105px;
 	height: auto !important;
-}
+} */
 aside {
 	display: table-cell;
 	width: 300px;
@@ -209,7 +211,7 @@ aside {
 /* FORMS */
 form p {
 	display: table;
-	margin-bottom: 22px;
+	margin-top: 22px;
 	padding: 0 22px;
 }
 form label {
@@ -218,22 +220,41 @@ form label {
 	padding-right: 20px;
 	text-align: right;
 	font-weight: bold;
-	vertical-align: top;
+	vertical-align: middle;
 }
-form input[type="text"],form input[type="email"],form input[type="url"],form input[type="file"],form select {
+form input[type="text"],form input[type="email"],form input[type="url"],form input[type="file"], form select, form textarea {
 	display: table-cell;
 	width: 300px;
 	height: 20px;
-	border: 1px solid #D7D7D7;
+	padding: 5px;
+	border:1px solid #aaa;
+    box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+    border-radius: 4px;
+    -moz-transition: padding .25s; 
+    -webkit-transition: padding .25s; 
+    -o-transition: padding .25s;
+    transition: padding .25s;
+    padding-right:30px;
+}
+form select {
+	width: 336px;
+	height: 28px;
+	padding: 0;
 }
 form textarea {
-	width: 300px;
 	height: 100px;
-	border: 1px solid #d7d7d7;
 }
 form input[type="submit"] {
 	margin-left: 162px;
-	width: 120px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    font-weight: bold;
+    padding: 8px 30px;
+    text-align: center;
+    cursor: pointer;
 }
 .inputError {
 	border: solid 1px #f00!important;
@@ -543,4 +564,11 @@ a.side-banner img {
 #loadingMessage {
 	padding: 10px;
 	font-size: 30px;
+}
+h2 .rating {
+	float: right;
+	margin-top: 8px;
+}
+h5 .rating {
+	float: right;
 }

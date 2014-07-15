@@ -56,7 +56,6 @@
 		<article>
 			<h4>
 				<a href="/restaurant/${review.restaurant.nameUrl}#review-${review.id}">${review.restaurant.name}</a>
-				<span class="light-green"><fmt:formatDate pattern="dd/MM/yy HH:mm" value="${review.date}"/></span>
 			</h4>
 			<p>
 				${fn:substring(review.description, 0, 150)}

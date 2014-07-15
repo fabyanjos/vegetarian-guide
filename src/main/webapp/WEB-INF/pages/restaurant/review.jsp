@@ -19,19 +19,19 @@
 				<spring:message code="${error}"/><br/>
 			</p>
 		</c:if>
-		<span style="display: none;"><form:input path="rating"/></span>
-		<p style="display:inline-block;">
+		<p>
 			<label><spring:message code="rate"/>: <span class="mandatory">*</span> </label>
-				<ul class="rating nostar" id="ratingList" style="display:inline-block;top:-30px;right:25px;">
-					<li class="one"><a href="javascript:rating(1);" title="1 Star">1</a></li>
-					<li class="two"><a href="javascript:rating(2);" title="2 Stars">2</a></li>
-					<li class="three"><a href="javascript:rating(3);" title="3 Stars">3</a></li>
-					<li class="four"><a href="javascript:rating(4);" title="4 Stars">4</a></li>
-					<li class="five"><a href="javascript:rating(5);" title="5 Stars">5</a></li>
-				</ul>
+			<span class="rating">
+			    <input type="radio" name="rating" value="0" checked /><span id="hide"></span>
+			    <input type="radio" name="rating" value="1"/><span></span>
+			    <input type="radio" name="rating" value="2"/><span></span>
+			    <input type="radio" name="rating" value="3"/><span></span>
+			    <input type="radio" name="rating" value="4"/><span></span>
+			    <input type="radio" name="rating" value="5"/><span></span>
+			</span>
 			<form:errors cssClass="error" path="rating" cssStyle="display: inline-block;position: absolute;margin: -2px 0 0 200px;"/>
 		</p>
-		<p style="margin-top:-30px;">
+		<p>
 			<label><spring:message code="summary"/>: <span class="mandatory">*</span> </label>
 			<form:input path="title" cssErrorClass="inputError" maxlength="40"/>
 			<form:errors cssClass="error" path="title"/>
@@ -51,7 +51,6 @@
 			<form:input path="cons" cssErrorClass="inputError" maxlength="100"/>
 			<form:errors cssClass="error" path="cons"/>
 		</p>
-		
 		<p><input type="submit" value="<spring:message code="save"/>" class="button"/></p>
 	</form:form>
 <script type="text/javascript">

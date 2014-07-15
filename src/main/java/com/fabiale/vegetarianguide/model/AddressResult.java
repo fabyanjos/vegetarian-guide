@@ -49,7 +49,7 @@ public class AddressResult {
 								restaurant.setNumber(Integer.valueOf(c.getLong_name()));
 							else if(type.equals("route"))
 								restaurant.setStreet(c.getLong_name());
-							else if(type.equals("locality"))
+							else if(type.equals("administrative_area_level_2"))
 								restaurant.setCity(c.getLong_name());
 							else if(type.equals("administrative_area_level_1"))
 								restaurant.setState(c.getLong_name());

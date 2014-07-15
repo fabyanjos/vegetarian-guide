@@ -17,8 +17,16 @@
 <body>
 	<h2>
 		${restaurant.name}
-		<span class="ratingDiv rating " id="rating"></span>
+		<span class="rating">
+		    <input type="radio" name="rating-main" value="0" checked /><span id="hide"></span>
+		    <input type="radio" name="rating-main" value="1" disabled="disabled"/><span></span>
+		    <input type="radio" name="rating-main" value="2" disabled="disabled"/><span></span>
+		    <input type="radio" name="rating-main" value="3" disabled="disabled"/><span></span>
+		    <input type="radio" name="rating-main" value="4" disabled="disabled"/><span></span>
+		    <input type="radio" name="rating-main" value="5" disabled="disabled"/><span></span>
+		</span>
 	</h2>
+	
 	<section>
 		<c:if test="${!empty success}">
 		 <p class="successMsg"><spring:message code="${success}"/></p>
@@ -27,18 +35,25 @@
 	</section>
 	<section>
 		<p>
-			<em><spring:message code="type"/></em>: 
+			<strong><spring:message code="type"/></strong>: 
 			<spring:message code="${restaurant.type}"/>
 		</p>
+		<p>
+			<strong><spring:message code="delivery"/></strong>: 
+			<spring:message code="${restaurant.delivery}"/>
+		</p>
 		
-		<p>${restaurant.description}</p>
+		<p>
+			<strong><spring:message code="description"/></strong>:
+			${restaurant.description}
+		</p>
 		<p class="address">${restaurant.street}, ${restaurant.number} ${restaurant.postalCode}, ${restaurant.city}, <spring:message code="${restaurant.country.name}"/></p>
 		<c:if test="${!empty restaurant.phone}"><p class="phone">${restaurant.phone}</p></c:if>
-		<c:if test="${!empty restaurant.website}"><p class="websiteLink"><a href="${restaurant.website}" target="_blank"><spring:message code="website"/></a></p></c:if>
+		<c:if test="${!empty restaurant.website}"><p class="websiteLink"><a href="${restaurant.website}" target="_blank">${restaurant.website}</a></p></c:if>
 		
 		<div id="infoWindow" style="display: none;">
 			<span class="infoWindowTitle">${restaurant.name}</span>
-			<p>${restaurant.street}, ${restaurant.number} ${restaurant.postalCode}, ${restaurant.city}, <spring:message code="${restaurant.country.name}"/></p>
+			<p>${restaurant.street}, ${restaurant.number}  ${restaurant.postalCode}, ${restaurant.city}, <spring:message code="${restaurant.country.name}"/></p>
 		</div>
 	</section>
 	
@@ -86,7 +101,14 @@
 				<section>
 					<h5>
 						<a name="review-${r.id}">${r.title}</a>
-						<span class="rating " id="rating${i.index}"></span>
+						<span class="rating">
+						    <input type="radio" name="rating-${r.id}" value="0" checked /><span id="hide"></span>
+						    <input type="radio" name="rating-${r.id}" value="1" disabled="disabled"/><span></span>
+						    <input type="radio" name="rating-${r.id}" value="2" disabled="disabled"/><span></span>
+						    <input type="radio" name="rating-${r.id}" value="3" disabled="disabled"/><span></span>
+						    <input type="radio" name="rating-${r.id}" value="4" disabled="disabled"/><span></span>
+						    <input type="radio" name="rating-${r.id}" value="5" disabled="disabled"/><span></span>
+						</span>
 					</h5>
 					<div style="width: 480px;">
 						<spring:message code="on"/>
@@ -105,16 +127,18 @@
 $(document).ready(function () {
 	<c:if test="${!empty restaurant}">
 		setOrigin('${restaurant.latitude}', '${restaurant.longitude}', 'infoWindow');
-		var style = $('#rating').attr("class");
-		style += numberText(${restaurant.rating});
-		style += "star";
-		$('#rating').attr("class", style); 
+		var rating = $('input[name=rating-main]');
+		for(var i = 1; i < 6; i++) {
+			if(rating[i].value == '${restaurant.rating}')
+				$(rating[i]).attr('checked', 'checked'); 
+		}
 	</c:if>
 	<c:forEach items="${reviews}" var="r" varStatus="i">
-		var style = $('#rating${i.index}').attr("class");
-		style += numberText(${r.rating});
-		style += "star";
-		$('#rating${i.index}').attr("class", style); 
+		var rate = $('input[name=rating-${r.id}]');
+		for(var i = 1; i < 6; i++) {
+			if(rate[i].value == '${r.rating}')
+				$(rate[i]).attr('checked', 'checked'); 
+		}
 	</c:forEach>
 });
 </script>	

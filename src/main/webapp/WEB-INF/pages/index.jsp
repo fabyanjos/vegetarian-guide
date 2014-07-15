@@ -12,7 +12,10 @@
 		<header>
 			<h2>Veggie Out</h2>
 		</header>
-		<p><spring:message code="intro.text"/> <a href="/restaurant/new"><spring:message code="intro.text.link"/></a></p>
+		<p>
+			<spring:message code="intro.text"/> 
+			<a href="/restaurant/new"><spring:message code="intro.text.link"/></a>
+		</p>
 		<img src="http://veggie-out.herokuapp.com/images/map-with-pin.jpg" alt="Veggie Out" />
 	</section>
 </head>
