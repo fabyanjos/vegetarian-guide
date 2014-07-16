@@ -29,6 +29,7 @@
     <script src="/js/hello.js"></script>
     <script src="/js/custom.js"></script>
     <script src="/js/social-network.js"></script>
+    <script src="/js/jquery.slides.min.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/custom.css"/>

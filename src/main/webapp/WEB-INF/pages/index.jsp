@@ -6,21 +6,17 @@
 <!doctype html>
 <html lang="en">
 
-
-<head>
-	<section id="intro">
-		<header>
-			<h2>Veggie Out</h2>
-		</header>
-		<p>
-			<spring:message code="intro.text"/> 
-			<a href="/restaurant/new"><spring:message code="intro.text.link"/></a>
-		</p>
-		<img src="http://veggie-out.herokuapp.com/images/map-with-pin.jpg" alt="Veggie Out" />
-	</section>
-</head>
 <body>
-	
+	<div class="container-slides">
+		<div id="slides">
+			<a href="/restaurant/new">
+				<img src="/images/banner.png" alt="Adicionar um novo restaurante">
+			</a>
+			<a href="/restaurant/new">
+				<img src="/images/banner.png" alt="Adicionar um novo restaurante">
+			</a>
+		</div>
+	</div>	
 	<section>
 		<h2><spring:message code="latest.restaurants"/></h2>
 		<c:forEach items="${restaurants}" var="r" varStatus="i">
@@ -50,5 +46,20 @@
 	</article>
 	</section>
    
+   <script>
+    $(function() {
+      $('#slides').slidesjs({
+        width: 1000,
+        height: 300,
+        pagination: false,
+        navigation: false,
+        play: {
+          auto: false,
+          interval: 4000,
+          swap: false
+        }
+      });
+    });
+  </script>
 </body>
 </html>
