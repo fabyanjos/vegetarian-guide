@@ -49,14 +49,28 @@
    <script>
     $(function() {
       $('#slides').slidesjs({
-        width: 1000,
+        width: 1024,
         height: 300,
-        pagination: false,
-        navigation: false,
         play: {
           auto: false,
-          interval: 4000,
-          swap: false
+          effect: "fade",
+          interval: 4000
+        },
+        navigation: {
+        	active: false,
+            effect: "fade"
+        },
+        pagination: {
+        	active: false,
+            effect: "fade"
+        },
+        effect: {
+            fade: {
+              speed: 500,
+                // [number] Speed in milliseconds of the fade animation.
+              crossfade: true
+                // [boolean] Cross-fade the transition.
+            }
         }
       });
     });
