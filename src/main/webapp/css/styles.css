@@ -380,7 +380,7 @@ a.side-banner img {
 	text-transform: capitalize;
 }
 #search-btn {
-	width: 680px;
+	width: 670px;
 	display: inline-block;
 	-webkit-border-radius: .5em;
 	-moz-border-radius: .5em;
@@ -389,6 +389,7 @@ a.side-banner img {
 	font-weight: bold;
 	font-size: 14px;
 	text-align: center;
+	padding: 10px;
 }
 #search-btn a {
 	color: #FFF;
@@ -407,7 +408,6 @@ a.side-banner img {
 	height: 20px;
 	font-size: 16px;
 	margin-right: 10px;
-	display: inline-block;
 }
 .websiteLink, .phone, .address, .pros, .cons {
 	padding-left: 30px;

@@ -16,7 +16,9 @@
 		<form onsubmit="search(); return false;">
 			<div id="search-btn" class="light-green">
 				<input id="autocomplete" name="autocomplete" type="text"/>
-				&nbsp;<a href="javascript:search(); return false;"><spring:message code="search"/></a></div>
+				&nbsp;
+				<a href="javascript:search(); return false;"><spring:message code="search"/></a>
+			</div>
 		</form>
 		<div id="map-canvas"></div>
 	</section>

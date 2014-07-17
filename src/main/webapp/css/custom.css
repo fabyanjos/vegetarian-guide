@@ -275,3 +275,8 @@ a:hover.slidesjs-stop {
 .container-slides img {
 	width: 100%;
 }
+
+.pac-container {
+	float: left;
+	margin-left: -120px;
+}
