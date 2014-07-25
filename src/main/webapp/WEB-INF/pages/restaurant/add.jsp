@@ -64,7 +64,7 @@
 					<form:input path="state" cssErrorClass="inputError"/>
 					<form:errors cssClass="error" path="state"/>
 				</p>
-				<p>
+				<p style="display: none;">
 					<label><spring:message code="country"/>: <span class="mandatory">*</span> </label>
 					<form:input path="country.name" cssErrorClass="inputError" value="Brasil"/> 
 					<form:errors cssClass="error" path="country.name"/>

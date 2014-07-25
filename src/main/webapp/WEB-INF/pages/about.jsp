@@ -21,7 +21,7 @@
 				Possui sugestões para melhorar a ferramenta? Entre em contato conosco pelo formulário de <a href="contact">contato</a>.
 			</p>
 			<ul class="arrow-list">
-				<li>Acesse com sua conta do Facebook</li>
+				<li>Acesse com sua conta do Facebook ou Google</li>
 				<li>Compartilhe sua opnião sobre os locais</li>
 				<li>Compartilhe fotos</li>
 				<li>Pesquise pelos locais próximos</li>
