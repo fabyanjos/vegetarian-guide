@@ -2,9 +2,9 @@ var map, places, iw;
 var markers = [];
 var autocomplete;
 var geocoder;
-var myLatlng = new google.maps.LatLng(0, 0);
+var myLatlng = new google.maps.LatLng(-14.2400732,-53.1805017);
 var myOptions = {
-	zoom : 1,
+	zoom : 4,
 	center : myLatlng,
 	mapTypeId : google.maps.MapTypeId.ROADMAP
 };

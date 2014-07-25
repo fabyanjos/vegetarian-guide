@@ -78,7 +78,7 @@
 			<c:otherwise>
 				<section>
 					<article>
-					<c:if test="${!empty filter}">
+					<c:if test="${!empty filter && !empty filter.address}">
 						<div class="infoMsg">
 							<spring:message code="noresults"/>
 						</div>
@@ -103,7 +103,7 @@ $(window).load(function () {
 	
 	$("input[name='_types']").remove();
 	
-	<c:if test="${!empty filter}">
+	<c:if test="${!empty filter && !empty filter.address}">
 		setOrigin('${filter.latitude}', '${filter.longitude}', 'infoWindowYour');
 	</c:if>
 	
