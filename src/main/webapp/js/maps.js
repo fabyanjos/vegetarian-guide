@@ -12,8 +12,12 @@ function initialize() {
 	geocoder = new google.maps.Geocoder();
 	
 	map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
+	
+	var options = {
+	  componentRestrictions: {country: 'br'}
+	};
 
-	autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'));
+	autocomplete = new google.maps.places.Autocomplete(document.getElementById('address'), options);
 }
 
 function codeAddress() {
@@ -49,9 +53,7 @@ function createMark(index, lat, lng, name) {
         position: location,
         icon: '/images/marker-green.png'
 	});
-	iw = new google.maps.InfoWindow({
-		maxWidth: 100,
-	});
+	iw = new google.maps.InfoWindow({});
 	google.maps.event.addListener(markers[index], 'click',
 	    function(){
 			iw.close();//hide the infowindow
@@ -72,9 +74,7 @@ function setOrigin(lat, lng, details) {
         position: location,
         icon: '/images/marker-blue.png'
 	});
-	iw = new google.maps.InfoWindow({
-		maxWidth: 100,
-	});
+	iw = new google.maps.InfoWindow({});
 	google.maps.event.addListener(markers[0], 'click',
 	    function() {
 			iw.close();//hide the infowindow

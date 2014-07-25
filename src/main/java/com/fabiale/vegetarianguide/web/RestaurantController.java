@@ -24,6 +24,7 @@ import com.dropbox.client2.exception.DropboxException;
 import com.fabiale.vegetarianguide.exception.RestaurantNotFoundException;
 import com.fabiale.vegetarianguide.model.Image;
 import com.fabiale.vegetarianguide.model.Restaurant;
+import com.fabiale.vegetarianguide.model.RestaurantFilter;
 import com.fabiale.vegetarianguide.model.Review;
 import com.fabiale.vegetarianguide.model.User;
 import com.fabiale.vegetarianguide.service.CountryService;
@@ -69,12 +70,13 @@ public class RestaurantController {
 	}
 	
 	@RequestMapping(value = "/restaurant/results", method = {RequestMethod.POST, RequestMethod.GET})
-	public String result(@ModelAttribute("restaurant") Restaurant restaurant, ModelMap modelMap) throws NotFoundException {
+	public String result(@ModelAttribute("filter") RestaurantFilter filter, ModelMap modelMap) throws NotFoundException {
 
-		List<Restaurant> list = service.getNearBy(restaurant);
+		List<Restaurant> list = service.getNearBy(filter);
 
 		modelMap.addAttribute("restaurants", list);
-		modelMap.addAttribute("origin", restaurant);
+		modelMap.addAttribute("filter", filter);
+		
 		return "/restaurant/search";
 	}
 	
@@ -124,5 +126,11 @@ public class RestaurantController {
 	@ModelAttribute("restaurant")
     public Restaurant createForm() {
         return new Restaurant();
+    }
+	
+	@ModelAttribute("filter")
+    public RestaurantFilter filterForm() {
+        return new RestaurantFilter() {
+		};
     }
 }

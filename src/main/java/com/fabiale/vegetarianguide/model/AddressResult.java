@@ -74,6 +74,24 @@ public class AddressResult {
 			throw new NotFoundException("address not found");
 		}
 	}
+	
+	public void populate(RestaurantFilter filter) throws NotFoundException {
+		if(this.getStatus().equals("OK")) {
+			List<Address> results = this.getResults();
+			if(results != null & !results.isEmpty()) {
+				Address address2 = results.get(0);
+				if(address2.getGeometry() != null) {
+					Geometry g = address2.getGeometry();
+					if(g.getLocation() != null) {
+						filter.setLatitude(Double.valueOf(g.getLocation().getLat()));
+						filter.setLongitude(Double.valueOf(g.getLocation().getLng()));
+					}
+				}
+			}
+		} else {
+			throw new NotFoundException("address not found");
+		}
+	}
 }
 
 class Address {

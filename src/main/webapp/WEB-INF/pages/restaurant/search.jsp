@@ -13,13 +13,24 @@
 <body>
 	<section>
 		<h2><spring:message code="restaurant.search"/></h2>
-		<form onsubmit="search(); return false;">
-			<div id="search-btn" class="light-green">
-				<input id="autocomplete" name="autocomplete" type="text"/>
-				&nbsp;
-				<a href="javascript:search(); return false;"><spring:message code="search"/></a>
-			</div>
-		</form>
+		
+		<form:form method="post" action="/restaurant/results" modelAttribute="filter" cssClass="search-box">
+			<p>
+				<form:input path="address"/>
+				<input type="submit" value="<spring:message code="search"/>">
+			</p>
+			<label><spring:message code="type"/>:</label>
+			<p>
+				<form:checkbox path="types" value="VEGETARIAN"/><label for="types1"><spring:message code="VEGETARIAN"/></label>
+				<form:checkbox path="types" value="VEGAN"/><label for="types2"><spring:message code="VEGAN"/></label>
+				<form:checkbox path="types" value="OVO_LACTO"/><label for="types3"><spring:message code="OVO_LACTO"/></label>
+				<form:checkbox path="types" value="LACTO"/><label for="types4"><spring:message code="LACTO"/></label>
+			</p>
+			<p>
+				<label for="limit">Número de resultados:</label>
+				<form:input path="limit" type="number"/>
+			</p>
+		</form:form>
 		<div id="map-canvas"></div>
 	</section>
 		<c:choose>
@@ -31,7 +42,14 @@
 								
 								<h5>
 									<a href="/restaurant/${r.nameUrl}" title="<spring:message code="details"/>">${r.name}</a>
-									<span class="ratingDiv rating " id="rating${i.index}"></span>
+									<span class="rating">
+									    <input type="radio" name="rating-${r.id}" value="0" checked /><span id="hide"></span>
+									    <input type="radio" name="rating-${r.id}" value="1" disabled="disabled"/><span></span>
+									    <input type="radio" name="rating-${r.id}" value="2" disabled="disabled"/><span></span>
+									    <input type="radio" name="rating-${r.id}" value="3" disabled="disabled"/><span></span>
+									    <input type="radio" name="rating-${r.id}" value="4" disabled="disabled"/><span></span>
+									    <input type="radio" name="rating-${r.id}" value="5" disabled="disabled"/><span></span>
+									</span>
 								</h5> 
 								<spring:message code="${r.type}"/>
 								
@@ -42,7 +60,7 @@
 							</div>
 							<div class="resultRight">
 								<p>
-									<a href="https://maps.google.com/?saddr=${origin.latitude},${origin.longitude}&daddr=${r.latitude},${r.longitude}" target="_blank">
+									<a href="https://maps.google.com/?saddr=${filter.latitude},${filter.longitude}&daddr=${r.latitude},${r.longitude}" target="_blank">
 										<img src="/images/compass.png" alt="<spring:message code="directions"/>" title="<spring:message code="directions"/>"/>
 									</a>
 									<br/>${r.distanceString}
@@ -60,7 +78,7 @@
 			<c:otherwise>
 				<section>
 					<article>
-					<c:if test="${!empty origin}">
+					<c:if test="${!empty filter}">
 						<div class="infoMsg">
 							<spring:message code="noresults"/>
 						</div>
@@ -73,37 +91,31 @@
 		
 		<div id="infoWindowYour" style="display: none;">
 			<span class="infoWindowTitle"><spring:message code="your.location"/></span>
-			<p>${origin.street}, ${origin.number} ${origin.postalCode}, ${origin.city}, <spring:message code="${origin.country.name}"/></p>
+			<p>${filter.address}</p>
 		</div>
 
-		<form:form method="post" action="/restaurant/results" modelAttribute="restaurant" id="search">
-			<ul style="display: none;">
-				<li><label><spring:message code="address"/>: </label><input type="text" id="street" name="street"/></li>
-				<li><input type="submit" value="<spring:message code="save"/>"/></li>
-			</ul>
-		</form:form>
+		
 	
 <script type="text/javascript" src="/js/maps.js"></script>  
 <script type="text/javascript">
 google.maps.event.addDomListener(window, 'load', initialize);
 $(window).load(function () {
-	//navigator.geolocation.getCurrentPosition(showPosition);
-	function showPosition(position) {
-	   /*  alert(position.coords);
-	    alert(position.coords.longitude);     */
-	}
-
-	<c:if test="${!empty origin}">
-		setOrigin('${origin.latitude}', '${origin.longitude}', 'infoWindowYour');
+	
+	$("input[name='_types']").remove();
+	
+	<c:if test="${!empty filter}">
+		setOrigin('${filter.latitude}', '${filter.longitude}', 'infoWindowYour');
 	</c:if>
+	
 	<c:forEach items="${restaurants}" var="r" varStatus="i">
 		createMark('${i.index+1}', '${r.latitude}', '${r.longitude}', '${r.name}');
-		
-		var style = $('#rating${i.index}').attr("class");
-		style += numberText(${r.rating});
-		style += "star";
-		$('#rating${i.index}').attr("class", style); 
+		var rate = $('input[name=rating-${r.id}]');
+		for(var i = 1; i < 6; i++) {
+			if(rate[i].value == '${r.rating}')
+				$(rate[i]).attr('checked', 'checked'); 
+		}
 	</c:forEach>
+	
 });
 </script>	
 </body>

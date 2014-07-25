@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fabiale.vegetarianguide.model.Restaurant;
+import com.fabiale.vegetarianguide.model.Type;
 import com.fabiale.vegetarianguide.repositories.RestaurantRepository;
 
 @Repository
@@ -60,4 +62,23 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
     	criteria.addOrder(Order.desc("createdAt"));
     	return criteria.list();
     }
+
+    @SuppressWarnings("unchecked")
+	public List<Restaurant> getNearBy(Double latMin, Double lngMin, Double latMax, Double lngMax, List<Type> types, int limit) {
+		Criteria criteria = this.factory.getCurrentSession().createCriteria(Restaurant.class);
+    	criteria.add(Restrictions.between("latitude", latMin, latMax));
+    	criteria.add(Restrictions.between("longitude", lngMin, lngMax));
+    	
+    	if(types != null && !types.isEmpty()) {
+    		Disjunction or = Restrictions.disjunction();
+    		for (Type type : types) 
+    			or.add(Restrictions.eq("type", type));
+    		criteria.add(or);
+    	}
+    	
+    	if(limit > 0)
+    		criteria.setMaxResults(limit);
+    	
+    	return criteria.list();
+	}
 }
