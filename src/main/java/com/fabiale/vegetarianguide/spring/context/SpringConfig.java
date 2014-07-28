@@ -11,6 +11,7 @@ import com.fabiale.vegetarianguide.spring.DropboxConfig;
 import com.fabiale.vegetarianguide.spring.MailConfig;
 import com.fabiale.vegetarianguide.spring.RepositoryConfig;
 import com.fabiale.vegetarianguide.spring.RestTemplateConfig;
+import com.fabiale.vegetarianguide.spring.SocialauthConfig;
 import com.fabiale.vegetarianguide.spring.SpringSecurityConfig;
 import com.fabiale.vegetarianguide.spring.UploadConfig;
 import com.fabiale.vegetarianguide.spring.WebConfig;
@@ -20,7 +21,7 @@ import com.fabiale.vegetarianguide.spring.WebConfig;
 @Import({ 
 	RepositoryConfig.class, WebConfig.class, RestTemplateConfig.class, 
 	SpringSecurityConfig.class, UploadConfig.class, DropboxConfig.class,
-	MailConfig.class 
+	MailConfig.class, SocialauthConfig.class 
 })
 public class SpringConfig {
 

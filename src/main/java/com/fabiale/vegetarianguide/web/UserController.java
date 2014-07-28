@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.brickred.socialauth.Profile;
+import org.brickred.socialauth.spring.bean.SocialAuthTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,7 @@ import com.fabiale.vegetarianguide.service.UserService;
 public class UserController {
 	
 	@Autowired UserService service;
+	@Autowired SocialAuthTemplate socialAuthTemplate;
 	
 	@RequestMapping(value="/rest/user", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.PUT)
 	@ResponseBody
@@ -57,9 +60,13 @@ public class UserController {
         return user;
 	}
 	
-	@RequestMapping(value="/user/login", method = RequestMethod.POST)
-	public String login() {
-		return "redirect:/j_spring_security_check";
+	@RequestMapping(value="/user/login", method = {RequestMethod.POST, RequestMethod.GET})
+	public String login() throws Exception {
+		Profile profile = socialAuthTemplate.getSocialAuthManager().getCurrentAuthProvider().getUserProfile();
+		socialAuthTemplate.getSocialAuthManager().disconnectProvider(profile.getProviderId());
+		service.authentication(new User(profile));
+		
+        return "redirect:/";
 	}
 	
 	@RequestMapping(value="/auth/login")

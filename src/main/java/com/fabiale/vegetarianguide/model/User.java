@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import org.brickred.socialauth.Profile;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -55,6 +56,18 @@ public class User implements UserDetails, Serializable {
 	private String imageUrl;
 	@Enumerated(EnumType.STRING)
 	private Network network;
+	
+	public User() {
+	}
+	
+	public User(Profile profile) {
+		this.email = profile.getEmail();
+		this.name = profile.getFirstName() + " " + profile.getLastName();
+		this.imageUrl = profile.getProfileImageURL();
+		this.network = Network.valueOf(profile.getProviderId().toUpperCase());
+		this.pass = "SOCIAL";
+		this.login = profile.getEmail();
+	}
 
 	public String getImageUrl() {
 		return imageUrl;

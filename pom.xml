@@ -256,6 +256,16 @@
      	<artifactId>newrelic-agent</artifactId>
      	<version>2.19.1</version>
      </dependency>
+     <dependency>
+     	<groupId>org.brickred</groupId>
+     	<artifactId>socialauth</artifactId>
+     	<version>4.6</version>
+     </dependency>
+     <dependency>
+     	<groupId>org.brickred</groupId>
+     	<artifactId>socialauth-spring</artifactId>
+     	<version>2.5</version>
+     </dependency>
   </dependencies>
   <build>
     <finalName>vegetarian-guide</finalName>

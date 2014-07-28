@@ -1,5 +1,5 @@
 package com.fabiale.vegetarianguide.model;
 
 public enum Network {
-	FACEBOOK, GOOGLE;
+	FACEBOOK, TWITTER, GOOGLE, GOOGLEPLUS;
 }
