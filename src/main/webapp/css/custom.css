@@ -1,5 +1,5 @@
-#userBox {
-	width: 250px;
+#userBox { 
+	width: 240px;
 	height: 60px;
 	font-size: 14px;
 	padding: 10px;
@@ -7,7 +7,7 @@
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	border: 2px dashed;
-    border-color: black;
+    border-color: #000;
     -moz-box-shadow: 5px 5px 5px #888;
 	-webkit-box-shadow: 5px 5px 5px #888;
 	box-shadow: 5px 5px 5px #888;
@@ -15,18 +15,28 @@
 #userBox img {
 	float: left;
 	margin: 4px 10px 0 6px;
-	width: 45px;
-	height: 45px;
+	width: 55px;
+	height: 55px;
 }
 #userBox p {
-	margin-top: 4px;
+	margin-top: 2px;
 }
-#social-login li {
-	display: inline-block;
-	margin-left: 25px;
+.user-image {
+	position:relative;
 }
-#social-login img {
-	width: 48px;
+.user-FACEBOOK {
+   background:url(/images/facebook_icon.png) 0 0 no-repeat;
+}
+.user-GOOGLEPLUS {
+   background:url(/images/google-icon.png) 0 0 no-repeat;
+}
+.user-FACEBOOK, .user-GOOGLEPLUS {
+   width: 16px;
+   height: 16px;
+   position: absolute;
+   top: 42px;
+   left: 42px;
+   background-size: 16px;
 }
 .infoWindowTitle {
 	font-weight: bolder;

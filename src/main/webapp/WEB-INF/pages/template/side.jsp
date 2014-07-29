@@ -8,15 +8,15 @@
 
 <section>
 	<c:choose>
-		<c:when
-			test="${!empty SPRING_SECURITY_CONTEXT.authentication.principal}">
+		<c:when test="${!empty SPRING_SECURITY_CONTEXT.authentication.principal}">
 			<div id="userBox">
-				<img
-					src="${SPRING_SECURITY_CONTEXT.authentication.principal.imageUrl}" />
+				<div class="user-image">
+					<img src="${SPRING_SECURITY_CONTEXT.authentication.principal.imageUrl}" />
+					<div class="user-${SPRING_SECURITY_CONTEXT.authentication.principal.network}"></div>
+				</div>
 				<div>
 					<p>
-						<c:out
-							value="${SPRING_SECURITY_CONTEXT.authentication.principal.name}" />
+						<c:out value="${SPRING_SECURITY_CONTEXT.authentication.principal.name}" />
 					</p>
 					<a href="/rest/user/logout">Logout</a>
 				</div>
