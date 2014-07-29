@@ -24,23 +24,16 @@
 		</c:when>
 		<c:otherwise>
 			<h3><spring:message code="login.with"/>:</h3>
-			<ul id="social-login">
-				<li>
-					<a href="/socialauth?id=facebook" onclick="_gaq.push(['_trackEvent', 'Side', 'Login', 'Facebook']);">
-						<img src="/images/facebook_icon.png" alt="Facebook" title="Facebook" border="0"></img>
-					</a>
-				</li>
-				<li>
-					<a href="/socialauth?id=googleplus" onclick="_gaq.push(['_trackEvent', 'Side', 'Login', 'Facebook']);">
-						<img src="/images/google-icon.png" alt="Google" title="Google" border="0"></img>
-					</a>				
-				</li>
-				<li>
-					<a href="/socialauth?id=twitter" onclick="_gaq.push(['_trackEvent', 'Side', 'Login', 'Facebook']);">
-						<img src="/images/twitter_icon.png" alt="Twitter" title="Twitter" border="0"></img>
-					</a>
-				</li>
-			</ul>
+			<a href="/socialauth?id=facebook" onclick="_gaq.push(['_trackEvent', 'Side', 'Login', 'Facebook']);" id="facebook-login">
+				<p>
+					Facebook
+				</p>
+			</a>
+			<a href="/socialauth?id=googleplus" onclick="_gaq.push(['_trackEvent', 'Side', 'Login', 'Google']);" id="google-login">
+				<p>
+					Google
+				</p>
+			</a>
 		</c:otherwise>
 	</c:choose>
 </section>
