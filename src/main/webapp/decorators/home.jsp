@@ -33,7 +33,6 @@
 	
 	<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/custom.css"/>
-	<link rel="stylesheet" type="text/css" href="/css/rating.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/photobox.css"/>
 	<link rel="stylesheet" href="//www.google.com/cse/style/look/default.css" type="text/css" />
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>

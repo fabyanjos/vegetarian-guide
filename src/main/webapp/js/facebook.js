@@ -6,7 +6,7 @@ window.fbAsyncInit = function() {
 		xfbml : true, // check plugins in page
 		oauth: true
 	});
-	$('#loginBtn').attr('style', 'display:');
+//	$('#loginBtn').attr('style', 'display:');
 };
 
 (function(d) {

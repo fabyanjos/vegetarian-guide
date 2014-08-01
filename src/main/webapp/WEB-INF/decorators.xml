@@ -3,7 +3,4 @@
     <decorator name="default" page="default.jsp">
         <pattern>/*</pattern>
     </decorator>
-    <decorator name="home" page="home.jsp">
-        <pattern>/</pattern>
-    </decorator>
 </decorators>

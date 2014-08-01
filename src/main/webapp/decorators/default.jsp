@@ -33,6 +33,7 @@
     <script src="/js/hello.js"></script>
     <script src="/js/jquery.blockUI.js"></script>
     <script src="/js/social-network.js"></script>
+    <script src="/js/jquery.slides.min.js"></script>
 
 	<decorator:head/>
 </head>
