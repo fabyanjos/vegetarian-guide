@@ -30,6 +30,26 @@
 				<label for="limit">Número de resultados:</label>
 				<form:input path="limit" type="number"/>
 			</p>
+			<p>
+				<label>
+				<spring:message code="price"/>
+				<a href="#" class="tooltip">
+					<img src="/images/help.png" width="14">
+					<span>
+						<b></b>
+						<spring:message code="price.list"/>
+					</span>
+				</a>
+				:
+				</label>
+				<span class="price">
+					<form:radiobutton path="price" value="0"/><span id="hide"></span>
+					<form:radiobutton path="price" value="1"/><span></span>
+					<form:radiobutton path="price" value="2"/><span></span>
+					<form:radiobutton path="price" value="3"/><span></span>
+					<form:radiobutton path="price" value="4"/><span></span>
+				</span>
+				</p>
 		</form:form>
 		<div id="map-canvas"></div>
 	</section>
@@ -51,7 +71,9 @@
 									    <input type="radio" name="rating-${r.id}" value="5" disabled="disabled"/><span></span>
 									</span>
 								</h5> 
-								<spring:message code="${r.type}"/>
+								<p>
+									<spring:message code="${r.type}"/>
+								</p>
 								
 								<p>${r.description}</p>
 								<p class="address">${r.street} ${r.number} - ${r.postalCode}, ${r.city}, <spring:message code="${r.country.name}"/></p>
@@ -60,7 +82,7 @@
 							</div>
 							<div class="resultRight">
 								<p>
-									<a href="https://maps.google.com/?saddr=${filter.latitude},${filter.longitude}&daddr=${r.latitude},${r.longitude}" target="_blank">
+									<a href="https://www.google.com/maps/dir/${filter.latitude},${filter.longitude}/${r.latitude},${r.longitude}" target="_blank">
 										<img src="/images/compass.png" alt="<spring:message code="directions"/>" title="<spring:message code="directions"/>"/>
 									</a>
 									<br/>${r.distanceString}
@@ -69,7 +91,7 @@
 							</div>
 							<div id="infoWindow${i.index+1}" style="display: none;">
 								<span class="infoWindowTitle">${r.name}</span>
-								<p>${r.street}, ${r.number} ${r.postalCode}, ${r.city}, <spring:message code="${r.country.name}"/></p>
+								<p><a href="https://www.google.com/maps/dir/${filter.latitude},${filter.longitude}/${r.latitude},${r.longitude}" target="_blank" title="Google Maps">${r.street}, ${r.number} ${r.postalCode}, ${r.city}, <spring:message code="${r.country.name}"/></a></p>
 							</div>
 						</article>
 					</c:forEach>

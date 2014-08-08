@@ -9,6 +9,15 @@ public class RestaurantFilter {
 	private Double longitude;
 	private List<Type> types;
 	private int limit = 10;
+	private int price = 0;
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
 
 	public String getAddress() {
 		return address;

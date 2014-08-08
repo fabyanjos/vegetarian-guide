@@ -13,7 +13,6 @@ import com.fabiale.vegetarianguide.model.AddressResult;
 import com.fabiale.vegetarianguide.model.Country;
 import com.fabiale.vegetarianguide.model.Restaurant;
 import com.fabiale.vegetarianguide.model.RestaurantFilter;
-import com.fabiale.vegetarianguide.model.Type;
 import com.fabiale.vegetarianguide.repositories.RestaurantRepository;
 import com.fabiale.vegetarianguide.repositories.ReviewRepository;
 import com.fabiale.vegetarianguide.service.CountryService;
@@ -69,7 +68,20 @@ public class RestaurantServiceImpl implements RestaurantService {
 		AddressResult ar = coordinate.addressDetails(filter.getAddress());  
 		if(ar != null && ar.getStatus() != null && ar.getStatus().equals("OK") && ar.getResults() != null) {
 			ar.populate(filter);
-			result = this.getNearBy(filter.getLatitude(), filter.getLongitude(), filter.getTypes(), filter.getLimit());
+			Double dist = 0.05;
+
+			Double latMin = filter.getLatitude() - dist;
+			Double lngMin = filter.getLongitude() - dist;
+			Double latMax = filter.getLatitude() + dist;
+			Double lngMax = filter.getLongitude() + dist;
+			
+			result = this.repository.getNearBy(latMin, lngMin, latMax, lngMax, filter);
+			for(Restaurant r : result) {
+				coordinate.distance(filter.getLatitude(), filter.getLongitude(), r);
+				r.setRating(reviewRepository.getRestaurantRating(r));
+			}
+			
+			Collections.sort(result);
 		}
 		return result;
 	}
@@ -78,25 +90,6 @@ public class RestaurantServiceImpl implements RestaurantService {
 		return repository.getLastUptades(quantity);
 	}
 	
-	private List<Restaurant> getNearBy(Double lat, Double lng, List<Type> types, int limit) throws NotFoundException {
-		
-		Double dist = 0.05;
-
-		Double latMin = lat - dist;
-		Double lngMin = lng - dist;
-		Double latMax = lat + dist;
-		Double lngMax = lng + dist;
-		
-		List<Restaurant> result = this.repository.getNearBy(latMin, lngMin, latMax, lngMax, types, limit);
-		for(Restaurant r : result) {
-			coordinate.distance(lat, lng, r);
-			r.setRating(reviewRepository.getRestaurantRating(r));
-		}
-		
-		Collections.sort(result);
-		return result;
-	}
-
 	@Override
 	public List<Restaurant> getNearBy(Double lat, Double lng) throws NotFoundException {
 		

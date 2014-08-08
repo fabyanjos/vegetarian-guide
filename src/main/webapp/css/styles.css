@@ -76,6 +76,7 @@ a:hover {
 }
 article {
 	padding-bottom: 12px;
+	float: left;
 }
 /* NAVIGATION */
 nav {

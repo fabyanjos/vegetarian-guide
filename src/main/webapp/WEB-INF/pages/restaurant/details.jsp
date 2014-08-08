@@ -42,7 +42,28 @@
 			<strong><spring:message code="delivery"/></strong>: 
 			<spring:message code="${restaurant.delivery}"/>
 		</p>
-		
+		<p>
+			<strong><spring:message code="price"/></strong>
+			<a href="#" class="tooltip">
+				<img src="/images/help.png" width="14">
+				<span>
+					<b></b>
+					<spring:message code="price.list"/>
+				</span>
+			</a>
+			:
+			<span class="price">
+			    <input type="radio" name="price" value="0" checked /><span id="hide"></span>
+			    <input type="radio" name="price" value="1" disabled="disabled"/><span></span>
+			    <input type="radio" name="price" value="2" disabled="disabled"/><span></span>
+			    <input type="radio" name="price" value="3" disabled="disabled"/><span></span>
+			    <input type="radio" name="price" value="4" disabled="disabled"/><span></span>
+			</span>
+		</p>
+		<p>
+			<strong><spring:message code="openingTimes"/></strong>:
+			${restaurant.openingTimes}
+		</p>
 		<p>
 			<strong><spring:message code="description"/></strong>:
 			${restaurant.description}
@@ -53,7 +74,11 @@
 		
 		<div id="infoWindow" style="display: none;">
 			<span class="infoWindowTitle">${restaurant.name}</span>
-			<p>${restaurant.street}, ${restaurant.number}  ${restaurant.postalCode}, ${restaurant.city}, <spring:message code="${restaurant.country.name}"/></p>
+			<p>
+				<a href="https://www.google.com/maps/place/${restaurant.street}+${restaurant.number}+${restaurant.city}+${restaurant.state}+<spring:message code="${restaurant.country.name}"/>" target="_blank" title="Google Maps">
+					${restaurant.street}, ${restaurant.number}  ${restaurant.postalCode}, ${restaurant.city}, <spring:message code="${restaurant.country.name}"/>
+				</a>
+			</p>
 		</div>
 	</section>
 	
@@ -62,27 +87,34 @@
 			<a name="images"><spring:message code="images"/></a>
 			<span class="light-green"><a href="/restaurant/image/${restaurant.id}"><spring:message code="addimage"/></a></span>
 		</h3>
-		<c:if test="${!empty images}">
-		<div class="image-box">
-			<div id="carousel">
-				<ul>
-				<c:forEach items="${images}" var="image" varStatus="i">
-					<li>
-						<a href="${image.filePath}">
-							<img src="${image.filePath}" alt="${image.name}" title="${image.name}"/>
-						</a>
-					</li>
-				</c:forEach>
-				</ul>
-				<div class="clearfix"></div>
-			    <!-- prev and next button -->
-			    <a id="prev" class="prev" href="#"><</a>
-			    <a id="next" class="next" href="#">></a>
-			    <!-- pagination -->
-			    <div id="pager" class="pager"></div>
+		<c:choose>
+			<c:when test="${!empty images}">
+			<div class="image-box">
+				<div id="carousel">
+					<ul>
+					<c:forEach items="${images}" var="image" varStatus="i">
+						<li>
+							<a href="${image.filePath}">
+								<img src="${image.filePath}" alt="${image.name}" title="${image.name}"/>
+							</a>
+						</li>
+					</c:forEach>
+					</ul>
+					<div class="clearfix"></div>
+				    <!-- prev and next button -->
+				    <a id="prev" class="prev" href="#"><</a>
+				    <a id="next" class="next" href="#">></a>
+				    <!-- pagination -->
+				    <div id="pager" class="pager"></div>
+				</div>
 			</div>
-		</div>
-		</c:if>
+			</c:when>
+			<c:otherwise>
+				<p class="infoMsg">
+	    			<spring:message code="images.empty"/>
+	    		</p>
+			</c:otherwise>
+		</c:choose>
 	</section>
 	
 	<section id="comments">
@@ -90,6 +122,11 @@
 			<a name="reviews"><spring:message code="reviews"/></a>
 			<span class="light-green"><a href="/restaurant/review/${restaurant.id}"><spring:message code="rating"/></a></span>
 		</h3>
+		<c:if test="${empty reviews}">
+			<p class="infoMsg">
+    			<spring:message code="reviews.empty"/>
+    		</p>
+		</c:if>
 		<c:forEach items="${reviews}" var="r" varStatus="i">
 			<article>
 				<header>
@@ -131,6 +168,11 @@ $(document).ready(function () {
 		for(var i = 1; i < 6; i++) {
 			if(rating[i].value == '${restaurant.rating}')
 				$(rating[i]).attr('checked', 'checked'); 
+		}
+		var price = $('input[name=price]');
+		for(var i = 1; i < 5; i++) {
+			if(price[i].value == '${restaurant.price}')
+				$(price[i]).attr('checked', 'checked'); 
 		}
 	</c:if>
 	<c:forEach items="${reviews}" var="r" varStatus="i">

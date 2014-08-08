@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fabiale.vegetarianguide.model.Restaurant;
+import com.fabiale.vegetarianguide.model.RestaurantFilter;
 import com.fabiale.vegetarianguide.model.Type;
 import com.fabiale.vegetarianguide.repositories.RestaurantRepository;
 
@@ -64,20 +65,24 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
     }
 
     @SuppressWarnings("unchecked")
-	public List<Restaurant> getNearBy(Double latMin, Double lngMin, Double latMax, Double lngMax, List<Type> types, int limit) {
+	public List<Restaurant> getNearBy(Double latMin, Double lngMin, Double latMax, Double lngMax, RestaurantFilter filter) {
 		Criteria criteria = this.factory.getCurrentSession().createCriteria(Restaurant.class);
     	criteria.add(Restrictions.between("latitude", latMin, latMax));
     	criteria.add(Restrictions.between("longitude", lngMin, lngMax));
     	
-    	if(types != null && !types.isEmpty()) {
+    	if(filter.getTypes() != null && !filter.getTypes().isEmpty()) {
     		Disjunction or = Restrictions.disjunction();
-    		for (Type type : types) 
+    		for (Type type : filter.getTypes()) 
     			or.add(Restrictions.eq("type", type));
     		criteria.add(or);
     	}
     	
-    	if(limit > 0)
-    		criteria.setMaxResults(limit);
+    	if(filter.getLimit() > 0)
+    		criteria.setMaxResults(filter.getLimit());
+    	
+    	if(filter.getPrice() > 0)
+    		criteria.add(Restrictions.eq("price", filter.getPrice()));
+    	
     	
     	return criteria.list();
 	}

@@ -89,7 +89,25 @@ public class Restaurant implements Serializable, Comparable<Restaurant> {
 	private String imageUrl;
 	@org.hibernate.annotations.Type(type="yes_no")
 	private boolean delivery = false;
+	private String openingTimes;
+	private int price;
 	
+	public String getOpeningTimes() {
+		return openingTimes;
+	}
+
+	public void setOpeningTimes(String openingTimes) {
+		this.openingTimes = openingTimes;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
 	public boolean isDelivery() {
 		return delivery;
 	}

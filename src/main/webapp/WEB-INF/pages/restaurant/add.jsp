@@ -36,6 +36,27 @@
 					<form:errors cssClass="error" path="delivery"/>
 				</p>
 				<p>
+					<label>
+					<spring:message code="price"/>
+					<a href="#" class="tooltip">
+						<img src="/images/help.png" width="14">
+						<span>
+							<b></b>
+							<spring:message code="price.list"/>
+						</span>
+					</a>
+					:
+					</label>
+					<span class="price">
+					    <input type="radio" name="price" value="0" checked /><span id="hide"></span>
+					    <input type="radio" name="price" value="1"/><span></span>
+					    <input type="radio" name="price" value="2"/><span></span>
+					    <input type="radio" name="price" value="3"/><span></span>
+					    <input type="radio" name="price" value="4"/><span></span>
+					</span>
+					<form:errors cssClass="error" path="price"/>
+				</p>
+				<p>
 					<label><spring:message code="name"/>: <span class="mandatory">*</span> </label>
 					<form:input path="name" cssErrorClass="inputError"/>
 					<form:errors cssClass="error" path="name"/>
@@ -70,6 +91,11 @@
 					<form:errors cssClass="error" path="country.name"/>
 				</p>
 				<p>
+					<label><spring:message code="description"/>: <span class="mandatory">*</span></label>
+					<form:textarea path="description" cssErrorClass="inputError"/> 
+					<form:errors cssClass="error" path="description"/>
+				</p>
+				<p>
 					<label><spring:message code="website"/>: </label>
 					<form:input path="website" cssErrorClass="inputError"/>
 					<form:errors cssClass="error" path="website"/>
@@ -79,9 +105,9 @@
 					<form:input path="phone"/> 
 				</p>
 				<p>
-					<label><spring:message code="description"/>: <span class="mandatory">*</span></label>
-					<form:textarea path="description" cssErrorClass="inputError"/> 
-					<form:errors cssClass="error" path="description"/>
+					<label><spring:message code="openingTimes"/>:</label>
+					<form:textarea path="openingTimes" cssErrorClass="inputError"/> 
+					<form:errors cssClass="error" path="openingTimes"/>
 				</p>
 				<p><input type="submit" value="<spring:message code="save"/>"/></p>
 		</form:form>
