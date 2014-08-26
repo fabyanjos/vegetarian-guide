@@ -81,7 +81,7 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
     		criteria.setMaxResults(filter.getLimit());
     	
     	if(filter.getPrice() > 0)
-    		criteria.add(Restrictions.eq("price", filter.getPrice()));
+    		criteria.add(Restrictions.le("price", filter.getPrice()));
     	
     	
     	return criteria.list();

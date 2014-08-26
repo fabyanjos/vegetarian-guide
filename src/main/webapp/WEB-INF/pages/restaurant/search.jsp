@@ -73,10 +73,17 @@
 								</h5> 
 								<p>
 									<spring:message code="${r.type}"/>
+									<span class="price price-right">
+									    <input type="radio" name="price-${r.id}" value="0" checked /><span id="hide"></span>
+									    <input type="radio" name="price-${r.id}" value="1" disabled="disabled"/><span></span>
+									    <input type="radio" name="price-${r.id}" value="2" disabled="disabled"/><span></span>
+									    <input type="radio" name="price-${r.id}" value="3" disabled="disabled"/><span></span>
+									    <input type="radio" name="price-${r.id}" value="4" disabled="disabled"/><span></span>
+									</span>
 								</p>
 								
 								<p>${r.description}</p>
-								<p class="address">${r.street} ${r.number} - ${r.postalCode}, ${r.city}, <spring:message code="${r.country.name}"/></p>
+								<p class="address">${r.street}, ${r.number} ${r.postalCode}, ${r.city}, <spring:message code="${r.country.name}"/></p>
 								<c:if test="${!empty r.phone}"><p class="phone">${r.phone}</p></c:if>
 								<c:if test="${!empty r.website}"><p class="websiteLink"><a href="${r.website}" target="_blank"><spring:message code="website"/></a></p></c:if>
 							</div>
@@ -135,6 +142,11 @@ $(window).load(function () {
 		for(var i = 1; i < 6; i++) {
 			if(rate[i].value == '${r.rating}')
 				$(rate[i]).attr('checked', 'checked'); 
+		}
+		var price = $('input[name=price-${r.id}]');
+		for(var i = 1; i < 5; i++) {
+			if(price[i].value == '${r.price}')
+				$(price[i]).attr('checked', 'checked'); 
 		}
 	</c:forEach>
 	

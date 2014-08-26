@@ -5,10 +5,10 @@
 <%@ taglib uri="http://www.springframework.org/tags" 			prefix="spring"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 <head> 
 	<meta charset="UTF-8">
-	<meta http-equiv=”content-language” content="en">
+	<meta http-equiv=”content-language” content="pt-br">
 	<meta name="keywords" content="<spring:message code="meta.keywords"/>">
 	<meta name="author" content="Fabiana Anjos">
 	<title>Veggie Out :: <decorator:title/></title>

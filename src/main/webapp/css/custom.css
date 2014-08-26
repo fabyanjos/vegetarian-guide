@@ -120,6 +120,9 @@
 .price span {
 	background:url(/images/dollar.png) no-repeat -22px 0;
 }
+.price-right {
+	float: right;
+}
 /* Change span immediately following the checked radio */ 
 .rating input:checked + span, .price input:checked + span {
     background-position:-22px 0;
