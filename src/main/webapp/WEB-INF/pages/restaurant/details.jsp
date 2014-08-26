@@ -8,7 +8,8 @@
 <html lang="en">
 <head>
 	<title><spring:message code="restaurant"/> :: ${restaurant.name}</title>
-	<meta name="description" content="<spring:message code="meta.description"/>, ${restaurant.name}, ${restaurant.street} ${restaurant.number}, ${restaurant.city}, ${restaurant.type}">
+	<meta name="description" 
+		content="<spring:message code="meta.description"/> Restaurante ${restaurant.name}, ${restaurant.street} ${restaurant.number}, ${restaurant.city}, <spring:message code="${restaurant.type}"/>">
 	<link rel="stylesheet" type="text/css" href="/css/photobox.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/carousel.css"/>
 	<script src="/js/photobox.js"></script>

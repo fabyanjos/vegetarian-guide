@@ -5,7 +5,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!doctype html>
 <html lang="en">
-
+<head>
+<title>Home</title>
+<meta name="description" content="<spring:message code="meta.description"/>">
+</head>
 <body>
 	<div class="container-slides">
 		<div id="slides">
