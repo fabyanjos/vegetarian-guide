@@ -10,7 +10,6 @@
 	<meta charset="UTF-8">
 	<meta http-equiv=”content-language” content="pt-br">
 	<meta name="keywords" content="<spring:message code="meta.keywords"/>">
-	<meta name="author" content="Fabiana Anjos">
 	<title>Veggie Out :: <decorator:title/></title>
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/> 
 	
