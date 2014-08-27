@@ -20,6 +20,15 @@
 	  <loc>http://veggie-out.herokuapp.com/contact</loc>
 	</url>
 	<url>
+	  <loc>http://veggie-out.herokuapp.com/restaurant/bioqualitá</loc>
+	</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com/restaurant/babiló-shopping-market-place</loc>
+	</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com/restaurant/babiló-shopping-iguatemi</loc>
+	</url>
+	<url>
 	  <loc>http://veggie-out.herokuapp.com/restaurant/62-graus</loc>
 	</url>
 	<url>
@@ -42,5 +51,14 @@
 	</url>
 	<url>
 	  <loc>http://veggie-out.herokuapp.com/restaurant/goshala</loc>
+	</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com/restaurant/cheiro-verde</loc>
+	</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com/restaurant/banana-verde</loc>
+	</url>
+	<url>
+	  <loc>http://veggie-out.herokuapp.com/restaurant/bardana</loc>
 	</url>
 </urlset>
