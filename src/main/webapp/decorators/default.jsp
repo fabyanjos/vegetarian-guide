@@ -9,7 +9,6 @@
 <head> 
 	<meta charset="UTF-8">
 	<meta http-equiv=”content-language” content="pt-br">
-	<meta name="keywords" content="<spring:message code="meta.keywords"/>">
 	<title>Veggie Out :: <decorator:title/></title>
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/> 
 	
@@ -39,8 +38,6 @@
 
 <body>
 	<jsp:include page="/WEB-INF/pages/template/header.jsp"/>
-	
-	<decorator:head/>
 	
 	<div id="content">
 		

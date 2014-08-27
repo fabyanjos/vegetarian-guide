@@ -4,12 +4,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"			prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" 		prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" 	prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" 	prefix="fn" %>
 <!doctype html>
 <html lang="en">
 <head>
-	<title><spring:message code="restaurant"/> :: ${restaurant.name}</title>
-	<meta name="description" 
-		content="<spring:message code="meta.description"/> Restaurante ${restaurant.name}, ${restaurant.street} ${restaurant.number}, ${restaurant.city}, <spring:message code="${restaurant.type}"/>">
+	<title><spring:message code="restaurant"/> ${restaurant.name} - ${restaurant.city}, ${restaurant.state}</title>
+	<meta content="${fn:substring(restaurant.description, 0, 250)}<c:if test="${fn:length(restaurant.description) > 250}">...</c:if>" name="description" />
+	<meta content="<spring:message code="restaurant"/>, ${restaurant.name}, ${restaurant.street}, ${restaurant.number}, ${restaurant.city}, ${restaurant.state}, <spring:message code="${restaurant.type}"/>" name="keywords" />
+	<meta content="<spring:message code="restaurant"/> ${restaurant.name}" property="og:title" />
+	<meta content="<spring:message code="restaurant"/> <spring:message code="${restaurant.type}"/> em  ${restaurant.city}, ${restaurant.state}" property="og:description" />
+	
+	<meta property="place:location:latitude" content="${restaurant.latitude}"/>
+	<meta property="place:location:longitude" content="${restaurant.longitude}"/>
+	<meta property="business:contact_data:street_address" content="${restaurant.street}"/>
+	<meta property="business:contact_data:locality" content="${restaurant.city}"/>
+	<meta property="business:contact_data:postal_code" content="${restaurant.postalCode}"/>
+	<meta property="business:contact_data:country_name" content="<spring:message code="${restaurant.country.name}"/>"/>
+		
 	<link rel="stylesheet" type="text/css" href="/css/photobox.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/carousel.css"/>
 	<script src="/js/photobox.js"></script>

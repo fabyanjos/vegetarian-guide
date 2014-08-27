@@ -7,6 +7,7 @@
 <html lang="en">
 <head>
 	<title><spring:message code="contact"/></title>
+	<meta name="keywords" content="<spring:message code="meta.keywords"/>">
 	<meta name="description" content="<spring:message code="meta.description"/>, <spring:message code="contact"/>">
 </head>
 <body>
