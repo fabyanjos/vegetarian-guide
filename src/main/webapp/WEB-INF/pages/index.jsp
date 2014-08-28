@@ -49,35 +49,5 @@
 		</p>
 	</article>
 	</section>
-   
-   <script>
-    $(function() {
-      $('#slides').slidesjs({
-        width: 1024,
-        height: 300,
-        play: {
-          auto: false,
-          effect: "fade",
-          interval: 4000
-        },
-        navigation: {
-        	active: false,
-            effect: "fade"
-        },
-        pagination: {
-        	active: false,
-            effect: "fade"
-        },
-        effect: {
-            fade: {
-              speed: 500,
-                // [number] Speed in milliseconds of the fade animation.
-              crossfade: true
-                // [boolean] Cross-fade the transition.
-            }
-        }
-      });
-    });
-  </script>
 </body>
 </html>

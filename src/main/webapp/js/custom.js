@@ -21,11 +21,6 @@ $(document).ready(function () {
 		   console.log('image has been loaded');
 		}
 		
-		// destroy the plugin on a certain gallery:
-		//-----------------------------------------------
-	//	$('#gallery').data('_photobox').destroy();
-		
-		// re-initialize the photbox DOM (does what Document ready does)
 		//-----------------------------------------------
 		$('#carousel').photobox('prepareDOM');
 		
@@ -45,3 +40,47 @@ $(document).ready(function () {
 	}
 });
 
+function setRating(name, value) {
+	var rating = $('input[name=' + name + ']');
+	for(var i = 1; i < 6; i++) {
+		if(rating[i].value == value)
+			$(rating[i]).attr('checked', 'checked'); 
+	}
+}
+
+function setPrice(name, value) {
+	var price = $('input[name=' + name + ']');
+	for(var i = 1; i < 5; i++) {
+		if(price[i].value == value)
+			$(price[i]).attr('checked', 'checked'); 
+	}
+}
+
+// Home banner
+$(function() {
+    $('#slides').slidesjs({
+      width: 1024,
+      height: 300,
+      play: {
+        auto: false,
+        effect: "fade",
+        interval: 4000
+      },
+      navigation: {
+      	active: false,
+          effect: "fade"
+      },
+      pagination: {
+      	active: false,
+          effect: "fade"
+      },
+      effect: {
+          fade: {
+            speed: 500,
+              // [number] Speed in milliseconds of the fade animation.
+            crossfade: true
+              // [boolean] Cross-fade the transition.
+          }
+      }
+    });
+  });

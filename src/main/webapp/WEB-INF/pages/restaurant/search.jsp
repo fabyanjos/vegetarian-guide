@@ -138,16 +138,10 @@ $(window).load(function () {
 	
 	<c:forEach items="${restaurants}" var="r" varStatus="i">
 		createMark('${i.index+1}', '${r.latitude}', '${r.longitude}', '${r.name}');
-		var rate = $('input[name=rating-${r.id}]');
-		for(var i = 1; i < 6; i++) {
-			if(rate[i].value == '${r.rating}')
-				$(rate[i]).attr('checked', 'checked'); 
-		}
-		var price = $('input[name=price-${r.id}]');
-		for(var i = 1; i < 5; i++) {
-			if(price[i].value == '${r.price}')
-				$(price[i]).attr('checked', 'checked'); 
-		}
+		
+		setRating('rating-${r.id}', '${r.rating}');
+		setPrice('price-${r.id}', '${r.price}');
+		
 	</c:forEach>
 	
 });

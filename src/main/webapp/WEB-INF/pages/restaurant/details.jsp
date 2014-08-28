@@ -176,23 +176,11 @@
 $(document).ready(function () {
 	<c:if test="${!empty restaurant}">
 		setOrigin('${restaurant.latitude}', '${restaurant.longitude}', 'infoWindow');
-		var rating = $('input[name=rating-main]');
-		for(var i = 1; i < 6; i++) {
-			if(rating[i].value == '${restaurant.rating}')
-				$(rating[i]).attr('checked', 'checked'); 
-		}
-		var price = $('input[name=price]');
-		for(var i = 1; i < 5; i++) {
-			if(price[i].value == '${restaurant.price}')
-				$(price[i]).attr('checked', 'checked'); 
-		}
+		setRating('rating-main', '${restaurant.rating}');
+		setPrice('price', '${restaurant.price}');
 	</c:if>
 	<c:forEach items="${reviews}" var="r" varStatus="i">
-		var rate = $('input[name=rating-${r.id}]');
-		for(var i = 1; i < 6; i++) {
-			if(rate[i].value == '${r.rating}')
-				$(rate[i]).attr('checked', 'checked'); 
-		}
+		setRating('rating-${r.id}', '${r.rating}');
 	</c:forEach>
 });
 </script>	
