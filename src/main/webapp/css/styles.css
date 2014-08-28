@@ -582,3 +582,421 @@ h2 .rating {
 h5 .rating {
 	float: right;
 }
+
+
+#userBox { 
+	width: 240px;
+	height: 60px;
+	font-size: 14px;
+	padding: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border: 2px dashed;
+    border-color: #000;
+    -moz-box-shadow: 5px 5px 5px #888;
+	-webkit-box-shadow: 5px 5px 5px #888;
+	box-shadow: 5px 5px 5px #888;
+}
+#userBox img {
+	float: left;
+	margin: 4px 10px 0 6px;
+	width: 55px;
+	height: 55px;
+}
+#userBox p {
+	margin-top: 2px;
+}
+.user-image {
+	position:relative;
+}
+.user-FACEBOOK {
+   background:url(/images/facebook_icon.png) 0 0 no-repeat;
+}
+.user-GOOGLEPLUS {
+   background:url(/images/google-icon.png) 0 0 no-repeat;
+}
+.user-FACEBOOK, .user-GOOGLEPLUS {
+   width: 16px;
+   height: 16px;
+   position: absolute;
+   top: 42px;
+   left: 42px;
+   background-size: 16px;
+}
+.infoWindowTitle {
+	font-weight: bolder;
+	font-size: 16px;
+}
+#languageBtn {
+	text-align: center;
+}
+
+#languageBtn img {
+	width: 35px;
+	margin-right: 15px;
+}
+#loginBtn, #share {
+	margin: 20px 0 10px 0; 
+	cursor: pointer; 
+	background-image: linear-gradient(bottom, rgb(67,97,159) 45%, rgb(89,114,168) 73%, rgb(101,123,176) 87%);
+	background-image: -o-linear-gradient(bottom, rgb(67,97,159) 45%, rgb(89,114,168) 73%, rgb(101,123,176) 87%);
+	background-image: -moz-linear-gradient(bottom, rgb(67,97,159) 45%, rgb(89,114,168) 73%, rgb(101,123,176) 87%);
+	background-image: -webkit-linear-gradient(bottom, rgb(67,97,159) 45%, rgb(89,114,168) 73%, rgb(101,123,176) 87%);
+	background-image: -ms-linear-gradient(bottom, rgb(67,97,159) 45%, rgb(89,114,168) 73%, rgb(101,123,176) 87%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.45, rgb(67,97,159)),
+		color-stop(0.73, rgb(89,114,168)),
+		color-stop(0.87, rgb(101,123,176))
+	);
+	background-color: #43609F;
+	-webkit-border-radius: .3em;
+	-moz-border-radius: .3em;
+	border-radius: .3em;
+	color: #ffffff;
+}
+#loginBtn p {
+	padding: 0 0 0 35px;
+	background-repeat: no-repeat;
+	background-image: url("/images/facebook-f.png");
+	text-align: center;
+	font-size: 20px;
+	line-height: 2;
+}
+#share {
+	width: 110px;
+}
+#share p {
+	padding: 0 0 0 25px;
+	background-repeat: no-repeat;
+	background-image: url("/images/facebook-f.png");
+	background-size: 25px 25px;
+	text-align: center;
+	font-size: 12px;
+	line-height: 2;
+}
+#hide {
+    display:none;
+}
+.rating input, .price input {
+    position:absolute;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    -khtml-opacity:0;
+    opacity:0;
+    cursor:pointer;
+    width:18px;
+    height: 18px;
+}
+.rating span, .price span {
+    width:24px;
+    height:16px;
+    line-height:16px;
+    padding:1px 22px 1px 0; /* 1px FireFox fix */
+}
+.price span {
+    padding:1px 16px 1px 0; /* 1px FireFox fix */
+}
+.rating span {
+	background:url(/images/stars.png) no-repeat -22px 0;
+}
+.price span {
+	background:url(/images/dollar.png) no-repeat -22px 0;
+}
+.price-right {
+	float: right;
+}
+/* Change span immediately following the checked radio */ 
+.rating input:checked + span, .price input:checked + span {
+    background-position:-22px 0;
+}
+/* Reset all remaining stars back to default background.
+   This supersedes the above due to its ordering. */
+.rating input:checked + span ~ span, .price input:checked + span ~ span {
+    background-position:0 0;
+}
+.rating input:disabled, .price input:disabled {
+    cursor: default;
+}
+form .rating {
+	margin-right: 26px;	
+}
+/*
+  Hide radio button (the round disc)
+  we will use just the label to create pushbutton effect
+*/
+input[type=radio], input[type=checkbox] {
+    -moz-opacity:0;
+    -khtml-opacity:0;
+    opacity:0;
+}
+input[type=radio] + label, input[type=checkbox] + label {
+    display:inline-block;
+    margin:-2px;
+    padding: 4px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+    width: 60px;
+}
+
+input[type=radio] + label, input[type=checkbox] + label, form input[type="submit"] {
+	text-align: center;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #f5f5f5;
+    background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+    background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+    background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+    background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+    background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+    background-repeat: repeat-x;
+    border: 1px solid #ccc;
+    border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+    border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+    border-bottom-color: #b3b3b3;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+    margin-left: -14px;
+}
+ 
+input[type=radio]:checked + label, input[type=checkbox]:checked + label {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+    -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+    background-color:#e0e0e0;
+}
+
+input[type=checkbox] + label {
+	width: 148px;
+}
+
+#slides {
+  display: none
+}
+
+#slides .slidesjs-navigation {
+  margin-top:5px;
+}
+
+a.slidesjs-next,
+a.slidesjs-previous,
+a.slidesjs-play,
+a.slidesjs-stop {
+  background-image: url(/images/btns-next-prev.png);
+  background-repeat: no-repeat;
+  display:block;
+  width:12px;
+  height:18px;
+  overflow: hidden;
+  text-indent: -9999px;
+  float: left;
+  margin-right:5px;
+}
+
+a.slidesjs-next {
+  margin-right:10px;
+  background-position: -12px 0;
+}
+
+a:hover.slidesjs-next {
+  background-position: -12px -18px;
+}
+
+a.slidesjs-previous {
+  background-position: 0 0;
+}
+
+a:hover.slidesjs-previous {
+  background-position: 0 -18px;
+}
+
+a.slidesjs-play {
+  width:15px;
+  background-position: -25px 0;
+}
+
+a:hover.slidesjs-play {
+  background-position: -25px -18px;
+}
+
+a.slidesjs-stop {
+  width:18px;
+  background-position: -41px 0;
+}
+
+a:hover.slidesjs-stop {
+  background-position: -41px -18px;
+}
+
+.slidesjs-pagination {
+  margin: 7px 0 0;
+  float: right;
+  list-style: none;
+}
+
+.slidesjs-pagination li {
+  float: left;
+  margin: 0 1px;
+}
+
+.slidesjs-pagination li a {
+  display: block;
+  width: 13px;
+  height: 0;
+  padding-top: 13px;
+  background-image: url(/images/pagination.png);
+  background-position: 0 0;
+  float: left;
+  overflow: hidden;
+}
+
+.slidesjs-pagination li a.active,
+.slidesjs-pagination li a:hover.active {
+  background-position: 0 -13px
+}
+
+.slidesjs-pagination li a:hover {
+  background-position: 0 -26px
+}
+
+#slides a:link,
+#slides a:visited {
+  color: #333
+}
+
+#slides a:hover,
+#slides a:active {
+  color: #9e2020
+}
+
+.navbar {
+  overflow: hidden
+}
+#slides {
+  display: none
+}
+
+.container-slides {
+  margin: 0 auto
+}
+
+.container-slides {
+  width: 1024px;
+  margin: 0 0 30px -14px;
+}
+.container-slides img {
+	width: 100%;
+}
+
+.pac-container {
+	float: left;
+	margin-left: -120px;
+}
+
+.search-box input[type="text"] {
+	width: 510px;
+}
+.search-box input[type="submit"] {
+	margin-left: 10px;
+}
+.search-box p {
+	padding: 0;
+}
+.search-box label {
+	padding: 0;
+	text-align: left;
+	width: 180px;
+}
+
+a.tooltip { outline:none; text-decoration:none; }
+a.tooltip strong { line-height:30px; }
+a.tooltip > span {
+	width:160px;
+	padding: 10px 20px;
+	opacity: 0;
+	visibility: hidden;
+	z-index: 10;	   
+	position: absolute;
+	margin: 30px 0 0 -58px;
+	
+	font-family: Arial;
+	font-size: 12px;
+	font-style: normal;  
+	text-align: left;
+	   	    
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+	
+	
+	-webkit-box-shadow: 2px 2px 2px #999;
+	-moz-box-shadow: 2px 2px 2px #999;		
+	box-shadow: 2px 2px 2px #999;	    
+	
+	-webkit-transition-property:opacity, margin-top, visibility, margin-left;
+	-webkit-transition-duration:0.4s, 0.3s, 0.4s, 0.3s;  
+	-webkit-transition-timing-function: ease-in-out, ease-in-out, ease-in-out, ease-in-out;
+	
+	-moz-transition-property:opacity, margin-top, visibility, margin-left;
+	-moz-transition-duration:0.4s, 0.3s, 0.4s, 0.3s;  
+	-moz-transition-timing-function: ease-in-out, ease-in-out, ease-in-out, ease-in-out;
+	
+	-o-transition-property:opacity, margin-top, visibility, margin-left;
+	-o-transition-duration:0.4s, 0.3s, 0.4s, 0.3s;  
+	-o-transition-timing-function: ease-in-out, ease-in-out, ease-in-out, ease-in-out;
+	
+	transition-property:opacity, margin-top, visibility, margin-left;
+	transition-duration:0.4s, 0.3s, 0.4s, 0.3s;  
+	transition-timing-function: ease-in-out, ease-in-out, ease-in-out, ease-in-out;
+}
+a.tooltip:hover > span {
+	opacity: 1;
+	visibility: visible;
+}
+a.tooltip span b {
+	width: 15px;
+	height: 15px;
+	margin-left: 20px;
+	margin-top: -19px;
+		
+	display: block;
+	position: absolute;
+
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+		
+	-webkit-box-shadow: inset -1px 1px 0 #fff;
+	-moz-box-shadow: inset 0 1px 0 #fff;
+	-o-box-shadow: inset 0 1px 0 #fff;
+	box-shadow: inset 0 1px 0 #fff;
+		
+	display: none\0/;
+	*display: none;
+}
+a.tooltip > span {
+	color: #FFFFFF; 
+	background: #333333;
+	background: -moz-linear-gradient(top, #333333 0%, #999999 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#333333), color-stop(100%,#999999));
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333333', endColorstr='#999999',GradientType=0 );
+	border: 1px solid #000000;	     
+}    
+a.tooltip span b {
+	background: #333333;
+	border-top: 1px solid #000000;
+	border-right: 1px solid #000000;
+}    

@@ -12,8 +12,7 @@
 	<title>Veggie Out :: <decorator:title/></title>
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/> 
 	
-	<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
-	<link rel="stylesheet" type="text/css" href="/css/custom.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/styles.min.css"/>
 	<link rel="stylesheet" href="//www.google.com/cse/style/look/default.css" type="text/css" />
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
     
@@ -26,11 +25,8 @@
     	var lang = '${pageContext.response.locale}';
     </script>
     <script src="/js/jquery.sharrre-1.3.4.min.js"></script>
-    <script src="/js/custom.js"></script>
-    <script src="/js/facebook.js"></script>
-    <script src="/js/hello.js"></script>
+    <script src="/js/custom.min.js"></script>
     <script src="/js/jquery.blockUI.js"></script>
-    <script src="/js/social-network.js"></script>
     <script src="/js/jquery.slides.min.js"></script>
 
 	<decorator:head/>
