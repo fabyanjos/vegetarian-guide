@@ -171,7 +171,7 @@
 		</c:forEach>
 		
 	</section>
-<script type="text/javascript" src="/js/maps.js"></script>  
+<script type="text/javascript" src="/js/maps.min.js"></script>  
 <script type="text/javascript">
 $(document).ready(function () {
 	<c:if test="${!empty restaurant}">
