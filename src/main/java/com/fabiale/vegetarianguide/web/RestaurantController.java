@@ -80,15 +80,6 @@ public class RestaurantController {
 		return "/restaurant/search";
 	}
 	
-	@RequestMapping(value = "/rest/restaurant/search/{lat}/{lng}", produces = MediaType.APPLICATION_JSON_VALUE, method = {RequestMethod.POST, RequestMethod.GET})
-	@ResponseBody
-    public List<Restaurant> restSearch(@PathVariable("lat") String lat, @PathVariable("lng") String lng, ModelMap modelMap) throws NotFoundException, DropboxException, RestaurantNotFoundException {
-		
-		List<Restaurant> result = service.getNearBy(Double.valueOf(lat), Double.valueOf(lng));
-
-        return result;
-    }
-	
     @RequestMapping(value = "/restaurant/details/{id}", method = {RequestMethod.POST, RequestMethod.GET})
     public String getDetails(@PathVariable("id") Integer id, ModelMap modelMap) throws NotFoundException, DropboxException, RestaurantNotFoundException {
 		Restaurant restaurant = service.getById(id);

@@ -53,6 +53,6 @@ public class ReviewRepositoryImpl implements ReviewRepository {
     	criteria.add(Restrictions.eq("restaurant", restaurant));
     	criteria.setProjection(Projections.avg("rating"));
     	Double result = (Double) criteria.uniqueResult();
-    	return result != null ? result.intValue() : null;
+    	return result != null ? result.intValue() : 0;
     }
 }

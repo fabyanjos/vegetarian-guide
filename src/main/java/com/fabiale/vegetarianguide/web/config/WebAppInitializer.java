@@ -9,6 +9,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
+import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -38,6 +39,9 @@ public class WebAppInitializer implements WebApplicationInitializer {
 		// Register Spring security filter
 		FilterRegistration.Dynamic springSecurityFilterChain = context.addFilter("springSecurityFilterChain", DelegatingFilterProxy.class);
 		springSecurityFilterChain.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, "/*");
+		
+		FilterRegistration.Dynamic crossOrigin = context.addFilter("cross-origin", CrossOriginFilter.class);
+		crossOrigin.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, "/*");
 
 		// Declare dispatcher servlet
 		ServletRegistration.Dynamic dispatcher = context.addServlet("dispatcher", new DispatcherServlet(appContext));

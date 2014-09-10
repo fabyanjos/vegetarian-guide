@@ -266,43 +266,15 @@
      	<artifactId>socialauth-spring</artifactId>
      	<version>2.5</version>
      </dependency>
+     <dependency>
+     	<groupId>org.eclipse.jetty</groupId>
+     	<artifactId>jetty-servlets</artifactId>
+     	<version>${jetty.version}</version>
+     </dependency>
   </dependencies>
   <build>
     <finalName>vegetarian-guide</finalName>
     <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-dependency-plugin</artifactId>
-            <version>2.3</version>
-            <executions>
-                <execution>
-                    <phase>package</phase>
-                    <goals><goal>copy</goal></goals>
-                    <configuration>
-                        <artifactItems>
-                            <artifactItem>
-                                <groupId>com.github.jsimone</groupId>
-                                <artifactId>webapp-runner</artifactId>
-                                <version>7.0.34.0</version>
-                                <destFileName>webapp-runner.jar</destFileName>
-                            </artifactItem>
-                        </artifactItems>
-                    </configuration>
-                </execution>
-                <execution>
-		          <id>copy-new-relic</id>
-		          <phase>package</phase>
-		         <goals>
-		           <goal>copy-dependencies</goal>
-		          </goals>
-		          <configuration>
-		            <includeGroupIds>com.newrelic.agent.java</includeGroupIds>
-		            <includeArtifactIds>newrelic-agent</includeArtifactIds>
-		            <stripVersion>true</stripVersion>
-		          </configuration>
-		        </execution>
-            </executions>
-        </plugin>
         <plugin>
 	        <groupId>org.mortbay.jetty</groupId>
 			<artifactId>jetty-maven-plugin</artifactId>
@@ -312,13 +284,6 @@
 			    <contextPath>/</contextPath>
 			  </webApp>
 			</configuration>
-			<dependencies>
-				  <dependency>
-				    <groupId>org.eclipse.jetty</groupId>
-				    <artifactId>jetty-servlets</artifactId>
-				    <version>${jetty.version}</version>
-				  </dependency>
-			</dependencies>
 	      </plugin>
 	      <plugin>
 	        <artifactId>maven-war-plugin</artifactId>
