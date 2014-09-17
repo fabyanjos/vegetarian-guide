@@ -271,6 +271,11 @@
      	<artifactId>jetty-servlets</artifactId>
      	<version>${jetty.version}</version>
      </dependency>
+     <dependency>
+     	<groupId>com.samaxes.filter</groupId>
+     	<artifactId>cachefilter</artifactId>
+     	<version>2.3.0</version>
+     </dependency>
   </dependencies>
   <build>
     <finalName>vegetarian-guide</finalName>

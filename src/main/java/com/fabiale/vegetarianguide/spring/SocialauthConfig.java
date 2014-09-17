@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SocialauthConfig {
 	
-	@Value("${social.applicationUrl}") private String applicationUrl;
 	@Value("${social.successPageURL}") private String successPageURL;
 	@Value("${social.accessDeniedPageURL}") private String accessDeniedPageURL;
 
@@ -36,6 +35,6 @@ public class SocialauthConfig {
 	
 	@Bean
 	public SocialAuthWebController socialAuthWebController() {
-		return new SocialAuthWebController(applicationUrl, successPageURL, accessDeniedPageURL);
+		return new SocialAuthWebController(System.getenv("APPLICATION_URL"), successPageURL, accessDeniedPageURL);
 	}
 }

@@ -13,14 +13,10 @@
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/> 
 	
 	<link rel="stylesheet" type="text/css" href="/css/styles.min.css"/>
-    
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="//maps.googleapis.com/maps/api/js?libraries=geometry,places&amp;language=${pageContext.response.locale}" ></script>
-
-    <script src="/js/jquery.blockUI.js"></script>
-    <script src="/js/jquery.slides.min.js"></script>
-    <script src="/js/custom.min.js"></script>
-
+    
 	<decorator:head/>
 </head>
 
@@ -40,5 +36,10 @@
 
 	<jsp:include page="/WEB-INF/pages/template/footer.jsp"/>
 	
+	
+
+    <script src="/js/jquery.blockUI.js"></script>
+    <script src="/js/jquery.slides.min.js"></script>
+    <script src="/js/custom.min.js"></script>
    </body>
 </html>

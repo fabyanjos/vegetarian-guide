@@ -19,6 +19,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 
 import com.fabiale.vegetarianguide.web.filter.ClearSitemeshAppliedOnceFilter;
 import com.opensymphony.sitemesh.webapp.SiteMeshFilter;
+import com.samaxes.filter.CacheFilter;
 
 public class WebAppInitializer implements WebApplicationInitializer {
 
@@ -42,6 +43,10 @@ public class WebAppInitializer implements WebApplicationInitializer {
 		
 		FilterRegistration.Dynamic crossOrigin = context.addFilter("cross-origin", CrossOriginFilter.class);
 		crossOrigin.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, "/*");
+		
+		FilterRegistration.Dynamic cacheControl = context.addFilter("cache-control", CacheFilter.class);
+		cacheControl.setInitParameter("expiration", "172800");
+		cacheControl.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, "/*");
 
 		// Declare dispatcher servlet
 		ServletRegistration.Dynamic dispatcher = context.addServlet("dispatcher", new DispatcherServlet(appContext));
