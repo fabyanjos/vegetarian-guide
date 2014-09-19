@@ -19,13 +19,15 @@
 				Compartilhe e avalie opções para comer com outras pessoas e ajude para que novas opções sejam descobertas.
 			</p>
 			<p>
-				Possui sugestões para melhorar a ferramenta? Entre em contato conosco pelo formulário de <a href="contact">contato</a>.
+				Possui sugestões para melhorar a ferramenta? Entre em contato conosco pelo <a href="contact">formulário</a>.
 			</p>
 			<ul class="arrow-list">
+				<li>Pesquisa simples por endereço</li>
+				<li>Filtros simples de usar</li>
 				<li>Acesse com sua conta do Facebook ou Google</li>
 				<li>Compartilhe sua opnião sobre os locais</li>
 				<li>Compartilhe fotos</li>
-				<li>Pesquise pelos locais próximos</li>
+				<li>Em breve versão mobile, leve seu guia no bolso</li>
 			</ul>
 		</article>
 	</section>

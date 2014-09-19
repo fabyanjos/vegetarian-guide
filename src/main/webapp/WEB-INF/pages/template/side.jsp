@@ -49,8 +49,8 @@
 				<a href="/restaurant/${review.restaurant.nameUrl}#review-${review.id}">${review.restaurant.name}</a>
 			</h4>
 			<p>
-				${fn:substring(review.description, 0, 150)}
-				<c:if test="${fn:length(review.description) > 150}">...</c:if>
+				${fn:substring(review.description, 0, 100)}
+				<c:if test="${fn:length(review.description) > 100}">...</c:if>
 			</p>
 		</article>
 	</c:forEach>
@@ -58,6 +58,10 @@
 
 <section>
 	<h3>Links</h3>
+	<div class="fb-like-box" data-href="https://www.facebook.com/VeggieOut/" 
+		data-colorscheme="light" data-show-faces="true" data-header="true" 
+		data-stream="false" data-show-border="true" data-width="280"></div>
+		
 	<ul class="arrow-list">
 		<li><a href="http://composicao-alimentos.herokuapp.com" target="_blank">Composição dos Alimentos</a></li>
 	</ul>

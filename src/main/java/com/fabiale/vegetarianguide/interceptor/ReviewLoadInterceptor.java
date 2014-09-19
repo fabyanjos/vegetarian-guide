@@ -17,6 +17,6 @@ public class ReviewLoadInterceptor extends HandlerInterceptorAdapter {
 	
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-		request.setAttribute("reviewsList", reviewService.getLastUptades(4));
+		request.setAttribute("reviewsList", reviewService.getLastUptades(3));
 	}
 }
