@@ -3,7 +3,6 @@ package com.fabiale.vegetarianguide.spring;
 import java.util.List;
 import java.util.Locale;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,13 +20,12 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.fabiale.vegetarianguide.gson.GSONHttpMessageConverter;
-import com.fabiale.vegetarianguide.interceptor.ReviewLoadInterceptor;
 
 @Configuration
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter {
 	
-	@Autowired ReviewLoadInterceptor reviewLoadInterceptor;
+//	@Autowired ReviewLoadInterceptor reviewLoadInterceptor;
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -102,6 +100,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(localeChangeInterceptor());
-		registry.addInterceptor(reviewLoadInterceptor);
+//		registry.addInterceptor(reviewLoadInterceptor);
 	}
 }

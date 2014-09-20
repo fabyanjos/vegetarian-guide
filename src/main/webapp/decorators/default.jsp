@@ -49,6 +49,7 @@
 
     <script src="/js/jquery.blockUI.js"></script>
     <script src="/js/jquery.slides.min.js"></script>
+    <script src="/js/reviews.min.js"></script>
     <script src="/js/custom.min.js"></script>
    </body>
 </html>

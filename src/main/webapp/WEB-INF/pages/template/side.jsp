@@ -42,9 +42,15 @@
 	<header>
 		<h3><spring:message code="latest.reviews" /></h3>
 	</header>
-	
+	<article id="reviewLoading" style="width: 100%; text-align: center">
+		<img src="/images/loading.gif">
+		<span style="display: block">Loading</span>
+	</article>
+	<div id="lastReviews">
+	</div>
 	<c:forEach items="${reviewsList}" var="review" varStatus="i">
-		<article>
+		
+		<!-- article>
 			<h4>
 				<a href="/restaurant/${review.restaurant.nameUrl}#review-${review.id}">${review.restaurant.name}</a>
 			</h4>
@@ -52,7 +58,7 @@
 				${fn:substring(review.description, 0, 100)}
 				<c:if test="${fn:length(review.description) > 100}">...</c:if>
 			</p>
-		</article>
+		</article-->
 	</c:forEach>
 </section>
 
