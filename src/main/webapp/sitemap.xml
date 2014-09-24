@@ -5,60 +5,60 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 	<url>
-	  <loc>http://veggie-out.herokuapp.com</loc>
+	  <loc>http://www.veggieout.com.br</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/restaurant/search</loc>
+	  <loc>http://www.veggieout.com.br/restaurant/search</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/restaurant/new</loc>
+	  <loc>http://www.veggieout.com.br/restaurant/new</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/about</loc>
+	  <loc>http://www.veggieout.com.br/about</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/contact</loc>
+	  <loc>http://www.veggieout.com.br/contact</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/restaurant/bioqualitá</loc>
+	  <loc>http://www.veggieout.com.br/restaurant/bioqualitá</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/restaurant/babiló-shopping-market-place</loc>
+	  <loc>http://www.veggieout.com.br/restaurant/babiló-shopping-market-place</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/restaurant/babiló-shopping-iguatemi</loc>
+	  <loc>http://www.veggieout.com.br/restaurant/babiló-shopping-iguatemi</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/restaurant/62-graus</loc>
+	  <loc>http://www.veggieout.com.br/restaurant/62-graus</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/restaurant/apfel-jardins</loc>
+	  <loc>http://www.veggieout.com.br/restaurant/apfel-jardins</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/restaurant/gopala-hari</loc>
+	  <loc>http://www.veggieout.com.br/restaurant/gopala-hari</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/restaurant/apfel-centro</loc>
+	  <loc>http://www.veggieout.com.br/restaurant/apfel-centro</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/restaurant/gopala-madhava</loc>
+	  <loc>http://www.veggieout.com.br/restaurant/gopala-madhava</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/restaurant/bio-alternativa-higien%C3%B3polis</loc>
+	  <loc>http://www.veggieout.com.br/restaurant/bio-alternativa-higien%C3%B3polis</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/restaurant/bio-alternativa-jardins</loc>
+	  <loc>http://www.veggieout.com.br/restaurant/bio-alternativa-jardins</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/restaurant/goshala</loc>
+	  <loc>http://www.veggieout.com.br/restaurant/goshala</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/restaurant/cheiro-verde</loc>
+	  <loc>http://www.veggieout.com.br/restaurant/cheiro-verde</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/restaurant/banana-verde</loc>
+	  <loc>http://www.veggieout.com.br/restaurant/banana-verde</loc>
 	</url>
 	<url>
-	  <loc>http://veggie-out.herokuapp.com/restaurant/bardana</loc>
+	  <loc>http://www.veggieout.com.br/restaurant/bardana</loc>
 	</url>
 </urlset>
