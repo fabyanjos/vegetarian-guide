@@ -15,6 +15,7 @@ public class SocialauthConfig {
 	
 	@Value("${social.successPageURL}") private String successPageURL;
 	@Value("${social.accessDeniedPageURL}") private String accessDeniedPageURL;
+	private String applicationUrl = System.getenv("APPLICATION_URL");
 
 	@Bean
 	public SocialAuthConfig socialAuthConfig() throws FileNotFoundException, Exception {
@@ -35,6 +36,6 @@ public class SocialauthConfig {
 	
 	@Bean
 	public SocialAuthWebController socialAuthWebController() {
-		return new SocialAuthWebController(System.getenv("APPLICATION_URL"), successPageURL, accessDeniedPageURL);
+		return new SocialAuthWebController(applicationUrl, successPageURL, accessDeniedPageURL);
 	}
 }
